@@ -102,20 +102,7 @@
       "ordersCount": 1
     }
   ],
-  "ordersList": [
-    {
-      "id": "ORD-101",
-      "customerName": "Aarav Sharma",
-      "studentClass": "Class 12th",
-      "phone": "9876543210",
-      "address": "Stall Counter Pickup",
-      "items": "Smart Watch (x1)",
-      "totalAmount": 2999,
-      "paymentMode": "Cash at Stall",
-      "status": "Pending",
-      "date": "Today, 10:15 AM"
-    }
-  ],
+  "ordersList": [],
   "messagesList": [
     {
       "id": "MSG-101",
