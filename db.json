@@ -21,18 +21,6 @@
   },
   "products": [
     {
-      "id": "p2",
-      "name": "Ultra AMOLED Smart Watch",
-      "category": "Watches",
-      "price": 2499,
-      "mrp": 4999,
-      "rating": "4.9 (2.5k)",
-      "badge": "Best Seller",
-      "inStock": true,
-      "description": "Bluetooth calling, AMOLED Always-On Display, 100+ sports modes aur metal strap.",
-      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85"
-    },
-    {
       "id": "p3",
       "name": "Waterproof Laptop Backpack",
       "category": "Bags",
