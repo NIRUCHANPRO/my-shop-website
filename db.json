@@ -27,6 +27,19 @@
   },
   "products": [
     {
+      "id": "vip_1794560968526",
+      "name": "Vimal",
+      "category": "Ajay devgan speical",
+      "price": 1,
+      "mrp": 95,
+      "badge": "👑 VIP: Bhosdiwala",
+      "addedBy": "Bhosdiwala",
+      "inStock": true,
+      "description": "CHUTIYON KI PASAND VIMAL PAN MASLA",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85",
+      "rating": "5.0 (VIP Pick)"
+    },
+    {
       "id": "vip_1794560934172",
       "name": "Hand speaker",
       "category": "Speaker",
