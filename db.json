@@ -20,18 +20,6 @@
     "nativeBannerHtml": "<script async=\"async\" data-cfasync=\"false\" src=\"https://bauval.org/21/8a369a2a6f962de9cdc4b21576073349\"></script>\n<div id=\"container-8a369a2a6f962de9cdc4b21576073349\"></div>"
   },
   "products": [],
-  "ordersList": [
-    {
-      "id": "ORD-101",
-      "customerName": "Rahul Verma",
-      "phone": "9876543210",
-      "address": "Ward 12, Station Road",
-      "items": "Ultra AMOLED Smart Watch (x1)",
-      "totalAmount": 2499,
-      "paymentMode": "Cash on Delivery / Shop Pickup",
-      "status": "Pending",
-      "date": "Today, 10:00 AM"
-    }
-  ],
+  "ordersList": [],
   "messagesList": []
 }
