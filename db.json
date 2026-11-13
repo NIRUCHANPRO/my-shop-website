@@ -24,18 +24,6 @@
   },
   "products": [
     {
-      "id": "p2",
-      "name": "Smart Watch",
-      "category": "Watches",
-      "price": 2999,
-      "mrp": 4999,
-      "rating": "4.9 (2.5k)",
-      "badge": "Best Seller",
-      "inStock": true,
-      "description": "AMOLED display, fitness tracker aur premium strap.",
-      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85"
-    },
-    {
       "id": "p3",
       "name": "Backpack",
       "category": "Bags",
