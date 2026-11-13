@@ -20,13 +20,12 @@ exports.handler = async (event) => {
 
   const githubApiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${FILE_PATH}`;
 
-  // Helper function to read current db.json from GitHub
   async function readGithubDb() {
     const res = await fetch(`${githubApiUrl}?ref=${GITHUB_BRANCH}`, {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
-        "User-Agent": "SmartShop-Pro-Backend"
+        "User-Agent": "SmartShop-AnandMela-Backend"
       }
     });
     if (!res.ok) throw new Error(`GitHub Read Error: ${res.status}`);
@@ -35,7 +34,6 @@ exports.handler = async (event) => {
     return { content, sha: fileData.sha };
   }
 
-  // Helper function to write updated db.json to GitHub
   async function writeGithubDb(updatedData, sha, commitMessage) {
     const updatedContent = Buffer.from(JSON.stringify(updatedData, null, 2), "utf-8").toString("base64");
     const putRes = await fetch(githubApiUrl, {
@@ -44,7 +42,7 @@ exports.handler = async (event) => {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
-        "User-Agent": "SmartShop-Pro-Backend"
+        "User-Agent": "SmartShop-AnandMela-Backend"
       },
       body: JSON.stringify({
         message: commitMessage,
@@ -60,7 +58,7 @@ exports.handler = async (event) => {
   }
 
   try {
-    // GET Request: Load store data
+    // GET Request: Load latest store data
     if (event.httpMethod === "GET") {
       if (!GITHUB_TOKEN || !GITHUB_REPO) {
         return {
@@ -77,7 +75,7 @@ exports.handler = async (event) => {
       };
     }
 
-    // POST Request: Handle Login, Owner Save, Customer Order, Customer Message
+    // POST Request
     if (event.httpMethod === "POST") {
       const body = JSON.parse(event.body || "{}");
 
@@ -89,7 +87,7 @@ exports.handler = async (event) => {
         return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Galat Password!" }) };
       }
 
-      // 2. Customer New Order (Public - Saves straight to Admin Panel)
+      // 2. Customer New Order (Saves directly to Admin Panel)
       if (body.action === "customer_order") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -102,7 +100,7 @@ exports.handler = async (event) => {
         return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
       }
 
-      // 3. Customer New Message (Public - Saves straight to Admin Panel Inbox)
+      // 3. Customer New Message (Saves directly to Admin Inbox)
       if (body.action === "customer_message") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -114,7 +112,20 @@ exports.handler = async (event) => {
         return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
       }
 
-      // 4. Owner Full Save (Protected by OWNER_PASSWORD)
+      // 4. Student Live Shoutout Wall Post (Saves directly to Shoutout Wall)
+      if (body.action === "customer_shoutout") {
+        if (!GITHUB_TOKEN || !GITHUB_REPO) {
+          return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
+        }
+        const { content, sha } = await readGithubDb();
+        if (!Array.isArray(content.shoutoutsList)) content.shoutoutsList = [];
+        content.shoutoutsList.unshift(body.shoutout);
+        if (content.shoutoutsList.length > 40) content.shoutoutsList = content.shoutoutsList.slice(0, 40);
+        await writeGithubDb(content, sha, `New Shoutout from ${body.shoutout.name}`);
+        return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
+      }
+
+      // 5. Owner Full Save
       if (body.action === "save") {
         if (body.password !== OWNER_PASSWORD) {
           return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Unauthorized!" }) };
