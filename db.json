@@ -25,21 +25,7 @@
     "topBannerHtml": "",
     "nativeBannerHtml": ""
   },
-  "products": [
-    {
-      "id": "p4",
-      "name": "Headphones",
-      "category": "Gadgets",
-      "price": 1999,
-      "mrp": 3299,
-      "rating": "4.8 (1.1k)",
-      "badge": "VIP Pick 🚀",
-      "addedBy": "Abishai & Nirwan",
-      "inStock": true,
-      "description": "Studio quality sound aur ultra-soft ear cushions.",
-      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=85"
-    }
-  ],
+  "products": [],
   "leaderboardList": [],
   "ordersList": [],
   "messagesList": [],
