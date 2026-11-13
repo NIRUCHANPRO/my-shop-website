@@ -23,7 +23,7 @@
   "adsConfig": {
     "adsEnabled": true,
     "topBannerHtml": "<script>\n  atOptions = {\n    'key' : '7fa3b1dada421d8272a42f95f5470cb1',\n    'format' : 'iframe',\n    'height' : 90,\n    'width' : 728,\n    'params' : {}\n  };\n</script>\n<script src=\"https://bauval.org/22/7fa3b1dada421d8272a42f95f5470cb1\"></script>",
-    "nativeBannerHtml": ""
+    "nativeBannerHtml": "<script async=\"async\" data-cfasync=\"false\" src=\"https://bauval.org/21/8a369a2a6f962de9cdc4b21576073349\"></script>\n<div id=\"container-8a369a2a6f962de9cdc4b21576073349\"></div>"
   },
   "products": [],
   "leaderboardList": [],
