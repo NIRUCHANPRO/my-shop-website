@@ -21,5 +21,13 @@
   },
   "products": [],
   "ordersList": [],
-  "messagesList": []
+  "messagesList": [
+    {
+      "id": "MSG-1794545540835",
+      "name": "Nirwan Sharma",
+      "contact": "Niruchand@gmail.com",
+      "message": "Behen ka loda",
+      "date": "13 Nov 2026, 10:22 am"
+    }
+  ]
 }
