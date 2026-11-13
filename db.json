@@ -29,5 +29,13 @@
   "leaderboardList": [],
   "ordersList": [],
   "messagesList": [],
-  "shoutoutsList": []
+  "shoutoutsList": [
+    {
+      "id": "SH-1794555926849",
+      "name": "Nirwan Sharma",
+      "emoji": "🎉",
+      "text": "Pagla",
+      "time": "01:15 pm"
+    }
+  ]
 }
