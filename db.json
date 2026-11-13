@@ -82,13 +82,5 @@
   "leaderboardList": [],
   "ordersList": [],
   "messagesList": [],
-  "shoutoutsList": [
-    {
-      "id": "SH-2",
-      "name": "Priya & Group",
-      "emoji": "👑",
-      "text": "Order karte hi AI Voice boli aur patakhe phute, full VIP aura!",
-      "time": "5 mins ago"
-    }
-  ]
+  "shoutoutsList": []
 }
