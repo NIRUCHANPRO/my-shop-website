@@ -82,13 +82,5 @@
       "date": "Today, 09:30 AM"
     }
   ],
-  "shoutoutsList": [
-    {
-      "id": "SH-3",
-      "name": "Aman",
-      "emoji": "👑",
-      "text": "Full VIP vibes! Must visit this stall everyone!",
-      "time": "10 mins ago"
-    }
-  ]
+  "shoutoutsList": []
 }
