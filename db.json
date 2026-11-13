@@ -3,21 +3,22 @@
     "shopName": "SmartShop",
     "tagline": "Anand Mela Official Digital Stall",
     "creators": "Abishai & Nirwan",
-    "announcement": "🔥 Welcome to Anand Mela's First Digital Stall — Created by Abishai & Nirwan! Order Online & Get Featured on the Live Leaderboard! 🔥",
+    "vipBannerText": "👑 Welcome Respected Teachers & VIP Guests to Abishai & Nirwan's Exclusive VIP Portal!",
+    "announcement": "🔥 Welcome to Anand Mela's First Digital Stall — Created by Abishai & Nirwan! Order Online & Rank #1 on the Live Leaderboard! 🔥",
     "bannerTitle": "Welcome to SmartShop",
     "bannerSubtitle": "Experience Next-Gen Shopping at Our Anand Mela Stall!",
     "phone": "+91 98765 43210",
     "whatsapp": "919876543210",
     "email": "support@smartshop.in",
     "address": "VIP Stall No. 1, School Anand Mela Ground",
-    "aboutText": "Hamare Anand Mela Digital Stall (Created by Abishai & Nirwan) mein aapko best items, combos aur zero-waiting VIP service milegi. Website se seedha order karein aur Leaderboard par #1 par aayein!",
+    "aboutText": "Hamare Anand Mela Digital Stall (Created by Abishai & Nirwan) mein aapko best items, combos aur zero-waiting VIP service milegi. Teachers aur VIPs ke liye special VIP Portal available hai!",
     "isOnline": true,
     "rgbLighting": true,
     "aiVoiceEnabled": true,
-    "hypeMode": true,
+    "hypeMode": false,
     "hypeText": "🚨 FRESH GARMA-GARAM BATCH READY AT STALL! HURRY UP - HIGH DEMAND! 🔥",
-    "visitors": 2150,
-    "orders": 3
+    "visitors": 2400,
+    "orders": 1
   },
   "adsConfig": {
     "adsEnabled": true,
@@ -33,6 +34,7 @@
       "mrp": 2499,
       "rating": "4.9 (1.2k)",
       "badge": "Hot 🔥",
+      "addedBy": "Abishai & Nirwan",
       "inStock": true,
       "description": "Deep bass, crystal clear sound aur long battery backup.",
       "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=85"
@@ -45,6 +47,7 @@
       "mrp": 4999,
       "rating": "4.9 (2.5k)",
       "badge": "Best Seller 👑",
+      "addedBy": "Abishai & Nirwan",
       "inStock": true,
       "description": "AMOLED display, fitness tracker aur premium strap.",
       "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85"
@@ -57,6 +60,7 @@
       "mrp": 1999,
       "rating": "4.7 (987)",
       "badge": "Trending ⚡",
+      "addedBy": "Abishai & Nirwan",
       "inStock": true,
       "description": "Waterproof fabric, laptop compartment aur stylish look.",
       "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=85"
@@ -69,6 +73,7 @@
       "mrp": 3299,
       "rating": "4.8 (1.1k)",
       "badge": "VIP Pick 🚀",
+      "addedBy": "Abishai & Nirwan",
       "inStock": true,
       "description": "Studio quality sound aur ultra-soft ear cushions.",
       "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=85"
