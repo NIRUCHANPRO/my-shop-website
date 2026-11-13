@@ -25,7 +25,7 @@ exports.handler = async (event) => {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
-        "User-Agent": "SmartShop-AnandMela-Backend"
+        "User-Agent": "SmartShop-AnandMela-Pro"
       }
     });
     if (!res.ok) throw new Error(`GitHub Read Error: ${res.status}`);
@@ -42,7 +42,7 @@ exports.handler = async (event) => {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
-        "User-Agent": "SmartShop-AnandMela-Backend"
+        "User-Agent": "SmartShop-AnandMela-Pro"
       },
       body: JSON.stringify({
         message: commitMessage,
@@ -58,7 +58,6 @@ exports.handler = async (event) => {
   }
 
   try {
-    // GET Request: Load latest store data
     if (event.httpMethod === "GET") {
       if (!GITHUB_TOKEN || !GITHUB_REPO) {
         return {
@@ -75,11 +74,10 @@ exports.handler = async (event) => {
       };
     }
 
-    // POST Request
     if (event.httpMethod === "POST") {
       const body = JSON.parse(event.body || "{}");
 
-      // 1. Owner Login Check
+      // 1. Owner Login Verification
       if (body.action === "login") {
         if (body.password === OWNER_PASSWORD) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
@@ -87,7 +85,7 @@ exports.handler = async (event) => {
         return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Galat Password!" }) };
       }
 
-      // 2. Customer New Order (Saves directly to Admin Panel)
+      // 2. Customer New Order + Auto Leaderboard Update
       if (body.action === "customer_order") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -96,11 +94,35 @@ exports.handler = async (event) => {
         if (!Array.isArray(content.ordersList)) content.ordersList = [];
         content.ordersList.unshift(body.order);
         content.siteConfig.orders = content.ordersList.length;
-        await writeGithubDb(content, sha, `New Order from ${body.order.customerName}`);
+
+        // Update Leaderboard automatically
+        if (!Array.isArray(content.leaderboardList)) content.leaderboardList = [];
+        const buyerName = body.order.customerName || "VIP Buyer";
+        const buyerGroup = body.order.studentClass || "Anand Mela VIP";
+        const spent = Number(body.order.totalAmount) || 0;
+
+        const existingIdx = content.leaderboardList.findIndex(
+          l => l.name.toLowerCase() === buyerName.toLowerCase()
+        );
+        if (existingIdx > -1) {
+          content.leaderboardList[existingIdx].points += spent;
+          content.leaderboardList[existingIdx].ordersCount = (content.leaderboardList[existingIdx].ordersCount || 1) + 1;
+        } else {
+          content.leaderboardList.push({
+            id: "LB-" + Date.now(),
+            name: buyerName,
+            group: buyerGroup,
+            points: spent,
+            ordersCount: 1
+          });
+        }
+        content.leaderboardList.sort((a, b) => b.points - a.points);
+
+        await writeGithubDb(content, sha, `New Order from ${buyerName}`);
         return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
       }
 
-      // 3. Customer New Message (Saves directly to Admin Inbox)
+      // 3. Customer Message
       if (body.action === "customer_message") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -112,7 +134,7 @@ exports.handler = async (event) => {
         return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
       }
 
-      // 4. Student Live Shoutout Wall Post (Saves directly to Shoutout Wall)
+      // 4. Customer Shoutout Wall
       if (body.action === "customer_shoutout") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
