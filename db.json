@@ -33,13 +33,5 @@
       "date": "Today, 10:00 AM"
     }
   ],
-  "messagesList": [
-    {
-      "id": "MSG-101",
-      "name": "Aman Kumar",
-      "contact": "9123456789",
-      "message": "Bhai kya Smart Watch par warranty milti hai?",
-      "date": "Today, 09:30 AM"
-    }
-  ]
+  "messagesList": []
 }
