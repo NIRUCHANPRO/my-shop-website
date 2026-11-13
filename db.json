@@ -12,14 +12,5 @@
     "visitors": 1240,
     "orders": 18
   },
-  "products": [
-    {
-      "id": "p4",
-      "name": "Headphones",
-      "price": 1999,
-      "rating": "4.6 (1.1k)",
-      "badge": "",
-      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    }
-  ]
+  "products": []
 }
