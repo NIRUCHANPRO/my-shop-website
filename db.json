@@ -74,17 +74,6 @@
   ],
   "ordersList": [
     {
-      "id": "ORD-101",
-      "customerName": "Aarav Sharma",
-      "phone": "9876543210",
-      "address": "Class 12 Science / Stall Pickup",
-      "items": "Smart Watch (x1)",
-      "totalAmount": 2999,
-      "paymentMode": "Cash at Stall",
-      "status": "Pending",
-      "date": "Today, 10:15 AM"
-    },
-    {
       "id": "ORD-102",
       "customerName": "Riya Verma",
       "phone": "9123456780",
