@@ -74,20 +74,7 @@
       "ordersCount": 1
     }
   ],
-  "ordersList": [
-    {
-      "id": "ORD-85251",
-      "customerName": "Chaman chodu",
-      "studentClass": "Anand Mela Special Guest",
-      "phone": "262632322323236565656565656",
-      "address": "Bhosdi nagar, chaman thela",
-      "paymentMode": "Cash On Delivery",
-      "items": "Cka chak (x6)",
-      "totalAmount": 6000,
-      "status": "Pending",
-      "date": "13 Nov 2026, 2:33 pm"
-    }
-  ],
+  "ordersList": [],
   "messagesList": [],
   "shoutoutsList": [
     {
