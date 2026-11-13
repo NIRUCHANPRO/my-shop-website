@@ -5,6 +5,7 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
     "Content-Type": "application/json"
   };
 
@@ -16,16 +17,19 @@ exports.handler = async (event) => {
   const GITHUB_REPO = process.env.GITHUB_REPO; // Format: "username/repo-name"
   const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
   const OWNER_PASSWORD = process.env.OWNER_PASSWORD || "admin123";
+  const VIP_PASSWORD = process.env.VIP_PASSWORD || "abishai@nirwan";
   const FILE_PATH = "db.json";
 
   const githubApiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${FILE_PATH}`;
 
+  // Fast GitHub DB Reader (Bypasses Cache for Instant Live Sync)
   async function readGithubDb() {
-    const res = await fetch(`${githubApiUrl}?ref=${GITHUB_BRANCH}`, {
+    const res = await fetch(`${githubApiUrl}?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
-        "User-Agent": "SmartShop-AnandMela-Pro"
+        "Cache-Control": "no-cache",
+        "User-Agent": "SmartShop-Abishai-Nirwan-Backend"
       }
     });
     if (!res.ok) throw new Error(`GitHub Read Error: ${res.status}`);
@@ -34,6 +38,7 @@ exports.handler = async (event) => {
     return { content, sha: fileData.sha };
   }
 
+  // Fast GitHub DB Writer
   async function writeGithubDb(updatedData, sha, commitMessage) {
     const updatedContent = Buffer.from(JSON.stringify(updatedData, null, 2), "utf-8").toString("base64");
     const putRes = await fetch(githubApiUrl, {
@@ -42,7 +47,7 @@ exports.handler = async (event) => {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
-        "User-Agent": "SmartShop-AnandMela-Pro"
+        "User-Agent": "SmartShop-Abishai-Nirwan-Backend"
       },
       body: JSON.stringify({
         message: commitMessage,
@@ -58,6 +63,7 @@ exports.handler = async (event) => {
   }
 
   try {
+    // GET Request: Load latest live store data
     if (event.httpMethod === "GET") {
       if (!GITHUB_TOKEN || !GITHUB_REPO) {
         return {
@@ -74,18 +80,41 @@ exports.handler = async (event) => {
       };
     }
 
+    // POST Request: Handle Owner, VIP Teachers & Customer Actions
     if (event.httpMethod === "POST") {
       const body = JSON.parse(event.body || "{}");
 
-      // 1. Owner Login Verification
+      // 1. Owner Master Login Check
       if (body.action === "login") {
         if (body.password === OWNER_PASSWORD) {
-          return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
+          return { statusCode: 200, headers, body: JSON.stringify({ success: true, role: "owner" }) };
         }
-        return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Galat Password!" }) };
+        return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Galat Owner Password!" }) };
       }
 
-      // 2. Customer New Order + Auto Leaderboard Update
+      // 2. VIP / Teacher Lounge Login Check (Password: abishai@nirwan)
+      if (body.action === "vip_login") {
+        if (body.password === VIP_PASSWORD || body.password === OWNER_PASSWORD) {
+          return { statusCode: 200, headers, body: JSON.stringify({ success: true, role: "vip" }) };
+        }
+        return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Invalid VIP Password! Use: abishai@nirwan" }) };
+      }
+
+      // 3. VIP Product Add / Remove ONLY (Cannot touch Owner Settings or Shutdown)
+      if (body.action === "vip_save_products") {
+        if (body.password !== VIP_PASSWORD && body.password !== OWNER_PASSWORD) {
+          return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Unauthorized VIP Access!" }) };
+        }
+        if (!GITHUB_TOKEN || !GITHUB_REPO) {
+          return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
+        }
+        const { content, sha } = await readGithubDb();
+        content.products = Array.isArray(body.products) ? body.products : content.products;
+        await writeGithubDb(content, sha, `VIP Panel Product Update by ${body.vipName || "VIP Teacher"}`);
+        return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
+      }
+
+      // 4. Customer New Order + Auto Leaderboard Rank Update
       if (body.action === "customer_order") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -95,7 +124,6 @@ exports.handler = async (event) => {
         content.ordersList.unshift(body.order);
         content.siteConfig.orders = content.ordersList.length;
 
-        // Update Leaderboard automatically
         if (!Array.isArray(content.leaderboardList)) content.leaderboardList = [];
         const buyerName = body.order.customerName || "VIP Buyer";
         const buyerGroup = body.order.studentClass || "Anand Mela VIP";
@@ -122,7 +150,7 @@ exports.handler = async (event) => {
         return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
       }
 
-      // 3. Customer Message
+      // 5. Customer Message
       if (body.action === "customer_message") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -134,7 +162,7 @@ exports.handler = async (event) => {
         return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
       }
 
-      // 4. Customer Shoutout Wall
+      // 6. Customer Shoutout Wall
       if (body.action === "customer_shoutout") {
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -147,10 +175,10 @@ exports.handler = async (event) => {
         return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: content }) };
       }
 
-      // 5. Owner Full Save
+      // 7. Owner Master Full Save
       if (body.action === "save") {
         if (body.password !== OWNER_PASSWORD) {
-          return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Unauthorized!" }) };
+          return { statusCode: 401, headers, body: JSON.stringify({ success: false, error: "Unauthorized Owner!" }) };
         }
         if (!GITHUB_TOKEN || !GITHUB_REPO) {
           return { statusCode: 200, headers, body: JSON.stringify({ success: true, localOnly: true }) };
@@ -161,8 +189,8 @@ exports.handler = async (event) => {
           sha = current.sha;
         } catch (e) {}
 
-        await writeGithubDb(body.data, sha, "Owner Dashboard Update");
-        return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
+        await writeGithubDb(body.data, sha, "Owner Master Dashboard Update");
+        return { statusCode: 200, headers, body: JSON.stringify({ success: true, data: body.data }) };
       }
     }
 
