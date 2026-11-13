@@ -81,13 +81,6 @@
   ],
   "leaderboardList": [
     {
-      "id": "LB-1",
-      "name": "Class 12 PCM Squad",
-      "group": "Class 12th",
-      "points": 2999,
-      "ordersCount": 3
-    },
-    {
       "id": "LB-2",
       "name": "Aarav & Friends",
       "group": "Class 11th",
