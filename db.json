@@ -1,29 +1,139 @@
 {
   "siteConfig": {
     "shopName": "SmartShop",
-    "tagline": "Anand Mela Special • Live Official Store",
-    "announcement": "🔥 Anand Mela Special Stall! Order Online ya Seedha Stall Par Aakar Le Jayein! 🔥",
+    "tagline": "Anand Mela Official Digital Stall",
+    "creators": "Abishai & Nirwan",
+    "announcement": "🔥 Welcome to Anand Mela's First Digital Stall — Created by Abishai & Nirwan! Order Online & Get Featured on the Live Leaderboard! 🔥",
     "bannerTitle": "Welcome to SmartShop",
-    "bannerSubtitle": "Discover Amazing Items & Combos at Unbeatable Prices!",
+    "bannerSubtitle": "Experience Next-Gen Shopping at Our Anand Mela Stall!",
     "phone": "+91 98765 43210",
     "whatsapp": "919876543210",
     "email": "support@smartshop.in",
-    "address": "Stall No. 1, School Anand Mela Ground",
-    "aboutText": "Hamare Anand Mela stall mein aapko best items, combos aur instant service milegi. Website se seedha order book karein aur bheed se bachein!",
+    "address": "VIP Stall No. 1, School Anand Mela Ground",
+    "aboutText": "Hamare Anand Mela Digital Stall (Created by Abishai & Nirwan) mein aapko best items, combos aur zero-waiting VIP service milegi. Website se seedha order karein aur Leaderboard par #1 par aayein!",
     "isOnline": true,
     "rgbLighting": true,
+    "aiVoiceEnabled": true,
     "hypeMode": false,
     "hypeText": "🚨 FRESH GARMA-GARAM BATCH READY AT STALL! HURRY UP - HIGH DEMAND! 🔥",
-    "visitors": 1850,
-    "orders": 2
+    "visitors": 2150,
+    "orders": 3
   },
   "adsConfig": {
     "adsEnabled": true,
     "topBannerHtml": "",
     "nativeBannerHtml": ""
   },
-  "products": [],
-  "ordersList": [],
-  "messagesList": [],
-  "shoutoutsList": []
+  "products": [
+    {
+      "id": "p1",
+      "name": "Wireless Earbuds",
+      "category": "Gadgets",
+      "price": 1499,
+      "mrp": 2499,
+      "rating": "4.9 (1.2k)",
+      "badge": "Hot 🔥",
+      "inStock": true,
+      "description": "Deep bass, crystal clear sound aur long battery backup.",
+      "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=85"
+    },
+    {
+      "id": "p2",
+      "name": "Smart Watch",
+      "category": "Watches",
+      "price": 2999,
+      "mrp": 4999,
+      "rating": "4.9 (2.5k)",
+      "badge": "Best Seller 👑",
+      "inStock": true,
+      "description": "AMOLED display, fitness tracker aur premium strap.",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85"
+    },
+    {
+      "id": "p3",
+      "name": "Backpack",
+      "category": "Bags",
+      "price": 1299,
+      "mrp": 1999,
+      "rating": "4.7 (987)",
+      "badge": "Trending ⚡",
+      "inStock": true,
+      "description": "Waterproof fabric, laptop compartment aur stylish look.",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=85"
+    },
+    {
+      "id": "p4",
+      "name": "Headphones",
+      "category": "Gadgets",
+      "price": 1999,
+      "mrp": 3299,
+      "rating": "4.8 (1.1k)",
+      "badge": "VIP Pick 🚀",
+      "inStock": true,
+      "description": "Studio quality sound aur ultra-soft ear cushions.",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=85"
+    }
+  ],
+  "leaderboardList": [
+    {
+      "id": "LB-1",
+      "name": "Class 12 PCM Squad",
+      "group": "Class 12th",
+      "points": 2999,
+      "ordersCount": 3
+    },
+    {
+      "id": "LB-2",
+      "name": "Aarav & Friends",
+      "group": "Class 11th",
+      "points": 1850,
+      "ordersCount": 2
+    },
+    {
+      "id": "LB-3",
+      "name": "Riya Verma",
+      "group": "Class 10th",
+      "points": 1499,
+      "ordersCount": 1
+    }
+  ],
+  "ordersList": [
+    {
+      "id": "ORD-101",
+      "customerName": "Aarav Sharma",
+      "studentClass": "Class 12th",
+      "phone": "9876543210",
+      "address": "Stall Counter Pickup",
+      "items": "Smart Watch (x1)",
+      "totalAmount": 2999,
+      "paymentMode": "Cash at Stall",
+      "status": "Pending",
+      "date": "Today, 10:15 AM"
+    }
+  ],
+  "messagesList": [
+    {
+      "id": "MSG-101",
+      "name": "Karan",
+      "contact": "9876500000",
+      "message": "Bhai Abishai aur Nirwan, tumhara stall aur website dono ekdum next level hai!",
+      "date": "Today, 09:30 AM"
+    }
+  ],
+  "shoutoutsList": [
+    {
+      "id": "SH-1",
+      "name": "Rohit (Class 12)",
+      "emoji": "🔥",
+      "text": "Abishai aur Nirwan bhai ne poore school mein sabse khatarnak digital stall banaya hai!",
+      "time": "Just now"
+    },
+    {
+      "id": "SH-2",
+      "name": "Priya & Group",
+      "emoji": "👑",
+      "text": "Order karte hi AI Voice boli aur patakhe phute, full VIP aura!",
+      "time": "5 mins ago"
+    }
+  ]
 }
