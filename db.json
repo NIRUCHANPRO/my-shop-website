@@ -21,18 +21,6 @@
   },
   "products": [
     {
-      "id": "p3",
-      "name": "Waterproof Laptop Backpack",
-      "category": "Bags",
-      "price": 1199,
-      "mrp": 2199,
-      "rating": "4.6 (980)",
-      "badge": "Trending",
-      "inStock": true,
-      "description": "USB charging port, anti-theft pocket aur heavy duty waterproof fabric.",
-      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=85"
-    },
-    {
       "id": "p4",
       "name": "Studio Over-Ear Headphones",
       "category": "Audio",
