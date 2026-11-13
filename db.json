@@ -14,7 +14,7 @@
     "isOnline": true,
     "rgbLighting": true,
     "aiVoiceEnabled": true,
-    "hypeMode": false,
+    "hypeMode": true,
     "hypeText": "🚨 FRESH GARMA-GARAM BATCH READY AT STALL! HURRY UP - HIGH DEMAND! 🔥",
     "visitors": 2150,
     "orders": 3
