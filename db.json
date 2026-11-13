@@ -33,6 +33,18 @@
       "rating": "4.8 (Verified)"
     }
   ],
-  "ordersList": [],
+  "ordersList": [
+    {
+      "id": "ORD-1794545901462",
+      "customerName": "Nirwan Sharma",
+      "phone": "6268714801",
+      "address": "Lauda para, chodu nagar , bhosdi maholla",
+      "paymentMode": "UPI / Online Payment on Delivery",
+      "items": "Daru chakhna (x1)",
+      "totalAmount": 126,
+      "status": "Pending",
+      "date": "13 Nov 2026, 10:28 am"
+    }
+  ],
   "messagesList": []
 }
