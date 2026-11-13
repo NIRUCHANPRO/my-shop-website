@@ -79,15 +79,7 @@
       "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=85"
     }
   ],
-  "leaderboardList": [
-    {
-      "id": "LB-3",
-      "name": "Riya Verma",
-      "group": "Class 10th",
-      "points": 1499,
-      "ordersCount": 1
-    }
-  ],
+  "leaderboardList": [],
   "ordersList": [],
   "messagesList": [
     {
