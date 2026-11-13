@@ -21,18 +21,6 @@
   },
   "products": [
     {
-      "id": "p1",
-      "name": "ANC Pro Wireless Earbuds",
-      "category": "Audio",
-      "price": 1499,
-      "mrp": 2999,
-      "rating": "4.8 (1.2k)",
-      "badge": "Hot Deal",
-      "inStock": true,
-      "description": "Deep bass, 40 hours battery backup, ENC noise cancellation aur water resistant design.",
-      "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=85"
-    },
-    {
       "id": "p2",
       "name": "Ultra AMOLED Smart Watch",
       "category": "Watches",
