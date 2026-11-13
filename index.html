@@ -3,109 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartShop - Shop Smart • Live Better</title>
+  <title>SmartShop Pro - Official Online Store</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #050b1e;
+      background-color: #04091a;
       color: #ffffff;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
     .cyber-bg {
-      background: radial-gradient(circle at 75% 30%, rgba(0, 110, 255, 0.28) 0%, rgba(5, 11, 30, 0.95) 55%),
-                  linear-gradient(180deg, #07112e 0%, #050b1e 100%);
+      background: radial-gradient(circle at 80% 20%, rgba(0, 132, 255, 0.32) 0%, rgba(4, 9, 26, 0.96) 55%),
+                  radial-gradient(circle at 15% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                  linear-gradient(180deg, #071230 0%, #04091a 100%);
     }
     .glass-card {
-      background: rgba(13, 25, 60, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(56, 139, 253, 0.25);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+      background: rgba(12, 24, 58, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
     }
     .neon-border {
-      border: 1px solid rgba(0, 162, 255, 0.4);
-      box-shadow: 0 0 18px rgba(0, 140, 255, 0.18);
+      border: 1px solid rgba(0, 174, 255, 0.45);
+      box-shadow: 0 0 22px rgba(0, 140, 255, 0.22);
     }
     .btn-blue {
-      background: linear-gradient(90deg, #0066ff 0%, #00a2ff 100%);
-      box-shadow: 0 4px 15px rgba(0, 132, 255, 0.4);
-      transition: all 0.2s ease;
+      background: linear-gradient(90deg, #0062ff 0%, #00b4ff 100%);
+      box-shadow: 0 4px 16px rgba(0, 140, 255, 0.45);
+      transition: all 0.25s ease;
     }
     .btn-blue:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(0, 153, 255, 0.65);
+      box-shadow: 0 8px 25px rgba(0, 162, 255, 0.7);
+    }
+    .btn-emerald {
+      background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-emerald:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.65);
     }
     .text-glow {
-      background: linear-gradient(90deg, #38bdf8, #2dd4bf);
+      background: linear-gradient(90deg, #38bdf8, #34d399);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+    .product-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px -10px rgba(0, 102, 255, 0.28);
+    }
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-marquee {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-2xl border border-emerald-400 transition-all">
-    <i class="fa-solid fa-circle-check text-xl"></i>
-    <span id="toastMsg" class="font-semibold text-sm">Changes updated!</span>
+  <!-- TOP MOVING ANNOUNCEMENT BAR -->
+  <div class="bg-gradient-to-r from-blue-700 via-sky-600 to-emerald-600 text-white text-xs font-bold py-2 overflow-hidden border-b border-white/15">
+    <div id="topAnnouncementText" class="animate-marquee px-4">
+      🔥 Mega Sale Live! Sabhi Products par Heavy Discount + Direct Order Facility Available! 🔥
+    </div>
   </div>
 
-  <!-- ================= NAVBAR ================= -->
-  <header class="sticky top-0 z-40 bg-[#07102a]/90 backdrop-blur-md border-b border-blue-500/20">
-    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
-      <!-- Brand -->
-      <div onclick="showCustomerView('home')" class="flex items-center gap-3 cursor-pointer">
-        <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/40 flex items-center justify-center text-sky-400 text-xl shadow-inner">
-          <i class="fa-solid fa-cart-shopping"></i>
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 bg-emerald-600 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-emerald-400">
+    <i class="fa-solid fa-circle-check text-xl"></i>
+    <span id="toastMsg" class="font-bold text-sm">Action successful!</span>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a id="floatingWaBtn" href="https://wa.me/919876543210" target="_blank" class="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center text-3xl shadow-2xl border-2 border-white/30 transition transform hover:scale-110" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- ================= IMAGE HD LIGHTBOX MODAL ================= -->
+  <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative max-w-3xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/15 text-white text-xl flex items-center justify-center hover:bg-rose-600">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightboxImg" src="" class="max-h-[78vh] w-auto object-contain rounded-2xl border border-white/20 shadow-2xl bg-white p-2" />
+      <h4 id="lightboxTitle" class="mt-3 text-lg font-extrabold text-white"></h4>
+    </div>
+  </div>
+
+  <!-- ================= INSTANT BUY / CHECKOUT MODAL ================= -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="max-w-md w-full glass-card rounded-3xl p-6 neon-border relative max-h-[92vh] overflow-y-auto">
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-11 h-11 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 text-xl">
+          <i class="fa-solid fa-bag-shopping"></i>
         </div>
         <div>
-          <h1 id="navShopName" class="text-xl font-extrabold tracking-tight text-white">Smart<span class="text-sky-400">Shop</span></h1>
-          <p id="navTagline" class="text-[11px] text-slate-400 -mt-1">Shop Smart • Live Better</p>
+          <h3 class="text-xl font-extrabold">Confirm Your Order</h3>
+          <p class="text-xs text-slate-300">Order seedha Shop Owner ke paas jayega</p>
         </div>
       </div>
 
-      <!-- Nav Links (Desktop) -->
+      <div id="checkoutItemsSummary" class="bg-[#07112b] p-3.5 rounded-2xl border border-blue-500/30 mb-4 text-sm space-y-1"></div>
+
+      <form onsubmit="submitCustomerOrder(event)" class="space-y-3.5">
+        <div>
+          <label class="text-xs text-slate-300 font-semibold">Aapka Pura Naam *</label>
+          <input id="orderCustName" type="text" required placeholder="e.g. Rohit Sharma" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none focus:border-sky-400" />
+        </div>
+        <div>
+          <label class="text-xs text-slate-300 font-semibold">Mobile / WhatsApp Number *</label>
+          <input id="orderCustPhone" type="tel" required placeholder="e.g. 9876543210" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none focus:border-sky-400" />
+        </div>
+        <div>
+          <label class="text-xs text-slate-300 font-semibold">Delivery Address / Area *</label>
+          <textarea id="orderCustAddress" rows="2" required placeholder="Makan no., Gali, Mohalla, City..." class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none focus:border-sky-400"></textarea>
+        </div>
+        <div>
+          <label class="text-xs text-slate-300 font-semibold">Payment Option</label>
+          <select id="orderPaymentMode" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none">
+            <option value="Cash On Delivery (COD)">Cash On Delivery (COD)</option>
+            <option value="UPI / Online Payment on Delivery">UPI / QR Scan on Delivery</option>
+            <option value="Direct Shop Pickup">Dukan se Aakar Lenge (Shop Pickup)</option>
+          </select>
+        </div>
+        <button id="placeOrderBtn" type="submit" class="w-full btn-emerald py-3.5 rounded-xl font-extrabold text-white text-sm flex items-center justify-center gap-2">
+          <i class="fa-solid fa-check-double"></i> Place Order Now
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-40 bg-[#060f29]/90 backdrop-blur-md border-b border-blue-500/20">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <div onclick="showCustomerView()" class="flex items-center gap-3 cursor-pointer">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-600 to-sky-400 flex items-center justify-center text-white text-xl shadow-lg">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div>
+          <h1 id="navShopName" class="text-xl font-extrabold tracking-tight text-white">SmartShop</h1>
+          <p id="navTagline" class="text-[11px] text-sky-400 font-medium -mt-0.5">Shop Smart • Live Better</p>
+        </div>
+      </div>
+
       <nav class="hidden md:flex items-center gap-2 bg-[#0b193d] p-1.5 rounded-xl border border-blue-500/20">
-        <button onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-semibold bg-blue-600 text-white transition">
+        <button onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-semibold bg-blue-600 text-white">
           <i class="fa-solid fa-house mr-1"></i> Home
         </button>
-        <a href="#productsSection" onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition">Products</a>
-        <a href="#aboutSection" onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition">About</a>
-        <a href="#contactSection" onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition">Contact</a>
+        <a href="#productsSection" onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white">Products</a>
+        <a href="#aboutSection" onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white">About</a>
+        <a href="#contactSection" onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white">Contact</a>
       </nav>
 
-      <!-- Right Icons -->
-      <div class="flex items-center gap-3">
-        <button onclick="focusSearch()" class="w-10 h-10 rounded-xl bg-[#0c1b40] border border-blue-500/20 flex items-center justify-center text-slate-300 hover:text-sky-400 transition" title="Search Products">
+      <div class="flex items-center gap-2.5">
+        <button onclick="focusSearch()" class="w-10 h-10 rounded-xl bg-[#0c1b40] border border-blue-500/30 flex items-center justify-center text-slate-200 hover:text-sky-400" title="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-        <button onclick="scrollToContact()" class="relative w-10 h-10 rounded-xl bg-[#0c1b40] border border-blue-500/20 flex items-center justify-center text-slate-300 hover:text-sky-400 transition" title="Cart / Inquiry">
-          <i class="fa-solid fa-basket-shopping"></i>
-          <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-rose-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        <button onclick="openCartCheckout()" class="relative px-3.5 h-10 rounded-xl bg-emerald-600/20 border border-emerald-400/40 flex items-center gap-2 text-emerald-300 hover:bg-emerald-600/30 font-bold text-xs" title="View Cart & Checkout">
+          <i class="fa-solid fa-bag-shopping text-sm"></i>
+          <span>Cart</span>
+          <span id="cartBadge" class="bg-emerald-500 text-white text-[11px] font-extrabold px-1.5 py-0.5 rounded-full">0</span>
         </button>
-        <!-- Owner Access Button -->
-        <button onclick="openOwnerView()" class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/40 flex items-center justify-center text-amber-400 hover:bg-amber-500/25 transition" title="Owner Access">
+        <button onclick="openOwnerView()" class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/40 flex items-center justify-center text-amber-400 hover:bg-amber-500/25" title="Owner Admin Panel">
           <i class="fa-solid fa-crown"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ================= OFFLINE / SHUTDOWN SCREEN (FOR NORMAL VIEWERS) ================= -->
+  <!-- ================= OFFLINE SCREEN ================= -->
   <section id="offlineScreen" class="hidden flex-1 flex items-center justify-center p-6 cyber-bg">
     <div class="max-w-md w-full glass-card rounded-3xl p-8 text-center neon-border">
       <div class="w-20 h-20 mx-auto mb-5 rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 text-4xl">
-        <i class="fa-solid fa-power-off"></i>
+        <i class="fa-solid fa-store-slash"></i>
       </div>
       <h2 class="text-2xl font-extrabold text-white mb-2">Dukan Abhi Band Hai!</h2>
-      <p class="text-slate-300 text-sm mb-6">Owner ne abhi website ko temporarily offline rakha hai. Kripya thodi der baad dubara check karein ya humse seedha sampark karein.</p>
+      <p class="text-slate-300 text-sm mb-6">Owner ne abhi website ko temporarily offline rakha hai. Kripya thodi der baad check karein ya neeche diye number par sampark karein.</p>
       <div class="bg-[#08122c] p-4 rounded-2xl border border-blue-500/20 text-left text-sm space-y-2 mb-6">
-        <p class="text-slate-300"><i class="fa-solid fa-phone text-sky-400 mr-2"></i> <span id="offlinePhone">+91 98765 43210</span></p>
-        <p class="text-slate-300"><i class="fa-solid fa-location-dot text-sky-400 mr-2"></i> <span id="offlineAddress">123 Business Street, India</span></p>
+        <p class="text-slate-200"><i class="fa-solid fa-phone text-sky-400 mr-2"></i> <span id="offlinePhone">+91 98765 43210</span></p>
+        <p class="text-slate-200"><i class="fa-solid fa-location-dot text-sky-400 mr-2"></i> <span id="offlineAddress">India</span></p>
       </div>
-      <button onclick="openOwnerView()" class="text-xs text-amber-400 hover:underline font-semibold">
+      <button onclick="openOwnerView()" class="text-xs text-amber-400 hover:underline font-bold">
         <i class="fa-solid fa-lock mr-1"></i> Owner Login to Turn Website ON
       </button>
     </div>
@@ -116,90 +209,92 @@
 
     <!-- HERO SECTION -->
     <section class="cyber-bg border-b border-blue-500/20">
-      <div class="max-w-7xl mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
+      <div class="max-w-7xl mx-auto px-4 py-10 md:py-16 grid md:grid-cols-2 gap-8 items-center">
         <div class="space-y-5">
-          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-500/15 text-sky-400 border border-sky-400/30">
-            <i class="fa-solid fa-bolt"></i> Welcome to Official Store
-          </span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-500/15 text-sky-400 border border-sky-400/30">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            100% Verified Local Store
+          </div>
           <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold leading-tight">
-            Welcome to <span class="text-glow block mt-1">SmartShop</span>
+            Welcome to <span class="text-glow">SmartShop</span>
           </h2>
-          <p id="heroSubtitle" class="text-slate-300 text-lg max-w-md">
+          <p id="heroSubtitle" class="text-slate-300 text-base md:text-lg max-w-lg">
             Discover Premium Products at Unbeatable Prices!
           </p>
-          <div class="pt-2 flex flex-wrap gap-4">
-            <a href="#productsSection" class="btn-blue px-7 py-3.5 rounded-full font-bold text-white inline-flex items-center gap-2">
-              Shop Now <i class="fa-solid fa-arrow-right"></i>
+          <div class="pt-2 flex flex-wrap gap-3.5">
+            <a href="#productsSection" class="btn-blue px-7 py-3.5 rounded-full font-extrabold text-white inline-flex items-center gap-2 text-sm">
+              Shop Now <i class="fa-solid fa-bolt"></i>
             </a>
-            <a href="#contactSection" class="px-6 py-3.5 rounded-full font-semibold bg-[#0d1d45] hover:bg-[#13285c] border border-blue-400/30 text-slate-200 transition">
-              Contact Dukan
+            <a href="#contactSection" class="px-6 py-3.5 rounded-full font-bold bg-[#0d1d45] hover:bg-[#13285c] border border-blue-400/30 text-slate-200 text-sm transition">
+              <i class="fa-solid fa-headset mr-1.5 text-sky-400"></i> Contact Shop
             </a>
           </div>
         </div>
 
-        <!-- Hero Graphic -->
         <div class="relative flex justify-center">
-          <div class="w-72 h-72 md:w-80 md:h-80 rounded-full bg-blue-600/20 blur-3xl absolute"></div>
-          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=700&q=80" alt="Shopping Banner" class="relative z-10 w-full max-w-md rounded-3xl neon-border object-cover h-72 md:h-80" />
+          <div class="w-72 h-72 rounded-full bg-sky-500/20 blur-3xl absolute"></div>
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=85" alt="SmartShop Banner" class="relative z-10 w-full max-w-md rounded-3xl neon-border object-cover h-72 md:h-80 shadow-2xl" />
         </div>
       </div>
 
-      <!-- 4 TRUST FEATURES -->
+      <!-- 4 TRUST BADGES -->
       <div class="max-w-7xl mx-auto px-4 pb-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 glass-card rounded-2xl p-4">
           <div class="flex items-center gap-3 p-2">
-            <i class="fa-solid fa-gem text-2xl text-sky-400"></i>
-            <div>
-              <h4 class="font-bold text-sm">Best Quality</h4>
-              <p class="text-xs text-slate-400">100% Genuine Items</p>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-sky-500/15 flex items-center justify-center text-sky-400 text-xl"><i class="fa-solid fa-medal"></i></div>
+            <div><h4 class="font-bold text-sm">Top Quality</h4><p class="text-xs text-slate-400">Checked Products</p></div>
           </div>
           <div class="flex items-center gap-3 p-2">
-            <i class="fa-solid fa-truck-fast text-2xl text-sky-400"></i>
-            <div>
-              <h4 class="font-bold text-sm">Fast Service</h4>
-              <p class="text-xs text-slate-400">Quick Store Pickup</p>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 text-xl"><i class="fa-solid fa-truck-fast"></i></div>
+            <div><h4 class="font-bold text-sm">Fast Delivery</h4><p class="text-xs text-slate-400">Quick Dispatch</p></div>
           </div>
           <div class="flex items-center gap-3 p-2">
-            <i class="fa-solid fa-headset text-2xl text-sky-400"></i>
-            <div>
-              <h4 class="font-bold text-sm">24/7 Support</h4>
-              <p class="text-xs text-slate-400">Direct Shop Contact</p>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-amber-500/15 flex items-center justify-center text-amber-400 text-xl"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <div><h4 class="font-bold text-sm">Best Price</h4><p class="text-xs text-slate-400">Direct Dukan Rate</p></div>
           </div>
           <div class="flex items-center gap-3 p-2">
-            <i class="fa-solid fa-shield-halved text-2xl text-sky-400"></i>
-            <div>
-              <h4 class="font-bold text-sm">Trusted Store</h4>
-              <p class="text-xs text-slate-400">Best Local Prices</p>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-purple-500/15 flex items-center justify-center text-purple-400 text-xl"><i class="fa-solid fa-headset"></i></div>
+            <div><h4 class="font-bold text-sm">24/7 Support</h4><p class="text-xs text-slate-400">Instant Help</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEARCH & PRODUCTS SECTION -->
-    <section id="productsSection" class="max-w-7xl mx-auto px-4 py-12">
-      <div class="bg-slate-100 text-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl">
-        <!-- Section Header + Search Bar -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-7 bg-blue-600 rounded-full inline-block"></span>
-            <h3 id="productSectionHeading" class="text-2xl md:text-3xl font-extrabold text-slate-900">Our Products</h3>
+    <!-- ================= ADSTERRA TOP BANNER AD SLOT ================= -->
+    <section id="topAdWrapper" class="max-w-7xl mx-auto px-4 pt-6">
+      <div class="glass-card rounded-2xl p-3 text-center flex flex-col items-center justify-center min-h-[90px] border border-blue-500/20">
+        <span class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Sponsored Advertisement</span>
+        <!-- Direct Adsterra Top Banner Container -->
+        <div id="adsterraTopBannerSlot" class="w-full flex justify-center overflow-hidden">
+          <!-- PASTE YOUR ADSTERRA BANNER SCRIPT HERE OR FROM ADMIN PANEL -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCTS & SEARCH SECTION ================= -->
+    <section id="productsSection" class="max-w-7xl mx-auto px-4 py-8">
+      <div class="bg-slate-100 text-slate-900 rounded-3xl p-5 md:p-8 shadow-2xl">
+
+        <!-- Title + Search Input -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-3 h-8 bg-blue-600 rounded-full inline-block"></span>
+              <h3 id="productSectionHeading" class="text-2xl md:text-3xl font-extrabold text-slate-900">Our Products</h3>
+            </div>
+            <p class="text-xs text-slate-500 mt-1 ml-5">Photo par click karke Full HD image dekhein • Seedha Order book karein</p>
           </div>
 
-          <!-- Search Input Box -->
-          <div class="flex w-full md:w-96 bg-white rounded-full p-1.5 border border-slate-300 shadow-sm focus-within:ring-2 focus-within:ring-blue-500">
-            <div class="flex items-center pl-3 text-slate-400">
+          <div class="flex w-full lg:w-96 bg-white rounded-full p-1.5 border-2 border-slate-300 shadow-sm focus-within:border-blue-600">
+            <div class="flex items-center pl-3.5 text-slate-400">
               <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <input
               id="searchInput"
               type="text"
               oninput="handleSearch()"
-              placeholder="Search for products (e.g. watch)..."
-              class="w-full px-3 py-1.5 bg-transparent text-slate-800 text-sm focus:outline-none"
+              placeholder="Search items (e.g. watch, earbuds)..."
+              class="w-full px-3 py-1.5 bg-transparent text-slate-900 text-sm font-medium focus:outline-none"
             />
             <button onclick="handleSearch()" class="btn-blue text-white text-xs font-bold px-5 py-2 rounded-full">
               Search
@@ -207,125 +302,127 @@
           </div>
         </div>
 
+        <!-- Category Filter Pills -->
+        <div id="categoryFilterBar" class="flex items-center gap-2 overflow-x-auto pb-4 mb-4"></div>
+
         <!-- PRODUCTS GRID -->
         <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
 
-        <!-- ITEM NOT FOUND STATE -->
-        <div id="notFoundBox" class="hidden bg-[#0a1535] text-white rounded-3xl p-10 text-center max-w-md mx-auto my-4 neon-border">
+        <!-- ITEM NOT FOUND BOX -->
+        <div id="notFoundBox" class="hidden bg-[#0a1535] text-white rounded-3xl p-10 text-center max-w-md mx-auto my-6 neon-border">
           <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-blue-500/20 flex items-center justify-center text-sky-400 text-4xl">
             <i class="fa-solid fa-box-open"></i>
           </div>
           <h4 class="text-2xl font-extrabold mb-1">Item Not Found!</h4>
           <p class="text-slate-300 text-sm mb-6">Sorry, we couldn't find what you're looking for.</p>
           <button onclick="resetSearch()" class="btn-blue px-6 py-2.5 rounded-full text-sm font-bold text-white">
-            Go Back Home
+            Show All Products
           </button>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT & CONTACT US SECTION -->
+    <!-- ================= ADSTERRA NATIVE BANNER AD SLOT ================= -->
+    <section id="nativeAdWrapper" class="max-w-7xl mx-auto px-4 pb-8">
+      <div class="glass-card rounded-3xl p-4 text-center border border-blue-500/25">
+        <span class="text-[10px] uppercase tracking-widest text-slate-400 block mb-2">Recommended Partner Offers (Native Banner)</span>
+        <!-- Direct Adsterra Native Banner Container -->
+        <div id="adsterraNativeBannerSlot" class="w-full flex justify-center overflow-hidden min-h-[100px]">
+          <!-- PASTE YOUR ADSTERRA NATIVE BANNER CODE HERE OR FROM ADMIN PANEL -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT & CONTACT US SECTION ================= -->
     <section id="aboutSection" class="max-w-7xl mx-auto px-4 pb-14">
       <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="glass-card rounded-2xl p-6 flex items-center gap-4">
+        <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
           <div class="w-14 h-14 rounded-2xl bg-blue-600/25 border border-blue-400/40 flex items-center justify-center text-sky-400 text-2xl shrink-0">
             <i class="fa-solid fa-store"></i>
           </div>
           <div>
-            <h4 class="text-lg font-bold">About Our Shop</h4>
-            <p id="aboutTextDisplay" class="text-slate-300 text-sm mt-1">
-              Hamari dukan mein aapko best quality products sabse saste daam par milenge.
-            </p>
+            <h4 class="text-lg font-extrabold">About Our Store</h4>
+            <p id="aboutTextDisplay" class="text-slate-300 text-sm mt-1 leading-relaxed"></p>
           </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 flex items-center justify-between gap-4">
+        <div class="glass-card rounded-3xl p-6 flex items-center justify-between gap-4">
           <div class="flex items-center gap-4">
             <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
               <i class="fa-brands fa-whatsapp"></i>
             </div>
             <div>
-              <h4 class="text-lg font-bold">Direct Order & Inquiry</h4>
-              <p class="text-slate-300 text-sm mt-1">Pasand aaye product ka naam bhej kar turant book karein.</p>
+              <h4 class="text-lg font-extrabold">Instant WhatsApp Order</h4>
+              <p class="text-slate-300 text-sm mt-1">Owner se seedha WhatsApp par baat karein ya rate puchein.</p>
             </div>
           </div>
-          <a href="#contactSection" class="btn-blue px-5 py-2.5 rounded-xl text-xs font-bold shrink-0">Contact Now</a>
+          <a id="aboutWaLink" href="https://wa.me/919876543210" target="_blank" class="btn-emerald px-5 py-3 rounded-xl text-xs font-extrabold shrink-0">
+            Chat Now
+          </a>
         </div>
       </div>
 
-      <!-- CONTACT US CARD -->
+      <!-- CONTACT FORM (SAVES DIRECTLY TO OWNER ADMIN PANEL) -->
       <div id="contactSection" class="glass-card rounded-3xl p-6 md:p-10 neon-border grid md:grid-cols-2 gap-8 items-center">
         <div class="space-y-5">
-          <div class="inline-flex items-center gap-2 text-sky-400 font-bold text-sm">
-            <i class="fa-solid fa-paper-plane"></i> GET IN TOUCH
+          <div class="inline-flex items-center gap-2 text-sky-400 font-bold text-xs uppercase tracking-wider">
+            <i class="fa-solid fa-paper-plane"></i> Direct Shop Helpline
           </div>
           <h3 class="text-3xl font-extrabold">Contact Us</h3>
-          <p class="text-slate-300 text-sm">Have any questions or want to buy a product from our shop? We are here to help you!</p>
+          <p class="text-slate-300 text-sm">Aapka bheja hua message seedha Shop Owner ke Admin Panel Inbox mein jata hai!</p>
 
           <div class="space-y-4 pt-2">
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <span id="contactPhoneDisplay" class="text-slate-200 font-medium">+91 98765 43210</span>
+              <div class="w-11 h-11 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400"><i class="fa-solid fa-phone"></i></div>
+              <span id="contactPhoneDisplay" class="text-slate-100 font-semibold"></span>
             </div>
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <span id="contactEmailDisplay" class="text-slate-200 font-medium">support@smartshop.in</span>
+              <div class="w-11 h-11 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400"><i class="fa-solid fa-envelope"></i></div>
+              <span id="contactEmailDisplay" class="text-slate-100 font-semibold"></span>
             </div>
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <span id="contactAddressDisplay" class="text-slate-200 font-medium">123 Business Street, New Delhi, India</span>
+              <div class="w-11 h-11 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400"><i class="fa-solid fa-location-dot"></i></div>
+              <span id="contactAddressDisplay" class="text-slate-100 font-semibold"></span>
             </div>
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <form onsubmit="submitContactForm(event)" class="bg-[#07112b] p-6 rounded-2xl border border-blue-500/25 space-y-4">
-          <input id="custName" type="text" required placeholder="Your Name" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
-          <input id="custEmail" type="text" required placeholder="Your Phone or Email" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
-          <textarea id="custMsg" rows="3" required placeholder="Your Message / Product Inquiry..." class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400"></textarea>
-          <button type="submit" class="w-full btn-blue py-3.5 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
+        <form onsubmit="submitContactForm(event)" class="bg-[#07112b] p-6 rounded-2xl border border-blue-500/30 space-y-4">
+          <h4 class="font-bold text-base text-sky-400"><i class="fa-solid fa-comment-dots mr-1.5"></i>Send Message to Shop Owner</h4>
+          <input id="custName" type="text" required placeholder="Your Name *" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
+          <input id="custContact" type="text" required placeholder="Your Phone Number / Email *" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
+          <textarea id="custMsg" rows="3" required placeholder="Write your message or inquiry here... *" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400"></textarea>
+          <button id="sendMsgBtn" type="submit" class="w-full btn-blue py-3.5 rounded-xl font-extrabold text-white text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Send Message to Owner
           </button>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- ================= OWNER ACCESS LOGIN VIEW ================= -->
+  <!-- ================= OWNER LOGIN VIEW ================= -->
   <section id="ownerLoginView" class="hidden flex-1 flex items-center justify-center p-4 cyber-bg">
     <div class="max-w-md w-full glass-card rounded-3xl p-8 text-center neon-border">
-      <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-blue-600/20 border border-sky-400/40 flex items-center justify-center text-sky-400 text-4xl shadow-lg">
+      <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-blue-600/20 border border-sky-400/40 flex items-center justify-center text-sky-400 text-4xl">
         <i class="fa-solid fa-user-shield"></i>
       </div>
       <h2 class="text-2xl font-extrabold">Owner Access</h2>
-      <p class="text-slate-400 text-sm mt-1 mb-6">Enter password to access owner panel</p>
+      <p class="text-slate-400 text-sm mt-1 mb-6">Enter password to unlock Admin Panel</p>
 
       <form onsubmit="handleOwnerLogin(event)" class="space-y-4">
         <div class="relative">
           <span class="absolute left-4 top-3.5 text-slate-400"><i class="fa-solid fa-lock"></i></span>
-          <input
-            id="ownerPassInput"
-            type="password"
-            required
-            placeholder="Enter Password"
-            class="w-full pl-11 pr-11 py-3.5 rounded-xl bg-[#081330] border border-blue-500/40 text-white text-sm focus:outline-none focus:border-sky-400"
-          />
+          <input id="ownerPassInput" type="password" required placeholder="Enter Owner Password" class="w-full pl-11 pr-11 py-3.5 rounded-xl bg-[#081330] border border-blue-500/40 text-white text-sm focus:outline-none focus:border-sky-400" />
           <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-3.5 text-slate-400 hover:text-white">
             <i id="passEyeIcon" class="fa-solid fa-eye"></i>
           </button>
         </div>
-        <button id="loginBtn" type="submit" class="w-full btn-blue py-3.5 rounded-xl font-bold text-white">
-          Login
+        <button id="loginBtn" type="submit" class="w-full btn-blue py-3.5 rounded-xl font-extrabold text-white">
+          Unlock Owner Dashboard
         </button>
       </form>
 
-      <button onclick="showCustomerView('home')" class="mt-6 text-sm text-slate-300 hover:text-white inline-flex items-center gap-2">
+      <button onclick="showCustomerView()" class="mt-6 text-sm text-slate-300 hover:text-white inline-flex items-center gap-2">
         <i class="fa-solid fa-arrow-left"></i> Back to Website
       </button>
     </div>
@@ -337,135 +434,205 @@
 
       <!-- SIDEBAR -->
       <aside class="glass-card rounded-3xl p-5 h-fit space-y-2 neon-border">
-        <div class="flex items-center gap-3 pb-4 mb-2 border-b border-blue-500/20">
-          <i class="fa-solid fa-crown text-amber-400 text-2xl"></i>
-          <div>
-            <h3 class="font-extrabold text-lg">Owner Panel</h3>
-            <span class="text-[11px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle text-[8px] mr-1"></i>Logged In</span>
+        <div class="flex items-center justify-between pb-4 mb-2 border-b border-blue-500/20">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-crown text-amber-400 text-2xl"></i>
+            <div>
+              <h3 class="font-extrabold text-base">Owner Panel</h3>
+              <span class="text-[11px] text-emerald-400 font-bold">● Live Connected</span>
+            </div>
           </div>
+          <button onclick="loadStoreData()" class="w-8 h-8 rounded-lg bg-blue-500/20 text-sky-400 hover:bg-blue-500 hover:text-white flex items-center justify-center" title="Refresh Orders & Messages">
+            <i class="fa-solid fa-rotate"></i>
+          </button>
         </div>
 
-        <button onclick="switchOwnerTab('tabUpload')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold bg-blue-600/20 hover:bg-blue-600 text-white transition text-left">
-          <i class="fa-solid fa-cloud-arrow-up w-5"></i> Upload Product
+        <button onclick="switchOwnerTab('tabOrders')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold bg-emerald-600/25 hover:bg-emerald-600 text-white transition">
+          <span><i class="fa-solid fa-bag-shopping w-6"></i> Live Orders</span>
+          <span id="sidebarOrdersBadge" class="bg-emerald-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
         </button>
-        <button onclick="switchOwnerTab('tabManage')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
-          <i class="fa-solid fa-boxes-stacked w-5"></i> Manage Products
+
+        <button onclick="switchOwnerTab('tabMessages')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold bg-sky-600/20 hover:bg-sky-600 text-white transition">
+          <span><i class="fa-solid fa-envelope-open-text w-6"></i> Customer Messages</span>
+          <span id="sidebarMessagesBadge" class="bg-sky-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
         </button>
-        <button onclick="switchOwnerTab('tabEditSite')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
-          <i class="fa-solid fa-pen-to-square w-5"></i> Edit Website Content
+
+        <button onclick="switchOwnerTab('tabUpload')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+          <i class="fa-solid fa-cloud-arrow-up w-6 text-sky-400"></i> Upload HD Product
         </button>
-        <button onclick="switchOwnerTab('tabShutdown')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-rose-600/30 text-rose-300 transition text-left">
-          <i class="fa-solid fa-power-off w-5"></i> Website Control
+
+        <button onclick="switchOwnerTab('tabManage')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+          <i class="fa-solid fa-boxes-stacked w-6 text-purple-400"></i> Manage Products
         </button>
-        <button onclick="logoutOwner()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-slate-800 text-slate-400 transition text-left pt-4 border-t border-blue-500/20">
-          <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
+
+        <button onclick="switchOwnerTab('tabAds')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-amber-500/25 text-amber-300 transition text-left">
+          <i class="fa-solid fa-rectangle-ad w-6 text-amber-400"></i> Adsterra Ads Setup
         </button>
+
+        <button onclick="switchOwnerTab('tabEditSite')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+          <i class="fa-solid fa-pen-to-square w-6 text-teal-400"></i> Edit Website Info
+        </button>
+
+        <button onclick="switchOwnerTab('tabShutdown')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-rose-600/30 text-rose-300 transition text-left">
+          <i class="fa-solid fa-power-off w-6 text-rose-400"></i> Shutdown Website
+        </button>
+
+        <div class="pt-3 border-t border-blue-500/20 flex gap-2">
+          <button onclick="showCustomerView()" class="flex-1 py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600 text-xs font-bold">
+            <i class="fa-solid fa-eye mr-1"></i> View Site
+          </button>
+          <button onclick="logoutOwner()" class="flex-1 py-2.5 rounded-xl bg-rose-600/20 hover:bg-rose-600 text-xs font-bold text-rose-300 hover:text-white">
+            <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+          </button>
+        </div>
       </aside>
 
-      <!-- MAIN DASHBOARD CONTENT -->
+      <!-- MAIN DASHBOARD AREA -->
       <div class="lg:col-span-3 space-y-6">
 
-        <!-- TOP STATS CARDS -->
-        <div class="grid grid-cols-3 gap-4">
-          <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-sky-400 flex items-center justify-center text-2xl">
-              <i class="fa-solid fa-cube"></i>
-            </div>
-            <div>
-              <p class="text-xs text-slate-400">Total Products</p>
-              <h4 id="statProducts" class="text-2xl font-extrabold">4</h4>
-            </div>
+        <!-- TOP STATS -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div onclick="switchOwnerTab('tabManage')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-sky-400">
+            <p class="text-xs text-slate-400">Total Products</p>
+            <h4 id="statProducts" class="text-2xl font-extrabold text-sky-400 mt-1">0</h4>
           </div>
-          <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
-              <i class="fa-solid fa-cart-check"></i>
-            </div>
-            <div>
-              <p class="text-xs text-slate-400">Inquiries</p>
-              <h4 id="statOrders" class="text-2xl font-extrabold">18</h4>
-            </div>
+          <div onclick="switchOwnerTab('tabOrders')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-emerald-400">
+            <p class="text-xs text-slate-400">Customer Orders</p>
+            <h4 id="statOrders" class="text-2xl font-extrabold text-emerald-400 mt-1">0</h4>
           </div>
-          <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl">
-              <i class="fa-solid fa-users"></i>
-            </div>
-            <div>
-              <p class="text-xs text-slate-400">Website Status</p>
-              <h4 id="statStatusBadge" class="text-sm font-extrabold text-emerald-400">ONLINE</h4>
-            </div>
+          <div onclick="switchOwnerTab('tabMessages')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-amber-400">
+            <p class="text-xs text-slate-400">Inbox Messages</p>
+            <h4 id="statMessages" class="text-2xl font-extrabold text-amber-400 mt-1">0</h4>
+          </div>
+          <div onclick="switchOwnerTab('tabShutdown')" class="glass-card p-4 rounded-2xl cursor-pointer">
+            <p class="text-xs text-slate-400">Store Status</p>
+            <h4 id="statStatusBadge" class="text-base font-extrabold text-emerald-400 mt-1">ONLINE</h4>
           </div>
         </div>
 
-        <!-- QUICK ACTIONS BAR -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <button onclick="switchOwnerTab('tabUpload')" class="p-4 rounded-2xl bg-gradient-to-br from-blue-600 to-sky-500 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
-            <i class="fa-solid fa-cloud-arrow-up text-2xl"></i> Upload Product
-          </button>
-          <button onclick="switchOwnerTab('tabEditSite')" class="p-4 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-500 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
-            <i class="fa-solid fa-pen text-2xl"></i> Edit Website
-          </button>
-          <button onclick="switchOwnerTab('tabManage')" class="p-4 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
-            <i class="fa-solid fa-table-cells-large text-2xl"></i> Manage Products
-          </button>
-          <button onclick="switchOwnerTab('tabShutdown')" class="p-4 rounded-2xl bg-gradient-to-br from-rose-600 to-orange-600 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
-            <i class="fa-solid fa-power-off text-2xl"></i> Turn Off / On
-          </button>
+        <!-- TAB: LIVE CUSTOMER ORDERS -->
+        <div id="tabOrders" class="owner-tab glass-card rounded-3xl p-6 neon-border">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-extrabold flex items-center gap-2">
+              <i class="fa-solid fa-bag-shopping text-emerald-400"></i> Customer Live Orders
+            </h3>
+            <button onclick="loadStoreData()" class="text-xs bg-blue-600/30 hover:bg-blue-600 px-3.5 py-2 rounded-xl font-bold">
+              <i class="fa-solid fa-rotate mr-1"></i> Refresh Orders
+            </button>
+          </div>
+          <div id="adminOrdersContainer" class="space-y-4"></div>
         </div>
 
-        <!-- TAB 1: UPLOAD OR EDIT PRODUCT -->
-        <div id="tabUpload" class="owner-tab glass-card rounded-3xl p-6 neon-border">
+        <!-- TAB: CUSTOMER MESSAGES INBOX -->
+        <div id="tabMessages" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-extrabold flex items-center gap-2">
+              <i class="fa-solid fa-envelope-open-text text-sky-400"></i> Customer Messages Log
+            </h3>
+            <button onclick="loadStoreData()" class="text-xs bg-blue-600/30 hover:bg-blue-600 px-3.5 py-2 rounded-xl font-bold">
+              <i class="fa-solid fa-rotate mr-1"></i> Refresh Inbox
+            </button>
+          </div>
+          <div id="adminMessagesContainer" class="space-y-3"></div>
+        </div>
+
+        <!-- TAB: UPLOAD / EDIT HD PRODUCT -->
+        <div id="tabUpload" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border">
           <h3 id="productFormTitle" class="text-xl font-extrabold mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-cloud-arrow-up text-sky-400"></i> Upload New Product
+            <i class="fa-solid fa-cloud-arrow-up text-sky-400"></i> Upload New Product (HD Photo)
           </h3>
           <form onsubmit="saveProduct(event)" class="grid md:grid-cols-2 gap-4">
             <input type="hidden" id="editProductId" value="" />
             <div>
-              <label class="text-xs text-slate-300">Product Name *</label>
-              <input id="prodName" type="text" required placeholder="e.g. Smart Watch Series 9" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+              <label class="text-xs text-slate-300 font-bold">Product Name *</label>
+              <input id="prodName" type="text" required placeholder="e.g. Apple AirPods Pro 2" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
             <div>
-              <label class="text-xs text-slate-300">Price (₹) *</label>
-              <input id="prodPrice" type="number" required placeholder="e.g. 2999" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+              <label class="text-xs text-slate-300 font-bold">Category *</label>
+              <input id="prodCategory" type="text" required placeholder="e.g. Audio, Watches, Mobile, Bags" value="General" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
             <div>
-              <label class="text-xs text-slate-300">Badge (Optional)</label>
-              <input id="prodBadge" type="text" placeholder="Hot / Best Seller / New" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+              <label class="text-xs text-slate-300 font-bold">Selling Price (₹) *</label>
+              <input id="prodPrice" type="number" required placeholder="e.g. 1499" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
             <div>
-              <label class="text-xs text-slate-300">Rating Text</label>
-              <input id="prodRating" type="text" value="4.8 (500+)" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+              <label class="text-xs text-slate-300 font-bold">Original MRP (₹) (For % Discount)</label>
+              <input id="prodMrp" type="number" placeholder="e.g. 2999" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300 font-bold">Badge (Hot / Best Seller / New)</label>
+              <input id="prodBadge" type="text" placeholder="e.g. Best Seller" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300 font-bold">Stock Status</label>
+              <select id="prodStock" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm">
+                <option value="true">In Stock (Available)</option>
+                <option value="false">Out of Stock (Sold Out)</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-xs text-slate-300 font-bold">Short Description (Features / Details)</label>
+              <input id="prodDesc" type="text" placeholder="e.g. 1 Year Warranty, High Bass, Free Charger..." class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
 
-            <!-- Direct Photo Upload from Phone/Gallery -->
-            <div class="md:col-span-2 bg-[#081330] p-4 rounded-2xl border border-dashed border-sky-400/50">
-              <label class="text-xs text-sky-400 font-bold block mb-2">
-                <i class="fa-solid fa-camera mr-1"></i> Direct Photo Upload (Gallery / Camera) OR Paste Image Link
+            <!-- HD Photo Upload Box -->
+            <div class="md:col-span-2 bg-[#081330] p-4 rounded-2xl border-2 border-dashed border-sky-400/50">
+              <label class="text-xs text-sky-400 font-extrabold block mb-2">
+                <i class="fa-solid fa-camera mr-1"></i> Select HD Product Photo from Gallery OR Paste Image URL
               </label>
-              <input id="prodFileInput" type="file" accept="image/*" onchange="handleImageFile(event)" class="text-xs text-slate-300 mb-3 block w-full" />
-              <input id="prodImageUrl" type="text" placeholder="Or paste image URL here..." class="w-full px-4 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs" />
-              <img id="imagePreview" class="hidden mt-3 w-28 h-28 object-cover rounded-xl border border-sky-400" />
+              <input id="prodFileInput" type="file" accept="image/*" onchange="handleImageFile(event)" class="text-xs text-slate-200 mb-3 block w-full" />
+              <input id="prodImageUrl" type="text" placeholder="Or paste direct HD Image link here..." class="w-full px-4 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs" />
+              <div class="mt-3 flex items-center gap-4">
+                <img id="imagePreview" class="hidden w-32 h-32 object-contain bg-white p-1 rounded-xl border border-sky-400" />
+                <span id="imageQualityHint" class="hidden text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i>HD Photo Ready (Full Uncropped View)</span>
+              </div>
             </div>
 
             <div class="md:col-span-2 flex gap-3 pt-2">
-              <button type="submit" class="btn-blue px-8 py-3.5 rounded-xl font-bold text-sm">
+              <button type="submit" class="btn-blue px-8 py-3.5 rounded-xl font-extrabold text-sm">
                 <i class="fa-solid fa-floppy-disk mr-1"></i> Save & Publish Product
               </button>
-              <button type="button" onclick="resetProductForm()" class="px-5 py-3.5 rounded-xl bg-slate-800 text-xs font-semibold">
-                Clear Form
+              <button type="button" onclick="resetProductForm()" class="px-5 py-3.5 rounded-xl bg-slate-800 text-xs font-bold">
+                Reset
               </button>
             </div>
           </form>
         </div>
 
-        <!-- TAB 2: MANAGE EXISTING PRODUCTS -->
+        <!-- TAB: MANAGE PRODUCTS -->
         <div id="tabManage" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border">
-          <h3 class="text-xl font-extrabold mb-4"><i class="fa-solid fa-boxes-stacked text-purple-400 mr-2"></i>Manage Products (Edit / Delete)</h3>
+          <h3 class="text-xl font-extrabold mb-4"><i class="fa-solid fa-boxes-stacked text-purple-400 mr-2"></i>Manage All Products</h3>
           <div id="ownerProductsList" class="space-y-3"></div>
         </div>
 
-        <!-- TAB 3: EDIT WEBSITE CONTENT -->
+        <!-- TAB: ADSTERRA ADS MANAGER -->
+        <div id="tabAds" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border">
+          <h3 class="text-xl font-extrabold mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-rectangle-ad text-amber-400"></i> Adsterra Ads Manager (Banner + Native Banner)
+          </h3>
+          <p class="text-xs text-slate-300 mb-5">Apne Adsterra account se **Banner Ad (728x90 ya 320x50)** aur **Native Banner Ad** ka script code copy karke neeche paste kar do aur Save daba do.</p>
+          <form onsubmit="saveAdsConfig(event)" class="space-y-4">
+            <div class="flex items-center gap-3 bg-[#081330] p-3.5 rounded-xl border border-blue-500/30">
+              <input id="cfgAdsEnabled" type="checkbox" class="w-5 h-5 accent-emerald-500" />
+              <label for="cfgAdsEnabled" class="text-sm font-bold text-white">Show Adsterra Ads on Website</label>
+            </div>
+            <div>
+              <label class="text-xs text-amber-300 font-bold">1. Adsterra Top Banner Ad Script Code</label>
+              <textarea id="cfgTopBannerHtml" rows="4" placeholder="Paste Adsterra Banner <script>...</script> code here" class="w-full mt-1 p-3.5 rounded-xl bg-[#081330] border border-blue-500/30 text-xs font-mono text-emerald-300"></textarea>
+            </div>
+            <div>
+              <label class="text-xs text-amber-300 font-bold">2. Adsterra Native Banner Ad Script Code</label>
+              <textarea id="cfgNativeBannerHtml" rows="4" placeholder="Paste Adsterra Native Banner <script>...</script><div>...</div> code here" class="w-full mt-1 p-3.5 rounded-xl bg-[#081330] border border-blue-500/30 text-xs font-mono text-emerald-300"></textarea>
+            </div>
+            <button type="submit" class="btn-blue px-8 py-3.5 rounded-xl font-extrabold text-sm">
+              <i class="fa-solid fa-bolt mr-1"></i> Save & Activate Ads
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB: EDIT WEBSITE INFO -->
         <div id="tabEditSite" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border">
-          <h3 class="text-xl font-extrabold mb-4"><i class="fa-solid fa-pen-to-square text-emerald-400 mr-2"></i>Edit Website Content</h3>
+          <h3 class="text-xl font-extrabold mb-4"><i class="fa-solid fa-pen-to-square text-teal-400 mr-2"></i>Edit Website Content</h3>
           <form onsubmit="saveWebsiteConfig(event)" class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="text-xs text-slate-300">Shop Name</label>
@@ -474,6 +641,10 @@
             <div>
               <label class="text-xs text-slate-300">Shop Tagline</label>
               <input id="cfgTagline" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-xs text-slate-300">Top Moving Offer Text (Announcement Bar)</label>
+              <input id="cfgAnnouncement" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
             <div>
               <label class="text-xs text-slate-300">Banner Title</label>
@@ -488,10 +659,14 @@
               <input id="cfgPhone" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
             <div>
+              <label class="text-xs text-slate-300">WhatsApp Number (with 91, no +)</label>
+              <input id="cfgWhatsapp" type="text" required placeholder="919876543210" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
               <label class="text-xs text-slate-300">Contact Email</label>
               <input id="cfgEmail" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
-            <div class="md:col-span-2">
+            <div>
               <label class="text-xs text-slate-300">Shop Address</label>
               <input id="cfgAddress" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
@@ -500,28 +675,25 @@
               <textarea id="cfgAbout" rows="2" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm"></textarea>
             </div>
             <div class="md:col-span-2">
-              <button type="submit" class="btn-blue px-8 py-3.5 rounded-xl font-bold text-sm">
-                Update Changes
+              <button type="submit" class="btn-blue px-8 py-3.5 rounded-xl font-extrabold text-sm">
+                Update Website Details
               </button>
             </div>
           </form>
         </div>
 
-        <!-- TAB 4: SHUTDOWN / TURN OFF WEBSITE -->
+        <!-- TAB: SHUTDOWN WEBSITE -->
         <div id="tabShutdown" class="owner-tab hidden rounded-3xl p-6 bg-rose-950/50 border-2 border-rose-500/50 space-y-4">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-rose-600 flex items-center justify-center text-white text-2xl">
-              <i class="fa-solid fa-power-off"></i>
-            </div>
+            <div class="w-12 h-12 rounded-2xl bg-rose-600 flex items-center justify-center text-white text-2xl"><i class="fa-solid fa-power-off"></i></div>
             <div>
               <h3 class="text-xl font-extrabold text-white">Shutdown / Turn Off Website</h3>
-              <p class="text-xs text-rose-200">Jab aap website band karenge toh normal visitors ko "Dukan Band Hai" screen dikhegi.</p>
+              <p class="text-xs text-rose-200">Jab aap website band karenge toh customers ko "Dukan Abhi Band Hai" screen dikhegi.</p>
             </div>
           </div>
-
           <div class="p-4 rounded-2xl bg-black/30 flex items-center justify-between">
             <div>
-              <p class="text-xs text-slate-300">Current Website Status:</p>
+              <p class="text-xs text-slate-300">Current Status:</p>
               <p id="shutdownStatusText" class="text-lg font-extrabold text-emerald-400">Website is ONLINE</p>
             </div>
             <button id="toggleSiteBtn" onclick="toggleWebsiteStatus()" class="px-6 py-3 rounded-xl font-bold text-sm bg-rose-600 hover:bg-rose-500 text-white shadow-lg">
@@ -535,67 +707,77 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="bg-[#040817] border-t border-blue-500/20 py-6 mt-12">
+  <footer class="bg-[#030714] border-t border-blue-500/20 py-6 mt-12">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
       <div class="flex items-center gap-2">
         <i class="fa-solid fa-cart-shopping text-sky-400"></i>
         <span id="footerShopName" class="font-bold text-white">SmartShop</span>
-        <span>— All Rights Reserved</span>
+        <span>— Official Store</span>
       </div>
       <div class="flex gap-6">
-        <a href="#" onclick="showCustomerView('home')" class="hover:text-white">Home</a>
-        <a href="#productsSection" onclick="showCustomerView('home')" class="hover:text-white">Products</a>
-        <a href="#contactSection" onclick="showCustomerView('home')" class="hover:text-white">Contact</a>
-        <button onclick="openOwnerView()" class="text-amber-400 hover:underline">Owner Panel</button>
+        <a href="#" onclick="showCustomerView()" class="hover:text-white">Home</a>
+        <a href="#productsSection" onclick="showCustomerView()" class="hover:text-white">Products</a>
+        <a href="#contactSection" onclick="showCustomerView()" class="hover:text-white">Contact</a>
+        <button onclick="openOwnerView()" class="text-amber-400 hover:underline font-bold">Owner Admin</button>
       </div>
     </div>
   </footer>
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // Default Initial Store State
     let storeData = {
       siteConfig: {
         shopName: "SmartShop",
         tagline: "Shop Smart • Live Better",
+        announcement: "🔥 Mega Sale Live! Sabhi Products par Heavy Discount + Cash On Delivery Available! 🔥",
         bannerTitle: "Welcome to SmartShop",
         bannerSubtitle: "Discover Premium Products at Unbeatable Prices!",
         phone: "+91 98765 43210",
+        whatsapp: "919876543210",
         email: "support@smartshop.in",
-        address: "123 Business Street, New Delhi, India",
-        aboutText: "Hamari dukan mein aapko best quality products sabse saste daam par milenge. Kisi bhi jankari ya order ke liye humse seedha sampark karein.",
+        address: "Main Market Road, Near City Center, India",
+        aboutText: "Hamari dukan mein aapko 100% genuine aur best quality products sabse saste daam par milenge.",
         isOnline: true,
-        visitors: 1240,
-        orders: 18
+        visitors: 1540,
+        orders: 0
       },
-      products: [
-        { id: "p1", name: "Wireless Earbuds", price: 1499, rating: "4.6 (1.2k)", badge: "Hot", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80" },
-        { id: "p2", name: "Smart Watch", price: 2999, rating: "4.7 (2.5k)", badge: "Best Seller", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" },
-        { id: "p3", name: "Backpack", price: 1299, rating: "4.5 (987)", badge: "", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" },
-        { id: "p4", name: "Headphones", price: 1999, rating: "4.6 (1.1k)", badge: "", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" }
-      ]
+      adsConfig: {
+        adsEnabled: true,
+        topBannerHtml: "",
+        nativeBannerHtml: ""
+      },
+      products: [],
+      ordersList: [],
+      messagesList: []
     };
 
     let ownerPasswordSession = "";
-    let cartCount = 0;
+    let activeCategory = "All";
+    let cartItems = [];
+    let renderedAdHash = "";
 
-    // 1. Load Data from Netlify/GitHub API (with Local fallback)
+    // 1. Load Store Data from Netlify/GitHub Backend
     async function loadStoreData() {
       try {
         const res = await fetch("/.netlify/functions/api");
         if (res.ok) {
           const data = await res.json();
           if (data && data.products) {
-            storeData = data;
-            localStorage.setItem("smartshop_backup", JSON.stringify(storeData));
+            storeData = {
+              ...storeData,
+              ...data,
+              ordersList: data.ordersList || [],
+              messagesList: data.messagesList || [],
+              adsConfig: data.adsConfig || { adsEnabled: true, topBannerHtml: "", nativeBannerHtml: "" }
+            };
+            localStorage.setItem("smartshop_pro_backup", JSON.stringify(storeData));
             renderAll();
             return;
           }
         }
       } catch (e) {}
 
-      // Fallback to local db.json or localStorage
-      const savedLocal = localStorage.getItem("smartshop_backup");
+      const savedLocal = localStorage.getItem("smartshop_pro_backup");
       if (savedLocal) {
         storeData = JSON.parse(savedLocal);
       } else {
@@ -607,11 +789,11 @@
       renderAll();
     }
 
-    // 2. Sync Data to GitHub Backend + LocalStorage
-    async function syncToBackend(toastText = "Changes updated successfully!") {
-      localStorage.setItem("smartshop_backup", JSON.stringify(storeData));
+    // 2. Owner Save Full Data to GitHub
+    async function syncToBackend(toastText = "Changes saved live!") {
+      localStorage.setItem("smartshop_pro_backup", JSON.stringify(storeData));
       renderAll();
-      showToast("Saving to GitHub Cloud...");
+      showToast("Syncing with GitHub Cloud...");
 
       try {
         const res = await fetch("/.netlify/functions/api", {
@@ -634,14 +816,55 @@
       }
     }
 
-    // 3. Render Customer UI & Owner Dashboard
+    // 3. Render Adsterra Scripts Dynamically
+    function renderAdsterraSlots() {
+      const ads = storeData.adsConfig || { adsEnabled: true, topBannerHtml: "", nativeBannerHtml: "" };
+      const topWrap = document.getElementById("topAdWrapper");
+      const nativeWrap = document.getElementById("nativeAdWrapper");
+
+      if (!ads.adsEnabled) {
+        topWrap.classList.add("hidden");
+        nativeWrap.classList.add("hidden");
+        return;
+      }
+
+      const currentHash = (ads.topBannerHtml || "") + "||" + (ads.nativeBannerHtml || "");
+      if (currentHash === renderedAdHash) return;
+      renderedAdHash = currentHash;
+
+      // Top Banner Slot
+      const topSlot = document.getElementById("adsterraTopBannerSlot");
+      if (ads.topBannerHtml && ads.topBannerHtml.trim() !== "") {
+        topWrap.classList.remove("hidden");
+        topSlot.innerHTML = "";
+        const frag = document.createRange().createContextualFragment(ads.topBannerHtml);
+        topSlot.appendChild(frag);
+      } else {
+        topSlot.innerHTML = `<div class="py-3 px-6 rounded-xl bg-blue-950/60 border border-dashed border-sky-400/40 text-xs text-slate-300">Adsterra Top Banner Slot Ready (Paste Ad Script in Owner Panel &rarr; Adsterra Ads Setup)</div>`;
+      }
+
+      // Native Banner Slot
+      const nativeSlot = document.getElementById("adsterraNativeBannerSlot");
+      if (ads.nativeBannerHtml && ads.nativeBannerHtml.trim() !== "") {
+        nativeWrap.classList.remove("hidden");
+        nativeSlot.innerHTML = "";
+        const frag2 = document.createRange().createContextualFragment(ads.nativeBannerHtml);
+        nativeSlot.appendChild(frag2);
+      } else {
+        nativeSlot.innerHTML = `<div class="py-6 px-6 w-full rounded-2xl bg-blue-950/60 border border-dashed border-sky-400/40 text-xs text-slate-300">Adsterra Native Banner Slot Ready (Paste Native Banner Code in Owner Panel &rarr; Adsterra Ads Setup)</div>`;
+      }
+    }
+
+    // 4. Render Full Website & Admin Panel
     function renderAll(filteredProducts = null) {
       const cfg = storeData.siteConfig;
+      storeData.ordersList = storeData.ordersList || [];
+      storeData.messagesList = storeData.messagesList || [];
 
-      // Update Texts
-      document.getElementById("navShopName").innerHTML = cfg.shopName;
+      document.getElementById("navShopName").textContent = cfg.shopName;
       document.getElementById("footerShopName").textContent = cfg.shopName;
       document.getElementById("navTagline").textContent = cfg.tagline;
+      document.getElementById("topAnnouncementText").textContent = cfg.announcement || "🔥 Welcome to our Online Store! 🔥";
       document.getElementById("heroTitle").textContent = cfg.bannerTitle;
       document.getElementById("heroSubtitle").textContent = cfg.bannerSubtitle;
       document.getElementById("contactPhoneDisplay").textContent = cfg.phone;
@@ -651,7 +874,11 @@
       document.getElementById("offlinePhone").textContent = cfg.phone;
       document.getElementById("offlineAddress").textContent = cfg.address;
 
-      // Handle Online / Offline State for Customer View
+      const waNum = (cfg.whatsapp || cfg.phone || "").replace(/\D/g, "");
+      document.getElementById("floatingWaBtn").href = `https://wa.me/${waNum}`;
+      document.getElementById("aboutWaLink").href = `https://wa.me/${waNum}`;
+
+      // Online / Offline Check
       const isOwnerOpen = !document.getElementById("ownerDashboardView").classList.contains("hidden") ||
                           !document.getElementById("ownerLoginView").classList.contains("hidden");
       if (!isOwnerOpen) {
@@ -664,8 +891,20 @@
         }
       }
 
-      // Render Products Grid
-      const list = filteredProducts !== null ? filteredProducts : storeData.products;
+      // Render Categories Bar
+      const categories = ["All", ...new Set(storeData.products.map(p => p.category || "General"))];
+      document.getElementById("categoryFilterBar").innerHTML = categories.map(cat => `
+        <button onclick="filterByCategory('${cat}')" class="px-4 py-1.5 rounded-full text-xs font-extrabold shrink-0 transition ${activeCategory === cat ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-200'}">
+          ${cat}
+        </button>
+      `).join("");
+
+      // Render Products Grid (Uncropped HD Object-Contain + Lightbox Zoom)
+      let list = filteredProducts !== null ? filteredProducts : storeData.products;
+      if (filteredProducts === null && activeCategory !== "All") {
+        list = list.filter(p => (p.category || "General") === activeCategory);
+      }
+
       const grid = document.getElementById("productsGrid");
       const notFound = document.getElementById("notFoundBox");
 
@@ -674,81 +913,194 @@
         notFound.classList.remove("hidden");
       } else {
         notFound.classList.add("hidden");
-        grid.innerHTML = list.map(p => `
-          <div class="bg-white rounded-2xl p-4 shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200 relative">
-            ${p.badge ? `<span class="absolute top-6 left-6 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow">${p.badge}</span>` : ""}
-            <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover rounded-xl bg-slate-100 mb-4" />
-            <div>
-              <h4 class="font-extrabold text-slate-900 text-lg">${p.name}</h4>
-              <p class="text-xl font-extrabold text-blue-700 mt-0.5">₹${Number(p.price).toLocaleString("en-IN")}</p>
-              <p class="text-xs text-amber-500 font-semibold mt-1 mb-4">
-                <i class="fa-solid fa-star"></i> ${p.rating || "4.7 (1k)"}
-              </p>
-              <button onclick="selectProductForOrder('${p.name.replace(/'/g, "\\'")}', ${p.price})" class="w-full btn-blue text-white font-bold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> Add to Cart / Buy
+        grid.innerHTML = list.map(p => {
+          const mrp = Number(p.mrp) || 0;
+          const price = Number(p.price) || 0;
+          const discount = mrp > price ? Math.round(((mrp - price) / mrp) * 100) : 0;
+          const inStock = p.inStock !== false;
+
+          return `
+          <div class="product-card bg-white rounded-3xl p-4 shadow-md flex flex-col justify-between border border-slate-200/90 relative">
+            <div class="relative bg-slate-50 rounded-2xl p-3 mb-3 flex items-center justify-center h-56 overflow-hidden group border border-slate-100">
+              ${p.badge ? `<span class="absolute top-2.5 left-2.5 z-10 bg-rose-600 text-white text-[11px] font-extrabold px-3 py-1 rounded-full shadow">${p.badge}</span>` : ""}
+              ${discount > 0 ? `<span class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow">${discount}% OFF</span>` : ""}
+              <img
+                src="${p.image}"
+                alt="${p.name}"
+                onclick="openLightbox('${p.image.replace(/'/g, "\\'")}', '${p.name.replace(/'/g, "\\'")}')"
+                class="max-h-52 w-auto object-contain cursor-zoom-in transition duration-300 group-hover:scale-105"
+                title="Click to view Full HD Photo"
+              />
+              <button onclick="openLightbox('${p.image.replace(/'/g, "\\'")}', '${p.name.replace(/'/g, "\\'")}')" class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-lg opacity-80 hover:opacity-100">
+                <i class="fa-solid fa-expand mr-1"></i>HD Zoom
               </button>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-bold text-slate-400 mb-1">
+                <span class="uppercase tracking-wider text-blue-600">${p.category || "Store"}</span>
+                <span class="text-amber-500"><i class="fa-solid fa-star"></i> ${p.rating || "4.8"}</span>
+              </div>
+              <h4 class="font-extrabold text-slate-900 text-base leading-snug">${p.name}</h4>
+              ${p.description ? `<p class="text-xs text-slate-500 mt-1 line-clamp-2">${p.description}</p>` : ""}
+
+              <div class="flex items-baseline gap-2 mt-2.5 mb-3">
+                <span class="text-2xl font-extrabold text-blue-700">₹${price.toLocaleString("en-IN")}</span>
+                ${mrp > price ? `<span class="text-xs text-slate-400 line-through font-semibold">₹${mrp.toLocaleString("en-IN")}</span>` : ""}
+              </div>
+
+              ${inStock ? `
+                <div class="grid grid-cols-2 gap-2">
+                  <button onclick="buyProductNow('${p.id}')" class="btn-emerald text-white font-extrabold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-bolt"></i> Buy Now
+                  </button>
+                  <button onclick="addToCart('${p.id}')" class="btn-blue text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-cart-plus"></i> Add Cart
+                  </button>
+                </div>
+              ` : `
+                <button disabled class="w-full bg-slate-300 text-slate-600 font-extrabold py-2.5 rounded-xl text-xs cursor-not-allowed">
+                  Out of Stock
+                </button>
+              `}
+            </div>
+          </div>
+        `}).join("");
+      }
+
+      // Render Adsterra Slots
+      renderAdsterraSlots();
+
+      // Update Owner Dashboard Counts
+      document.getElementById("statProducts").textContent = storeData.products.length;
+      document.getElementById("statOrders").textContent = storeData.ordersList.length;
+      document.getElementById("statMessages").textContent = storeData.messagesList.length;
+      document.getElementById("sidebarOrdersBadge").textContent = storeData.ordersList.length;
+      document.getElementById("sidebarMessagesBadge").textContent = storeData.messagesList.length;
+
+      // Render Admin Live Orders List
+      const ordersContainer = document.getElementById("adminOrdersContainer");
+      if (storeData.ordersList.length === 0) {
+        ordersContainer.innerHTML = `<p class="text-sm text-slate-400 py-6 text-center">Abhi tak koi order nahi aaya hai.</p>`;
+      } else {
+        ordersContainer.innerHTML = storeData.ordersList.map(o => `
+          <div class="bg-[#081330] p-4 rounded-2xl border border-blue-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${o.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-300'}">${o.status || 'New Order'}</span>
+                <span class="text-xs text-slate-400">${o.date || ''}</span>
+              </div>
+              <h4 class="font-extrabold text-base text-white">${o.customerName} <span class="text-sky-400 text-sm">(${o.phone})</span></h4>
+              <p class="text-xs text-emerald-300 font-bold"><i class="fa-solid fa-box mr-1"></i> Items: ${o.items} — Total: ₹${Number(o.totalAmount).toLocaleString("en-IN")}</p>
+              <p class="text-xs text-slate-300"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Address: ${o.address}</p>
+              <p class="text-[11px] text-slate-400"><i class="fa-solid fa-wallet mr-1"></i> Payment: ${o.paymentMode}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 shrink-0">
+              <a href="tel:${o.phone}" class="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold"><i class="fa-solid fa-phone mr-1"></i>Call</a>
+              <a href="https://wa.me/91${o.phone.replace(/\D/g, '').slice(-10)}?text=Hello%20${encodeURIComponent(o.customerName)},%20aapka%20order%20(${encodeURIComponent(o.items)})%20confirm%20ho%20gaya%20hai!" target="_blank" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp mr-1"></i>WhatsApp</a>
+              <button onclick="markOrderDone('${o.id}')" class="px-3 py-2 rounded-xl bg-teal-600/30 hover:bg-teal-600 text-xs font-bold"><i class="fa-solid fa-check"></i> Done</button>
+              <button onclick="deleteOrder('${o.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200"><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
         `).join("");
       }
 
-      // Update Owner Dashboard Stats & Lists
-      document.getElementById("statProducts").textContent = storeData.products.length;
-      document.getElementById("statOrders").textContent = cfg.orders || 0;
+      // Render Admin Customer Messages List
+      const msgContainer = document.getElementById("adminMessagesContainer");
+      if (storeData.messagesList.length === 0) {
+        msgContainer.innerHTML = `<p class="text-sm text-slate-400 py-6 text-center">Inbox khali hai. Koi naya message nahi hai.</p>`;
+      } else {
+        msgContainer.innerHTML = storeData.messagesList.map(m => `
+          <div class="bg-[#081330] p-4 rounded-2xl border border-blue-500/25 flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <h5 class="font-extrabold text-sm text-sky-400">${m.name}</h5>
+                <span class="text-xs text-slate-300">• ${m.contact}</span>
+                <span class="text-[11px] text-slate-500">(${m.date || 'Just now'})</span>
+              </div>
+              <p class="text-sm text-white bg-[#050c21] p-3 rounded-xl border border-blue-500/20 mt-1">${m.message}</p>
+            </div>
+            <div class="flex gap-2 shrink-0">
+              <a href="tel:${m.contact}" class="px-3 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600 text-xs font-bold"><i class="fa-solid fa-phone"></i></a>
+              <button onclick="deleteMessage('${m.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      // Populate Owner Manage Products List
+      document.getElementById("ownerProductsList").innerHTML = storeData.products.map(p => `
+        <div class="flex items-center justify-between bg-[#081330] p-3 rounded-2xl border border-blue-500/20">
+          <div class="flex items-center gap-3">
+            <img src="${p.image}" class="w-14 h-14 rounded-xl object-contain bg-white p-1" />
+            <div>
+              <h5 class="font-bold text-sm">${p.name}</h5>
+              <p class="text-xs text-sky-400 font-bold">₹${p.price} <span class="text-slate-400 font-normal">(${p.category || 'General'})</span></p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="startEditProduct('${p.id}')" class="px-3 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600 text-xs font-bold"><i class="fa-solid fa-pen"></i> Edit</button>
+            <button onclick="deleteProduct('${p.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      `).join("");
+
+      // Populate Forms
+      document.getElementById("cfgShopName").value = cfg.shopName || "";
+      document.getElementById("cfgTagline").value = cfg.tagline || "";
+      document.getElementById("cfgAnnouncement").value = cfg.announcement || "";
+      document.getElementById("cfgBannerTitle").value = cfg.bannerTitle || "";
+      document.getElementById("cfgBannerSubtitle").value = cfg.bannerSubtitle || "";
+      document.getElementById("cfgPhone").value = cfg.phone || "";
+      document.getElementById("cfgWhatsapp").value = cfg.whatsapp || "";
+      document.getElementById("cfgEmail").value = cfg.email || "";
+      document.getElementById("cfgAddress").value = cfg.address || "";
+      document.getElementById("cfgAbout").value = cfg.aboutText || "";
+
+      // Populate Ads Form
+      document.getElementById("cfgAdsEnabled").checked = storeData.adsConfig.adsEnabled !== false;
+      document.getElementById("cfgTopBannerHtml").value = storeData.adsConfig.topBannerHtml || "";
+      document.getElementById("cfgNativeBannerHtml").value = storeData.adsConfig.nativeBannerHtml || "";
+
+      // Status Badge
       const statusBadge = document.getElementById("statStatusBadge");
       const shutdownText = document.getElementById("shutdownStatusText");
       const toggleBtn = document.getElementById("toggleSiteBtn");
-
       if (cfg.isOnline) {
         statusBadge.textContent = "ONLINE";
-        statusBadge.className = "text-sm font-extrabold text-emerald-400";
+        statusBadge.className = "text-base font-extrabold text-emerald-400 mt-1";
         shutdownText.textContent = "Website is ONLINE";
         shutdownText.className = "text-lg font-extrabold text-emerald-400";
         toggleBtn.textContent = "Close Website (Turn Off)";
         toggleBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-rose-600 hover:bg-rose-500 text-white shadow-lg";
       } else {
-        statusBadge.textContent = "OFFLINE (CLOSED)";
-        statusBadge.className = "text-sm font-extrabold text-rose-400";
-        shutdownText.textContent = "Website is OFFLINE for users!";
+        statusBadge.textContent = "OFFLINE";
+        statusBadge.className = "text-base font-extrabold text-rose-400 mt-1";
+        shutdownText.textContent = "Website is OFFLINE!";
         shutdownText.className = "text-lg font-extrabold text-rose-400";
         toggleBtn.textContent = "Turn ON Website";
         toggleBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg";
       }
-
-      // Populate Edit Website Inputs
-      document.getElementById("cfgShopName").value = cfg.shopName;
-      document.getElementById("cfgTagline").value = cfg.tagline;
-      document.getElementById("cfgBannerTitle").value = cfg.bannerTitle;
-      document.getElementById("cfgBannerSubtitle").value = cfg.bannerSubtitle;
-      document.getElementById("cfgPhone").value = cfg.phone;
-      document.getElementById("cfgEmail").value = cfg.email;
-      document.getElementById("cfgAddress").value = cfg.address;
-      document.getElementById("cfgAbout").value = cfg.aboutText;
-
-      // Populate Owner Manage Products List
-      const ownerList = document.getElementById("ownerProductsList");
-      ownerList.innerHTML = storeData.products.map(p => `
-        <div class="flex items-center justify-between bg-[#081330] p-3 rounded-2xl border border-blue-500/20">
-          <div class="flex items-center gap-3">
-            <img src="${p.image}" class="w-14 h-14 rounded-xl object-cover bg-slate-800" />
-            <div>
-              <h5 class="font-bold text-sm">${p.name}</h5>
-              <p class="text-xs text-sky-400 font-bold">₹${p.price} ${p.badge ? `<span class="ml-2 text-[10px] bg-rose-600 text-white px-2 py-0.5 rounded-full">${p.badge}</span>` : ""}</p>
-            </div>
-          </div>
-          <div class="flex gap-2">
-            <button onclick="startEditProduct('${p.id}')" class="px-3 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600 text-xs font-bold">
-              <i class="fa-solid fa-pen"></i> Edit
-            </button>
-            <button onclick="deleteProduct('${p.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200">
-              <i class="fa-solid fa-trash"></i>
-            </button>
-          </div>
-        </div>
-      `).join("");
     }
 
-    // 4. Search Logic
+    // 5. Lightbox Zoom Functions
+    function openLightbox(imgUrl, title) {
+      document.getElementById("lightboxImg").src = imgUrl;
+      document.getElementById("lightboxTitle").textContent = title;
+      document.getElementById("lightboxModal").classList.remove("hidden");
+    }
+    function closeLightbox() {
+      document.getElementById("lightboxModal").classList.add("hidden");
+    }
+
+    // 6. Category & Search Functions
+    function filterByCategory(cat) {
+      activeCategory = cat;
+      document.getElementById("searchInput").value = "";
+      document.getElementById("productSectionHeading").textContent = cat === "All" ? "Our Products" : `${cat} Collection`;
+      renderAll(null);
+    }
+
     function handleSearch() {
       const q = document.getElementById("searchInput").value.trim().toLowerCase();
       const heading = document.getElementById("productSectionHeading");
@@ -758,47 +1110,192 @@
         return;
       }
       heading.innerHTML = `Search Results for: <span class="text-blue-600">"${q}"</span>`;
-      const matched = storeData.products.filter(p => p.name.toLowerCase().includes(q) || (p.badge && p.badge.toLowerCase().includes(q)));
+      const matched = storeData.products.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        (p.category && p.category.toLowerCase().includes(q)) ||
+        (p.description && p.description.toLowerCase().includes(q))
+      );
       renderAll(matched);
     }
 
     function resetSearch() {
+      activeCategory = "All";
       document.getElementById("searchInput").value = "";
       document.getElementById("productSectionHeading").textContent = "Our Products";
       renderAll(null);
     }
 
     function focusSearch() {
-      showCustomerView('home');
+      showCustomerView();
       const input = document.getElementById("searchInput");
       input.scrollIntoView({ behavior: "smooth", block: "center" });
       setTimeout(() => input.focus(), 400);
     }
 
-    // 5. Customer Product Inquiry & Contact
-    function selectProductForOrder(name, price) {
-      cartCount++;
-      document.getElementById("cartBadge").textContent = cartCount;
-      const msgBox = document.getElementById("custMsg");
-      msgBox.value = `Mujhe "${name}" (Price: ₹${price}) kharidna hai. Kripya details batayein.`;
-      document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
-      showToast(`${name} selected! Send message below to order.`);
+    // 7. Cart & Instant Buy Checkout Functions (Saves Order to Admin Panel)
+    function addToCart(productId) {
+      const prod = storeData.products.find(p => p.id === productId);
+      if (!prod) return;
+      const existing = cartItems.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cartItems.push({ id: prod.id, name: prod.name, price: Number(prod.price), qty: 1 });
+      }
+      updateCartBadge();
+      showToast(`${prod.name} added to Cart!`);
     }
 
-    function scrollToContact() {
-      showCustomerView('home');
-      document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+    function buyProductNow(productId) {
+      const prod = storeData.products.find(p => p.id === productId);
+      if (!prod) return;
+      cartItems = [{ id: prod.id, name: prod.name, price: Number(prod.price), qty: 1 }];
+      updateCartBadge();
+      openCartCheckout();
     }
 
-    function submitContactForm(e) {
+    function updateCartBadge() {
+      const totalQty = cartItems.reduce((sum, i) => sum + i.qty, 0);
+      document.getElementById("cartBadge").textContent = totalQty;
+    }
+
+    function openCartCheckout() {
+      if (cartItems.length === 0) {
+        showToast("Pehle kisi product par 'Buy Now' ya 'Add Cart' dabayein!");
+        document.getElementById("productsSection").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      const total = cartItems.reduce((sum, i) => sum + i.price * i.qty, 0);
+      const summaryHtml = cartItems.map(i => `
+        <div class="flex justify-between items-center text-xs">
+          <span class="font-bold text-white">${i.name} (x${i.qty})</span>
+          <span class="text-sky-400 font-bold">₹${(i.price * i.qty).toLocaleString("en-IN")}</span>
+        </div>
+      `).join("") + `<div class="border-t border-blue-500/30 pt-2 mt-2 flex justify-between font-extrabold text-sm text-emerald-400"><span>Total Amount:</span><span>₹${total.toLocaleString("en-IN")}</span></div>`;
+
+      document.getElementById("checkoutItemsSummary").innerHTML = summaryHtml;
+      document.getElementById("checkoutModal").classList.remove("hidden");
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById("checkoutModal").classList.add("hidden");
+    }
+
+    async function submitCustomerOrder(e) {
       e.preventDefault();
-      storeData.siteConfig.orders = (storeData.siteConfig.orders || 0) + 1;
-      localStorage.setItem("smartshop_backup", JSON.stringify(storeData));
-      showToast("Message sent to Shop Owner successfully!");
+      const btn = document.getElementById("placeOrderBtn");
+      btn.textContent = "Booking Your Order...";
+      btn.disabled = true;
+
+      const totalAmount = cartItems.reduce((sum, i) => sum + i.price * i.qty, 0);
+      const itemsText = cartItems.map(i => `${i.name} (x${i.qty})`).join(", ");
+
+      const newOrder = {
+        id: "ORD-" + Date.now(),
+        customerName: document.getElementById("orderCustName").value.trim(),
+        phone: document.getElementById("orderCustPhone").value.trim(),
+        address: document.getElementById("orderCustAddress").value.trim(),
+        paymentMode: document.getElementById("orderPaymentMode").value,
+        items: itemsText,
+        totalAmount: totalAmount,
+        status: "Pending",
+        date: new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })
+      };
+
+      storeData.ordersList.unshift(newOrder);
+      localStorage.setItem("smartshop_pro_backup", JSON.stringify(storeData));
+
+      try {
+        await fetch("/.netlify/functions/api", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "customer_order", order: newOrder })
+        });
+      } catch (err) {}
+
+      cartItems = [];
+      updateCartBadge();
+      closeCheckoutModal();
       e.target.reset();
+      btn.textContent = "Place Order Now";
+      btn.disabled = false;
+      renderAll();
+      alert(`🎉 Order Confirmed!\n\nThank you ${newOrder.customerName}! Aapka order (${newOrder.items}) Shop Owner ke paas pahunch gaya hai.`);
     }
 
-    // 6. Owner Authentication & Navigation
+    // 8. Customer Contact Message (Saves Directly to Admin Panel Inbox)
+    async function submitContactForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById("sendMsgBtn");
+      btn.textContent = "Sending Message...";
+      btn.disabled = true;
+
+      const messageData = {
+        id: "MSG-" + Date.now(),
+        name: document.getElementById("custName").value.trim(),
+        contact: document.getElementById("custContact").value.trim(),
+        message: document.getElementById("custMsg").value.trim(),
+        date: new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })
+      };
+
+      storeData.messagesList.unshift(messageData);
+      localStorage.setItem("smartshop_pro_backup", JSON.stringify(storeData));
+
+      try {
+        await fetch("/.netlify/functions/api", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "customer_message", messageData })
+        });
+      } catch (err) {}
+
+      e.target.reset();
+      btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message to Owner`;
+      btn.disabled = false;
+      renderAll();
+      showToast("Aapka message Shop Owner ke Admin Panel mein pahunch gaya hai!");
+    }
+
+    // 9. High-Definition (HD) Photo Compression (1000px @ 0.92 Quality)
+    function handleImageFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement("canvas");
+          const MAX_SIZE = 1000; // Sharp HD Resolution
+          let w = img.width;
+          let h = img.height;
+          if (w > h && w > MAX_SIZE) {
+            h *= MAX_SIZE / w;
+            w = MAX_SIZE;
+          } else if (h > MAX_SIZE) {
+            w *= MAX_SIZE / h;
+            h = MAX_SIZE;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = "high";
+          ctx.drawImage(img, 0, 0, w, h);
+
+          const hdDataUrl = canvas.toDataURL("image/jpeg", 0.92);
+          document.getElementById("prodImageUrl").value = hdDataUrl;
+          const preview = document.getElementById("imagePreview");
+          preview.src = hdDataUrl;
+          preview.classList.remove("hidden");
+          document.getElementById("imageQualityHint").classList.remove("hidden");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 10. Owner Panel Actions
     function openOwnerView() {
       document.getElementById("customerMainView").classList.add("hidden");
       document.getElementById("offlineScreen").classList.add("hidden");
@@ -831,7 +1328,7 @@
       e.preventDefault();
       const pass = document.getElementById("ownerPassInput").value;
       const btn = document.getElementById("loginBtn");
-      btn.textContent = "Checking...";
+      btn.textContent = "Verifying...";
 
       try {
         const res = await fetch("/.netlify/functions/api", {
@@ -843,33 +1340,33 @@
           ownerPasswordSession = pass;
           document.getElementById("ownerLoginView").classList.add("hidden");
           document.getElementById("ownerDashboardView").classList.remove("hidden");
-          showToast("Welcome, Owner!");
-          btn.textContent = "Login";
+          await loadStoreData();
+          showToast("Welcome back, Shop Owner!");
+          btn.textContent = "Unlock Owner Dashboard";
           return;
         } else if (res.status === 401) {
-          alert("Galat Password! Kripya sahi owner password daalein.");
-          btn.textContent = "Login";
+          alert("Galat Password!");
+          btn.textContent = "Unlock Owner Dashboard";
           return;
         }
       } catch (err) {}
 
-      // Local Preview Fallback (Default password: admin123)
       if (pass === "admin123") {
         ownerPasswordSession = pass;
         document.getElementById("ownerLoginView").classList.add("hidden");
         document.getElementById("ownerDashboardView").classList.remove("hidden");
         showToast("Welcome Owner! (Local Mode)");
       } else {
-        alert("Galat Password! Default password 'admin123' hai.");
+        alert("Galat Password!");
       }
-      btn.textContent = "Login";
+      btn.textContent = "Unlock Owner Dashboard";
     }
 
     function logoutOwner() {
       ownerPasswordSession = "";
       document.getElementById("ownerPassInput").value = "";
-      showCustomerView('home');
-      showToast("Logged out successfully");
+      showCustomerView();
+      showToast("Owner Logged Out");
     }
 
     function switchOwnerTab(tabId) {
@@ -877,69 +1374,33 @@
       document.getElementById(tabId).classList.remove("hidden");
     }
 
-    // 7. Image Upload with Automatic Compression (For Fast GitHub Sync)
-    function handleImageFile(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const canvas = document.createElement("canvas");
-          const MAX_SIZE = 480;
-          let w = img.width;
-          let h = img.height;
-          if (w > h && w > MAX_SIZE) {
-            h *= MAX_SIZE / w;
-            w = MAX_SIZE;
-          } else if (h > MAX_SIZE) {
-            w *= MAX_SIZE / h;
-            h = MAX_SIZE;
-          }
-          canvas.width = w;
-          canvas.height = h;
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, w, h);
-          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.78);
-          document.getElementById("prodImageUrl").value = compressedDataUrl;
-          const preview = document.getElementById("imagePreview");
-          preview.src = compressedDataUrl;
-          preview.classList.remove("hidden");
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // 8. Owner CRUD Operations (Upload, Edit, Delete, Website Edit, Shutdown)
     async function saveProduct(e) {
       e.preventDefault();
       const editId = document.getElementById("editProductId").value;
       const name = document.getElementById("prodName").value.trim();
+      const category = document.getElementById("prodCategory").value.trim() || "General";
       const price = Number(document.getElementById("prodPrice").value);
+      const mrp = Number(document.getElementById("prodMrp").value) || 0;
       const badge = document.getElementById("prodBadge").value.trim();
-      const rating = document.getElementById("prodRating").value.trim() || "4.8 (1k)";
-      const image = document.getElementById("prodImageUrl").value.trim() || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80";
+      const inStock = document.getElementById("prodStock").value === "true";
+      const description = document.getElementById("prodDesc").value.trim();
+      const image = document.getElementById("prodImageUrl").value.trim() || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85";
+
+      const prodObj = {
+        id: editId || "p_" + Date.now(),
+        name, category, price, mrp, badge, inStock, description, image,
+        rating: "4.8 (Verified)"
+      };
 
       if (editId) {
         const idx = storeData.products.findIndex(p => p.id === editId);
-        if (idx > -1) {
-          storeData.products[idx] = { id: editId, name, price, badge, rating, image };
-        }
+        if (idx > -1) storeData.products[idx] = prodObj;
       } else {
-        storeData.products.unshift({
-          id: "p_" + Date.now(),
-          name,
-          price,
-          badge,
-          rating,
-          image
-        });
+        storeData.products.unshift(prodObj);
       }
 
       resetProductForm();
-      await syncToBackend("Product saved & published live!");
+      await syncToBackend("HD Product saved & published!");
     }
 
     function startEditProduct(id) {
@@ -949,9 +1410,12 @@
       document.getElementById("productFormTitle").innerHTML = `<i class="fa-solid fa-pen text-amber-400"></i> Edit Product: ${p.name}`;
       document.getElementById("editProductId").value = p.id;
       document.getElementById("prodName").value = p.name;
+      document.getElementById("prodCategory").value = p.category || "General";
       document.getElementById("prodPrice").value = p.price;
+      document.getElementById("prodMrp").value = p.mrp || "";
       document.getElementById("prodBadge").value = p.badge || "";
-      document.getElementById("prodRating").value = p.rating || "";
+      document.getElementById("prodStock").value = p.inStock !== false ? "true" : "false";
+      document.getElementById("prodDesc").value = p.description || "";
       document.getElementById("prodImageUrl").value = p.image;
       const preview = document.getElementById("imagePreview");
       preview.src = p.image;
@@ -959,39 +1423,73 @@
     }
 
     function resetProductForm() {
-      document.getElementById("productFormTitle").innerHTML = `<i class="fa-solid fa-cloud-arrow-up text-sky-400"></i> Upload New Product`;
+      document.getElementById("productFormTitle").innerHTML = `<i class="fa-solid fa-cloud-arrow-up text-sky-400"></i> Upload New Product (HD Photo)`;
       document.getElementById("editProductId").value = "";
       document.getElementById("prodName").value = "";
+      document.getElementById("prodCategory").value = "General";
       document.getElementById("prodPrice").value = "";
+      document.getElementById("prodMrp").value = "";
       document.getElementById("prodBadge").value = "";
+      document.getElementById("prodDesc").value = "";
       document.getElementById("prodImageUrl").value = "";
       document.getElementById("prodFileInput").value = "";
       document.getElementById("imagePreview").classList.add("hidden");
+      document.getElementById("imageQualityHint").classList.add("hidden");
     }
 
     async function deleteProduct(id) {
-      if (!confirm("Kya aap sach mein is product ko delete karna chahte hain?")) return;
+      if (!confirm("Delete this product?")) return;
       storeData.products = storeData.products.filter(p => p.id !== id);
       await syncToBackend("Product deleted!");
     }
 
+    async function markOrderDone(id) {
+      const ord = storeData.ordersList.find(o => o.id === id);
+      if (ord) ord.status = "Completed";
+      await syncToBackend("Order marked as Completed!");
+    }
+
+    async function deleteOrder(id) {
+      if (!confirm("Delete this order record?")) return;
+      storeData.ordersList = storeData.ordersList.filter(o => o.id !== id);
+      await syncToBackend("Order removed!");
+    }
+
+    async function deleteMessage(id) {
+      storeData.messagesList = storeData.messagesList.filter(m => m.id !== id);
+      await syncToBackend("Message deleted!");
+    }
+
+    async function saveAdsConfig(e) {
+      e.preventDefault();
+      storeData.adsConfig = {
+        adsEnabled: document.getElementById("cfgAdsEnabled").checked,
+        topBannerHtml: document.getElementById("cfgTopBannerHtml").value,
+        nativeBannerHtml: document.getElementById("cfgNativeBannerHtml").value
+      };
+      renderedAdHash = "";
+      await syncToBackend("Adsterra Ads Updated Live!");
+    }
+
     async function saveWebsiteConfig(e) {
       e.preventDefault();
-      storeData.siteConfig.shopName = document.getElementById("cfgShopName").value.trim();
-      storeData.siteConfig.tagline = document.getElementById("cfgTagline").value.trim();
-      storeData.siteConfig.bannerTitle = document.getElementById("cfgBannerTitle").value.trim();
-      storeData.siteConfig.bannerSubtitle = document.getElementById("cfgBannerSubtitle").value.trim();
-      storeData.siteConfig.phone = document.getElementById("cfgPhone").value.trim();
-      storeData.siteConfig.email = document.getElementById("cfgEmail").value.trim();
-      storeData.siteConfig.address = document.getElementById("cfgAddress").value.trim();
-      storeData.siteConfig.aboutText = document.getElementById("cfgAbout").value.trim();
-      await syncToBackend("Website details updated!");
+      const cfg = storeData.siteConfig;
+      cfg.shopName = document.getElementById("cfgShopName").value.trim();
+      cfg.tagline = document.getElementById("cfgTagline").value.trim();
+      cfg.announcement = document.getElementById("cfgAnnouncement").value.trim();
+      cfg.bannerTitle = document.getElementById("cfgBannerTitle").value.trim();
+      cfg.bannerSubtitle = document.getElementById("cfgBannerSubtitle").value.trim();
+      cfg.phone = document.getElementById("cfgPhone").value.trim();
+      cfg.whatsapp = document.getElementById("cfgWhatsapp").value.trim();
+      cfg.email = document.getElementById("cfgEmail").value.trim();
+      cfg.address = document.getElementById("cfgAddress").value.trim();
+      cfg.aboutText = document.getElementById("cfgAbout").value.trim();
+      await syncToBackend("Website Info Updated!");
     }
 
     async function toggleWebsiteStatus() {
       storeData.siteConfig.isOnline = !storeData.siteConfig.isOnline;
-      const msg = storeData.siteConfig.isOnline ? "Website is now ONLINE for everyone!" : "Website SHUTDOWN for visitors!";
-      await syncToBackend(msg);
+      await syncToBackend(storeData.siteConfig.isOnline ? "Website is now ONLINE!" : "Website SHUTDOWN!");
     }
 
     function showToast(msg) {
@@ -1005,7 +1503,6 @@
       }, 3200);
     }
 
-    // Initialize on load
     loadStoreData();
   </script>
 </body>
