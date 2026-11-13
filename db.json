@@ -24,18 +24,6 @@
   },
   "products": [
     {
-      "id": "p3",
-      "name": "Backpack",
-      "category": "Bags",
-      "price": 1299,
-      "mrp": 1999,
-      "rating": "4.6 (987)",
-      "badge": "Trending",
-      "inStock": true,
-      "description": "Waterproof fabric, laptop compartment aur stylish look.",
-      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=85"
-    },
-    {
       "id": "p4",
       "name": "Headphones",
       "category": "Gadgets",
