@@ -14,14 +14,6 @@
   },
   "products": [
     {
-      "id": "p3",
-      "name": "Backpack",
-      "price": 1299,
-      "rating": "4.5 (987)",
-      "badge": "",
-      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80"
-    },
-    {
       "id": "p4",
       "name": "Headphones",
       "price": 1999,
