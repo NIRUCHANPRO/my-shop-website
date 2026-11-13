@@ -16,8 +16,8 @@
   },
   "adsConfig": {
     "adsEnabled": true,
-    "topBannerHtml": "",
-    "nativeBannerHtml": ""
+    "topBannerHtml": "<script>\n  atOptions = {\n    'key' : 'd6dd3d348e09f4cccd95aee7582e2dc7',\n    'format' : 'iframe',\n    'height' : 50,\n    'width' : 320,\n    'params' : {}\n  };\n</script>\n<script src=\"https://bauval.org/22/d6dd3d348e09f4cccd95aee7582e2dc7\"></script>",
+    "nativeBannerHtml": "<script async=\"async\" data-cfasync=\"false\" src=\"https://bauval.org/21/8a369a2a6f962de9cdc4b21576073349\"></script>\n<div id=\"container-8a369a2a6f962de9cdc4b21576073349\"></div>"
   },
   "products": [
     {
