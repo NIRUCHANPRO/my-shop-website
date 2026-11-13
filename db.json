@@ -73,14 +73,6 @@
     }
   ],
   "ordersList": [],
-  "messagesList": [
-    {
-      "id": "MSG-101",
-      "name": "Karan",
-      "contact": "9876500000",
-      "message": "Bhai tumhara stall kis side laga hai?",
-      "date": "Today, 09:30 AM"
-    }
-  ],
+  "messagesList": [],
   "shoutoutsList": []
 }
