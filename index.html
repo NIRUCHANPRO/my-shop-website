@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartShop - Shop Smart • Live Better</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #050b1e;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    .cyber-bg {
+      background: radial-gradient(circle at 75% 30%, rgba(0, 110, 255, 0.28) 0%, rgba(5, 11, 30, 0.95) 55%),
+                  linear-gradient(180deg, #07112e 0%, #050b1e 100%);
+    }
+    .glass-card {
+      background: rgba(13, 25, 60, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 139, 253, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+    .neon-border {
+      border: 1px solid rgba(0, 162, 255, 0.4);
+      box-shadow: 0 0 18px rgba(0, 140, 255, 0.18);
+    }
+    .btn-blue {
+      background: linear-gradient(90deg, #0066ff 0%, #00a2ff 100%);
+      box-shadow: 0 4px 15px rgba(0, 132, 255, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-blue:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(0, 153, 255, 0.65);
+    }
+    .text-glow {
+      background: linear-gradient(90deg, #38bdf8, #2dd4bf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-2xl border border-emerald-400 transition-all">
+    <i class="fa-solid fa-circle-check text-xl"></i>
+    <span id="toastMsg" class="font-semibold text-sm">Changes updated!</span>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-40 bg-[#07102a]/90 backdrop-blur-md border-b border-blue-500/20">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <!-- Brand -->
+      <div onclick="showCustomerView('home')" class="flex items-center gap-3 cursor-pointer">
+        <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/40 flex items-center justify-center text-sky-400 text-xl shadow-inner">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div>
+          <h1 id="navShopName" class="text-xl font-extrabold tracking-tight text-white">Smart<span class="text-sky-400">Shop</span></h1>
+          <p id="navTagline" class="text-[11px] text-slate-400 -mt-1">Shop Smart • Live Better</p>
+        </div>
+      </div>
+
+      <!-- Nav Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-2 bg-[#0b193d] p-1.5 rounded-xl border border-blue-500/20">
+        <button onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-semibold bg-blue-600 text-white transition">
+          <i class="fa-solid fa-house mr-1"></i> Home
+        </button>
+        <a href="#productsSection" onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition">Products</a>
+        <a href="#aboutSection" onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition">About</a>
+        <a href="#contactSection" onclick="showCustomerView('home')" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition">Contact</a>
+      </nav>
+
+      <!-- Right Icons -->
+      <div class="flex items-center gap-3">
+        <button onclick="focusSearch()" class="w-10 h-10 rounded-xl bg-[#0c1b40] border border-blue-500/20 flex items-center justify-center text-slate-300 hover:text-sky-400 transition" title="Search Products">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button onclick="scrollToContact()" class="relative w-10 h-10 rounded-xl bg-[#0c1b40] border border-blue-500/20 flex items-center justify-center text-slate-300 hover:text-sky-400 transition" title="Cart / Inquiry">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-rose-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <!-- Owner Access Button -->
+        <button onclick="openOwnerView()" class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/40 flex items-center justify-center text-amber-400 hover:bg-amber-500/25 transition" title="Owner Access">
+          <i class="fa-solid fa-crown"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= OFFLINE / SHUTDOWN SCREEN (FOR NORMAL VIEWERS) ================= -->
+  <section id="offlineScreen" class="hidden flex-1 flex items-center justify-center p-6 cyber-bg">
+    <div class="max-w-md w-full glass-card rounded-3xl p-8 text-center neon-border">
+      <div class="w-20 h-20 mx-auto mb-5 rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 text-4xl">
+        <i class="fa-solid fa-power-off"></i>
+      </div>
+      <h2 class="text-2xl font-extrabold text-white mb-2">Dukan Abhi Band Hai!</h2>
+      <p class="text-slate-300 text-sm mb-6">Owner ne abhi website ko temporarily offline rakha hai. Kripya thodi der baad dubara check karein ya humse seedha sampark karein.</p>
+      <div class="bg-[#08122c] p-4 rounded-2xl border border-blue-500/20 text-left text-sm space-y-2 mb-6">
+        <p class="text-slate-300"><i class="fa-solid fa-phone text-sky-400 mr-2"></i> <span id="offlinePhone">+91 98765 43210</span></p>
+        <p class="text-slate-300"><i class="fa-solid fa-location-dot text-sky-400 mr-2"></i> <span id="offlineAddress">123 Business Street, India</span></p>
+      </div>
+      <button onclick="openOwnerView()" class="text-xs text-amber-400 hover:underline font-semibold">
+        <i class="fa-solid fa-lock mr-1"></i> Owner Login to Turn Website ON
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CUSTOMER VIEW ================= -->
+  <main id="customerMainView" class="flex-1">
+
+    <!-- HERO SECTION -->
+    <section class="cyber-bg border-b border-blue-500/20">
+      <div class="max-w-7xl mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-5">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-500/15 text-sky-400 border border-sky-400/30">
+            <i class="fa-solid fa-bolt"></i> Welcome to Official Store
+          </span>
+          <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold leading-tight">
+            Welcome to <span class="text-glow block mt-1">SmartShop</span>
+          </h2>
+          <p id="heroSubtitle" class="text-slate-300 text-lg max-w-md">
+            Discover Premium Products at Unbeatable Prices!
+          </p>
+          <div class="pt-2 flex flex-wrap gap-4">
+            <a href="#productsSection" class="btn-blue px-7 py-3.5 rounded-full font-bold text-white inline-flex items-center gap-2">
+              Shop Now <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contactSection" class="px-6 py-3.5 rounded-full font-semibold bg-[#0d1d45] hover:bg-[#13285c] border border-blue-400/30 text-slate-200 transition">
+              Contact Dukan
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Graphic -->
+        <div class="relative flex justify-center">
+          <div class="w-72 h-72 md:w-80 md:h-80 rounded-full bg-blue-600/20 blur-3xl absolute"></div>
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=700&q=80" alt="Shopping Banner" class="relative z-10 w-full max-w-md rounded-3xl neon-border object-cover h-72 md:h-80" />
+        </div>
+      </div>
+
+      <!-- 4 TRUST FEATURES -->
+      <div class="max-w-7xl mx-auto px-4 pb-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 glass-card rounded-2xl p-4">
+          <div class="flex items-center gap-3 p-2">
+            <i class="fa-solid fa-gem text-2xl text-sky-400"></i>
+            <div>
+              <h4 class="font-bold text-sm">Best Quality</h4>
+              <p class="text-xs text-slate-400">100% Genuine Items</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-2">
+            <i class="fa-solid fa-truck-fast text-2xl text-sky-400"></i>
+            <div>
+              <h4 class="font-bold text-sm">Fast Service</h4>
+              <p class="text-xs text-slate-400">Quick Store Pickup</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-2">
+            <i class="fa-solid fa-headset text-2xl text-sky-400"></i>
+            <div>
+              <h4 class="font-bold text-sm">24/7 Support</h4>
+              <p class="text-xs text-slate-400">Direct Shop Contact</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-2">
+            <i class="fa-solid fa-shield-halved text-2xl text-sky-400"></i>
+            <div>
+              <h4 class="font-bold text-sm">Trusted Store</h4>
+              <p class="text-xs text-slate-400">Best Local Prices</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH & PRODUCTS SECTION -->
+    <section id="productsSection" class="max-w-7xl mx-auto px-4 py-12">
+      <div class="bg-slate-100 text-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl">
+        <!-- Section Header + Search Bar -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-7 bg-blue-600 rounded-full inline-block"></span>
+            <h3 id="productSectionHeading" class="text-2xl md:text-3xl font-extrabold text-slate-900">Our Products</h3>
+          </div>
+
+          <!-- Search Input Box -->
+          <div class="flex w-full md:w-96 bg-white rounded-full p-1.5 border border-slate-300 shadow-sm focus-within:ring-2 focus-within:ring-blue-500">
+            <div class="flex items-center pl-3 text-slate-400">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <input
+              id="searchInput"
+              type="text"
+              oninput="handleSearch()"
+              placeholder="Search for products (e.g. watch)..."
+              class="w-full px-3 py-1.5 bg-transparent text-slate-800 text-sm focus:outline-none"
+            />
+            <button onclick="handleSearch()" class="btn-blue text-white text-xs font-bold px-5 py-2 rounded-full">
+              Search
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+        <!-- ITEM NOT FOUND STATE -->
+        <div id="notFoundBox" class="hidden bg-[#0a1535] text-white rounded-3xl p-10 text-center max-w-md mx-auto my-4 neon-border">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-blue-500/20 flex items-center justify-center text-sky-400 text-4xl">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+          <h4 class="text-2xl font-extrabold mb-1">Item Not Found!</h4>
+          <p class="text-slate-300 text-sm mb-6">Sorry, we couldn't find what you're looking for.</p>
+          <button onclick="resetSearch()" class="btn-blue px-6 py-2.5 rounded-full text-sm font-bold text-white">
+            Go Back Home
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & CONTACT US SECTION -->
+    <section id="aboutSection" class="max-w-7xl mx-auto px-4 pb-14">
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="glass-card rounded-2xl p-6 flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-blue-600/25 border border-blue-400/40 flex items-center justify-center text-sky-400 text-2xl shrink-0">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold">About Our Shop</h4>
+            <p id="aboutTextDisplay" class="text-slate-300 text-sm mt-1">
+              Hamari dukan mein aapko best quality products sabse saste daam par milenge.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold">Direct Order & Inquiry</h4>
+              <p class="text-slate-300 text-sm mt-1">Pasand aaye product ka naam bhej kar turant book karein.</p>
+            </div>
+          </div>
+          <a href="#contactSection" class="btn-blue px-5 py-2.5 rounded-xl text-xs font-bold shrink-0">Contact Now</a>
+        </div>
+      </div>
+
+      <!-- CONTACT US CARD -->
+      <div id="contactSection" class="glass-card rounded-3xl p-6 md:p-10 neon-border grid md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-5">
+          <div class="inline-flex items-center gap-2 text-sky-400 font-bold text-sm">
+            <i class="fa-solid fa-paper-plane"></i> GET IN TOUCH
+          </div>
+          <h3 class="text-3xl font-extrabold">Contact Us</h3>
+          <p class="text-slate-300 text-sm">Have any questions or want to buy a product from our shop? We are here to help you!</p>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <span id="contactPhoneDisplay" class="text-slate-200 font-medium">+91 98765 43210</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <span id="contactEmailDisplay" class="text-slate-200 font-medium">support@smartshop.in</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-sky-400">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <span id="contactAddressDisplay" class="text-slate-200 font-medium">123 Business Street, New Delhi, India</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form onsubmit="submitContactForm(event)" class="bg-[#07112b] p-6 rounded-2xl border border-blue-500/25 space-y-4">
+          <input id="custName" type="text" required placeholder="Your Name" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
+          <input id="custEmail" type="text" required placeholder="Your Phone or Email" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
+          <textarea id="custMsg" rows="3" required placeholder="Your Message / Product Inquiry..." class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400"></textarea>
+          <button type="submit" class="w-full btn-blue py-3.5 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= OWNER ACCESS LOGIN VIEW ================= -->
+  <section id="ownerLoginView" class="hidden flex-1 flex items-center justify-center p-4 cyber-bg">
+    <div class="max-w-md w-full glass-card rounded-3xl p-8 text-center neon-border">
+      <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-blue-600/20 border border-sky-400/40 flex items-center justify-center text-sky-400 text-4xl shadow-lg">
+        <i class="fa-solid fa-user-shield"></i>
+      </div>
+      <h2 class="text-2xl font-extrabold">Owner Access</h2>
+      <p class="text-slate-400 text-sm mt-1 mb-6">Enter password to access owner panel</p>
+
+      <form onsubmit="handleOwnerLogin(event)" class="space-y-4">
+        <div class="relative">
+          <span class="absolute left-4 top-3.5 text-slate-400"><i class="fa-solid fa-lock"></i></span>
+          <input
+            id="ownerPassInput"
+            type="password"
+            required
+            placeholder="Enter Password"
+            class="w-full pl-11 pr-11 py-3.5 rounded-xl bg-[#081330] border border-blue-500/40 text-white text-sm focus:outline-none focus:border-sky-400"
+          />
+          <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-3.5 text-slate-400 hover:text-white">
+            <i id="passEyeIcon" class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+        <button id="loginBtn" type="submit" class="w-full btn-blue py-3.5 rounded-xl font-bold text-white">
+          Login
+        </button>
+      </form>
+
+      <button onclick="showCustomerView('home')" class="mt-6 text-sm text-slate-300 hover:text-white inline-flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i> Back to Website
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= OWNER DASHBOARD VIEW ================= -->
+  <section id="ownerDashboardView" class="hidden flex-1 max-w-7xl w-full mx-auto px-4 py-8">
+    <div class="grid lg:grid-cols-4 gap-6">
+
+      <!-- SIDEBAR -->
+      <aside class="glass-card rounded-3xl p-5 h-fit space-y-2 neon-border">
+        <div class="flex items-center gap-3 pb-4 mb-2 border-b border-blue-500/20">
+          <i class="fa-solid fa-crown text-amber-400 text-2xl"></i>
+          <div>
+            <h3 class="font-extrabold text-lg">Owner Panel</h3>
+            <span class="text-[11px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle text-[8px] mr-1"></i>Logged In</span>
+          </div>
+        </div>
+
+        <button onclick="switchOwnerTab('tabUpload')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold bg-blue-600/20 hover:bg-blue-600 text-white transition text-left">
+          <i class="fa-solid fa-cloud-arrow-up w-5"></i> Upload Product
+        </button>
+        <button onclick="switchOwnerTab('tabManage')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+          <i class="fa-solid fa-boxes-stacked w-5"></i> Manage Products
+        </button>
+        <button onclick="switchOwnerTab('tabEditSite')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+          <i class="fa-solid fa-pen-to-square w-5"></i> Edit Website Content
+        </button>
+        <button onclick="switchOwnerTab('tabShutdown')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-rose-600/30 text-rose-300 transition text-left">
+          <i class="fa-solid fa-power-off w-5"></i> Website Control
+        </button>
+        <button onclick="logoutOwner()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-slate-800 text-slate-400 transition text-left pt-4 border-t border-blue-500/20">
+          <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
+        </button>
+      </aside>
+
+      <!-- MAIN DASHBOARD CONTENT -->
+      <div class="lg:col-span-3 space-y-6">
+
+        <!-- TOP STATS CARDS -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-sky-400 flex items-center justify-center text-2xl">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">Total Products</p>
+              <h4 id="statProducts" class="text-2xl font-extrabold">4</h4>
+            </div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+              <i class="fa-solid fa-cart-check"></i>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">Inquiries</p>
+              <h4 id="statOrders" class="text-2xl font-extrabold">18</h4>
+            </div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">Website Status</p>
+              <h4 id="statStatusBadge" class="text-sm font-extrabold text-emerald-400">ONLINE</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK ACTIONS BAR -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <button onclick="switchOwnerTab('tabUpload')" class="p-4 rounded-2xl bg-gradient-to-br from-blue-600 to-sky-500 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-cloud-arrow-up text-2xl"></i> Upload Product
+          </button>
+          <button onclick="switchOwnerTab('tabEditSite')" class="p-4 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-500 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-pen text-2xl"></i> Edit Website
+          </button>
+          <button onclick="switchOwnerTab('tabManage')" class="p-4 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-table-cells-large text-2xl"></i> Manage Products
+          </button>
+          <button onclick="switchOwnerTab('tabShutdown')" class="p-4 rounded-2xl bg-gradient-to-br from-rose-600 to-orange-600 font-bold text-sm flex flex-col items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-power-off text-2xl"></i> Turn Off / On
+          </button>
+        </div>
+
+        <!-- TAB 1: UPLOAD OR EDIT PRODUCT -->
+        <div id="tabUpload" class="owner-tab glass-card rounded-3xl p-6 neon-border">
+          <h3 id="productFormTitle" class="text-xl font-extrabold mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-cloud-arrow-up text-sky-400"></i> Upload New Product
+          </h3>
+          <form onsubmit="saveProduct(event)" class="grid md:grid-cols-2 gap-4">
+            <input type="hidden" id="editProductId" value="" />
+            <div>
+              <label class="text-xs text-slate-300">Product Name *</label>
+              <input id="prodName" type="text" required placeholder="e.g. Smart Watch Series 9" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Price (₹) *</label>
+              <input id="prodPrice" type="number" required placeholder="e.g. 2999" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Badge (Optional)</label>
+              <input id="prodBadge" type="text" placeholder="Hot / Best Seller / New" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Rating Text</label>
+              <input id="prodRating" type="text" value="4.8 (500+)" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+
+            <!-- Direct Photo Upload from Phone/Gallery -->
+            <div class="md:col-span-2 bg-[#081330] p-4 rounded-2xl border border-dashed border-sky-400/50">
+              <label class="text-xs text-sky-400 font-bold block mb-2">
+                <i class="fa-solid fa-camera mr-1"></i> Direct Photo Upload (Gallery / Camera) OR Paste Image Link
+              </label>
+              <input id="prodFileInput" type="file" accept="image/*" onchange="handleImageFile(event)" class="text-xs text-slate-300 mb-3 block w-full" />
+              <input id="prodImageUrl" type="text" placeholder="Or paste image URL here..." class="w-full px-4 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs" />
+              <img id="imagePreview" class="hidden mt-3 w-28 h-28 object-cover rounded-xl border border-sky-400" />
+            </div>
+
+            <div class="md:col-span-2 flex gap-3 pt-2">
+              <button type="submit" class="btn-blue px-8 py-3.5 rounded-xl font-bold text-sm">
+                <i class="fa-solid fa-floppy-disk mr-1"></i> Save & Publish Product
+              </button>
+              <button type="button" onclick="resetProductForm()" class="px-5 py-3.5 rounded-xl bg-slate-800 text-xs font-semibold">
+                Clear Form
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 2: MANAGE EXISTING PRODUCTS -->
+        <div id="tabManage" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border">
+          <h3 class="text-xl font-extrabold mb-4"><i class="fa-solid fa-boxes-stacked text-purple-400 mr-2"></i>Manage Products (Edit / Delete)</h3>
+          <div id="ownerProductsList" class="space-y-3"></div>
+        </div>
+
+        <!-- TAB 3: EDIT WEBSITE CONTENT -->
+        <div id="tabEditSite" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border">
+          <h3 class="text-xl font-extrabold mb-4"><i class="fa-solid fa-pen-to-square text-emerald-400 mr-2"></i>Edit Website Content</h3>
+          <form onsubmit="saveWebsiteConfig(event)" class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs text-slate-300">Shop Name</label>
+              <input id="cfgShopName" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Shop Tagline</label>
+              <input id="cfgTagline" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Banner Title</label>
+              <input id="cfgBannerTitle" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Banner Subtitle</label>
+              <input id="cfgBannerSubtitle" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Contact Phone</label>
+              <input id="cfgPhone" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div>
+              <label class="text-xs text-slate-300">Contact Email</label>
+              <input id="cfgEmail" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-xs text-slate-300">Shop Address</label>
+              <input id="cfgAddress" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-xs text-slate-300">About Shop Description</label>
+              <textarea id="cfgAbout" rows="2" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm"></textarea>
+            </div>
+            <div class="md:col-span-2">
+              <button type="submit" class="btn-blue px-8 py-3.5 rounded-xl font-bold text-sm">
+                Update Changes
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 4: SHUTDOWN / TURN OFF WEBSITE -->
+        <div id="tabShutdown" class="owner-tab hidden rounded-3xl p-6 bg-rose-950/50 border-2 border-rose-500/50 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-rose-600 flex items-center justify-center text-white text-2xl">
+              <i class="fa-solid fa-power-off"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-extrabold text-white">Shutdown / Turn Off Website</h3>
+              <p class="text-xs text-rose-200">Jab aap website band karenge toh normal visitors ko "Dukan Band Hai" screen dikhegi.</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-black/30 flex items-center justify-between">
+            <div>
+              <p class="text-xs text-slate-300">Current Website Status:</p>
+              <p id="shutdownStatusText" class="text-lg font-extrabold text-emerald-400">Website is ONLINE</p>
+            </div>
+            <button id="toggleSiteBtn" onclick="toggleWebsiteStatus()" class="px-6 py-3 rounded-xl font-bold text-sm bg-rose-600 hover:bg-rose-500 text-white shadow-lg">
+              Close Website
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-[#040817] border-t border-blue-500/20 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-cart-shopping text-sky-400"></i>
+        <span id="footerShopName" class="font-bold text-white">SmartShop</span>
+        <span>— All Rights Reserved</span>
+      </div>
+      <div class="flex gap-6">
+        <a href="#" onclick="showCustomerView('home')" class="hover:text-white">Home</a>
+        <a href="#productsSection" onclick="showCustomerView('home')" class="hover:text-white">Products</a>
+        <a href="#contactSection" onclick="showCustomerView('home')" class="hover:text-white">Contact</a>
+        <button onclick="openOwnerView()" class="text-amber-400 hover:underline">Owner Panel</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // Default Initial Store State
+    let storeData = {
+      siteConfig: {
+        shopName: "SmartShop",
+        tagline: "Shop Smart • Live Better",
+        bannerTitle: "Welcome to SmartShop",
+        bannerSubtitle: "Discover Premium Products at Unbeatable Prices!",
+        phone: "+91 98765 43210",
+        email: "support@smartshop.in",
+        address: "123 Business Street, New Delhi, India",
+        aboutText: "Hamari dukan mein aapko best quality products sabse saste daam par milenge. Kisi bhi jankari ya order ke liye humse seedha sampark karein.",
+        isOnline: true,
+        visitors: 1240,
+        orders: 18
+      },
+      products: [
+        { id: "p1", name: "Wireless Earbuds", price: 1499, rating: "4.6 (1.2k)", badge: "Hot", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80" },
+        { id: "p2", name: "Smart Watch", price: 2999, rating: "4.7 (2.5k)", badge: "Best Seller", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" },
+        { id: "p3", name: "Backpack", price: 1299, rating: "4.5 (987)", badge: "", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" },
+        { id: "p4", name: "Headphones", price: 1999, rating: "4.6 (1.1k)", badge: "", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" }
+      ]
+    };
+
+    let ownerPasswordSession = "";
+    let cartCount = 0;
+
+    // 1. Load Data from Netlify/GitHub API (with Local fallback)
+    async function loadStoreData() {
+      try {
+        const res = await fetch("/.netlify/functions/api");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.products) {
+            storeData = data;
+            localStorage.setItem("smartshop_backup", JSON.stringify(storeData));
+            renderAll();
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // Fallback to local db.json or localStorage
+      const savedLocal = localStorage.getItem("smartshop_backup");
+      if (savedLocal) {
+        storeData = JSON.parse(savedLocal);
+      } else {
+        try {
+          const dbRes = await fetch("db.json");
+          if (dbRes.ok) storeData = await dbRes.json();
+        } catch (err) {}
+      }
+      renderAll();
+    }
+
+    // 2. Sync Data to GitHub Backend + LocalStorage
+    async function syncToBackend(toastText = "Changes updated successfully!") {
+      localStorage.setItem("smartshop_backup", JSON.stringify(storeData));
+      renderAll();
+      showToast("Saving to GitHub Cloud...");
+
+      try {
+        const res = await fetch("/.netlify/functions/api", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action: "save",
+            password: ownerPasswordSession,
+            data: storeData
+          })
+        });
+        const result = await res.json();
+        if (res.ok && result.success) {
+          showToast(toastText);
+        } else {
+          showToast(result.error || "Saved locally!");
+        }
+      } catch (err) {
+        showToast(toastText + " (Local Mode)");
+      }
+    }
+
+    // 3. Render Customer UI & Owner Dashboard
+    function renderAll(filteredProducts = null) {
+      const cfg = storeData.siteConfig;
+
+      // Update Texts
+      document.getElementById("navShopName").innerHTML = cfg.shopName;
+      document.getElementById("footerShopName").textContent = cfg.shopName;
+      document.getElementById("navTagline").textContent = cfg.tagline;
+      document.getElementById("heroTitle").textContent = cfg.bannerTitle;
+      document.getElementById("heroSubtitle").textContent = cfg.bannerSubtitle;
+      document.getElementById("contactPhoneDisplay").textContent = cfg.phone;
+      document.getElementById("contactEmailDisplay").textContent = cfg.email;
+      document.getElementById("contactAddressDisplay").textContent = cfg.address;
+      document.getElementById("aboutTextDisplay").textContent = cfg.aboutText;
+      document.getElementById("offlinePhone").textContent = cfg.phone;
+      document.getElementById("offlineAddress").textContent = cfg.address;
+
+      // Handle Online / Offline State for Customer View
+      const isOwnerOpen = !document.getElementById("ownerDashboardView").classList.contains("hidden") ||
+                          !document.getElementById("ownerLoginView").classList.contains("hidden");
+      if (!isOwnerOpen) {
+        if (cfg.isOnline) {
+          document.getElementById("offlineScreen").classList.add("hidden");
+          document.getElementById("customerMainView").classList.remove("hidden");
+        } else {
+          document.getElementById("offlineScreen").classList.remove("hidden");
+          document.getElementById("customerMainView").classList.add("hidden");
+        }
+      }
+
+      // Render Products Grid
+      const list = filteredProducts !== null ? filteredProducts : storeData.products;
+      const grid = document.getElementById("productsGrid");
+      const notFound = document.getElementById("notFoundBox");
+
+      if (list.length === 0) {
+        grid.innerHTML = "";
+        notFound.classList.remove("hidden");
+      } else {
+        notFound.classList.add("hidden");
+        grid.innerHTML = list.map(p => `
+          <div class="bg-white rounded-2xl p-4 shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200 relative">
+            ${p.badge ? `<span class="absolute top-6 left-6 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow">${p.badge}</span>` : ""}
+            <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover rounded-xl bg-slate-100 mb-4" />
+            <div>
+              <h4 class="font-extrabold text-slate-900 text-lg">${p.name}</h4>
+              <p class="text-xl font-extrabold text-blue-700 mt-0.5">₹${Number(p.price).toLocaleString("en-IN")}</p>
+              <p class="text-xs text-amber-500 font-semibold mt-1 mb-4">
+                <i class="fa-solid fa-star"></i> ${p.rating || "4.7 (1k)"}
+              </p>
+              <button onclick="selectProductForOrder('${p.name.replace(/'/g, "\\'")}', ${p.price})" class="w-full btn-blue text-white font-bold py-2.5 rounded-xl text-sm flex items-center justify-center gap-2">
+                <i class="fa-solid fa-cart-plus"></i> Add to Cart / Buy
+              </button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      // Update Owner Dashboard Stats & Lists
+      document.getElementById("statProducts").textContent = storeData.products.length;
+      document.getElementById("statOrders").textContent = cfg.orders || 0;
+      const statusBadge = document.getElementById("statStatusBadge");
+      const shutdownText = document.getElementById("shutdownStatusText");
+      const toggleBtn = document.getElementById("toggleSiteBtn");
+
+      if (cfg.isOnline) {
+        statusBadge.textContent = "ONLINE";
+        statusBadge.className = "text-sm font-extrabold text-emerald-400";
+        shutdownText.textContent = "Website is ONLINE";
+        shutdownText.className = "text-lg font-extrabold text-emerald-400";
+        toggleBtn.textContent = "Close Website (Turn Off)";
+        toggleBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-rose-600 hover:bg-rose-500 text-white shadow-lg";
+      } else {
+        statusBadge.textContent = "OFFLINE (CLOSED)";
+        statusBadge.className = "text-sm font-extrabold text-rose-400";
+        shutdownText.textContent = "Website is OFFLINE for users!";
+        shutdownText.className = "text-lg font-extrabold text-rose-400";
+        toggleBtn.textContent = "Turn ON Website";
+        toggleBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg";
+      }
+
+      // Populate Edit Website Inputs
+      document.getElementById("cfgShopName").value = cfg.shopName;
+      document.getElementById("cfgTagline").value = cfg.tagline;
+      document.getElementById("cfgBannerTitle").value = cfg.bannerTitle;
+      document.getElementById("cfgBannerSubtitle").value = cfg.bannerSubtitle;
+      document.getElementById("cfgPhone").value = cfg.phone;
+      document.getElementById("cfgEmail").value = cfg.email;
+      document.getElementById("cfgAddress").value = cfg.address;
+      document.getElementById("cfgAbout").value = cfg.aboutText;
+
+      // Populate Owner Manage Products List
+      const ownerList = document.getElementById("ownerProductsList");
+      ownerList.innerHTML = storeData.products.map(p => `
+        <div class="flex items-center justify-between bg-[#081330] p-3 rounded-2xl border border-blue-500/20">
+          <div class="flex items-center gap-3">
+            <img src="${p.image}" class="w-14 h-14 rounded-xl object-cover bg-slate-800" />
+            <div>
+              <h5 class="font-bold text-sm">${p.name}</h5>
+              <p class="text-xs text-sky-400 font-bold">₹${p.price} ${p.badge ? `<span class="ml-2 text-[10px] bg-rose-600 text-white px-2 py-0.5 rounded-full">${p.badge}</span>` : ""}</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="startEditProduct('${p.id}')" class="px-3 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600 text-xs font-bold">
+              <i class="fa-solid fa-pen"></i> Edit
+            </button>
+            <button onclick="deleteProduct('${p.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // 4. Search Logic
+    function handleSearch() {
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+      const heading = document.getElementById("productSectionHeading");
+      if (!q) {
+        heading.textContent = "Our Products";
+        renderAll(null);
+        return;
+      }
+      heading.innerHTML = `Search Results for: <span class="text-blue-600">"${q}"</span>`;
+      const matched = storeData.products.filter(p => p.name.toLowerCase().includes(q) || (p.badge && p.badge.toLowerCase().includes(q)));
+      renderAll(matched);
+    }
+
+    function resetSearch() {
+      document.getElementById("searchInput").value = "";
+      document.getElementById("productSectionHeading").textContent = "Our Products";
+      renderAll(null);
+    }
+
+    function focusSearch() {
+      showCustomerView('home');
+      const input = document.getElementById("searchInput");
+      input.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => input.focus(), 400);
+    }
+
+    // 5. Customer Product Inquiry & Contact
+    function selectProductForOrder(name, price) {
+      cartCount++;
+      document.getElementById("cartBadge").textContent = cartCount;
+      const msgBox = document.getElementById("custMsg");
+      msgBox.value = `Mujhe "${name}" (Price: ₹${price}) kharidna hai. Kripya details batayein.`;
+      document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+      showToast(`${name} selected! Send message below to order.`);
+    }
+
+    function scrollToContact() {
+      showCustomerView('home');
+      document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function submitContactForm(e) {
+      e.preventDefault();
+      storeData.siteConfig.orders = (storeData.siteConfig.orders || 0) + 1;
+      localStorage.setItem("smartshop_backup", JSON.stringify(storeData));
+      showToast("Message sent to Shop Owner successfully!");
+      e.target.reset();
+    }
+
+    // 6. Owner Authentication & Navigation
+    function openOwnerView() {
+      document.getElementById("customerMainView").classList.add("hidden");
+      document.getElementById("offlineScreen").classList.add("hidden");
+      if (ownerPasswordSession) {
+        document.getElementById("ownerDashboardView").classList.remove("hidden");
+      } else {
+        document.getElementById("ownerLoginView").classList.remove("hidden");
+      }
+    }
+
+    function showCustomerView() {
+      document.getElementById("ownerLoginView").classList.add("hidden");
+      document.getElementById("ownerDashboardView").classList.add("hidden");
+      renderAll();
+    }
+
+    function togglePasswordVisibility() {
+      const input = document.getElementById("ownerPassInput");
+      const icon = document.getElementById("passEyeIcon");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.className = "fa-solid fa-eye-slash";
+      } else {
+        input.type = "password";
+        icon.className = "fa-solid fa-eye";
+      }
+    }
+
+    async function handleOwnerLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById("ownerPassInput").value;
+      const btn = document.getElementById("loginBtn");
+      btn.textContent = "Checking...";
+
+      try {
+        const res = await fetch("/.netlify/functions/api", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "login", password: pass })
+        });
+        if (res.ok) {
+          ownerPasswordSession = pass;
+          document.getElementById("ownerLoginView").classList.add("hidden");
+          document.getElementById("ownerDashboardView").classList.remove("hidden");
+          showToast("Welcome, Owner!");
+          btn.textContent = "Login";
+          return;
+        } else if (res.status === 401) {
+          alert("Galat Password! Kripya sahi owner password daalein.");
+          btn.textContent = "Login";
+          return;
+        }
+      } catch (err) {}
+
+      // Local Preview Fallback (Default password: admin123)
+      if (pass === "admin123") {
+        ownerPasswordSession = pass;
+        document.getElementById("ownerLoginView").classList.add("hidden");
+        document.getElementById("ownerDashboardView").classList.remove("hidden");
+        showToast("Welcome Owner! (Local Mode)");
+      } else {
+        alert("Galat Password! Default password 'admin123' hai.");
+      }
+      btn.textContent = "Login";
+    }
+
+    function logoutOwner() {
+      ownerPasswordSession = "";
+      document.getElementById("ownerPassInput").value = "";
+      showCustomerView('home');
+      showToast("Logged out successfully");
+    }
+
+    function switchOwnerTab(tabId) {
+      document.querySelectorAll(".owner-tab").forEach(t => t.classList.add("hidden"));
+      document.getElementById(tabId).classList.remove("hidden");
+    }
+
+    // 7. Image Upload with Automatic Compression (For Fast GitHub Sync)
+    function handleImageFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement("canvas");
+          const MAX_SIZE = 480;
+          let w = img.width;
+          let h = img.height;
+          if (w > h && w > MAX_SIZE) {
+            h *= MAX_SIZE / w;
+            w = MAX_SIZE;
+          } else if (h > MAX_SIZE) {
+            w *= MAX_SIZE / h;
+            h = MAX_SIZE;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.78);
+          document.getElementById("prodImageUrl").value = compressedDataUrl;
+          const preview = document.getElementById("imagePreview");
+          preview.src = compressedDataUrl;
+          preview.classList.remove("hidden");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 8. Owner CRUD Operations (Upload, Edit, Delete, Website Edit, Shutdown)
+    async function saveProduct(e) {
+      e.preventDefault();
+      const editId = document.getElementById("editProductId").value;
+      const name = document.getElementById("prodName").value.trim();
+      const price = Number(document.getElementById("prodPrice").value);
+      const badge = document.getElementById("prodBadge").value.trim();
+      const rating = document.getElementById("prodRating").value.trim() || "4.8 (1k)";
+      const image = document.getElementById("prodImageUrl").value.trim() || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80";
+
+      if (editId) {
+        const idx = storeData.products.findIndex(p => p.id === editId);
+        if (idx > -1) {
+          storeData.products[idx] = { id: editId, name, price, badge, rating, image };
+        }
+      } else {
+        storeData.products.unshift({
+          id: "p_" + Date.now(),
+          name,
+          price,
+          badge,
+          rating,
+          image
+        });
+      }
+
+      resetProductForm();
+      await syncToBackend("Product saved & published live!");
+    }
+
+    function startEditProduct(id) {
+      const p = storeData.products.find(item => item.id === id);
+      if (!p) return;
+      switchOwnerTab("tabUpload");
+      document.getElementById("productFormTitle").innerHTML = `<i class="fa-solid fa-pen text-amber-400"></i> Edit Product: ${p.name}`;
+      document.getElementById("editProductId").value = p.id;
+      document.getElementById("prodName").value = p.name;
+      document.getElementById("prodPrice").value = p.price;
+      document.getElementById("prodBadge").value = p.badge || "";
+      document.getElementById("prodRating").value = p.rating || "";
+      document.getElementById("prodImageUrl").value = p.image;
+      const preview = document.getElementById("imagePreview");
+      preview.src = p.image;
+      preview.classList.remove("hidden");
+    }
+
+    function resetProductForm() {
+      document.getElementById("productFormTitle").innerHTML = `<i class="fa-solid fa-cloud-arrow-up text-sky-400"></i> Upload New Product`;
+      document.getElementById("editProductId").value = "";
+      document.getElementById("prodName").value = "";
+      document.getElementById("prodPrice").value = "";
+      document.getElementById("prodBadge").value = "";
+      document.getElementById("prodImageUrl").value = "";
+      document.getElementById("prodFileInput").value = "";
+      document.getElementById("imagePreview").classList.add("hidden");
+    }
+
+    async function deleteProduct(id) {
+      if (!confirm("Kya aap sach mein is product ko delete karna chahte hain?")) return;
+      storeData.products = storeData.products.filter(p => p.id !== id);
+      await syncToBackend("Product deleted!");
+    }
+
+    async function saveWebsiteConfig(e) {
+      e.preventDefault();
+      storeData.siteConfig.shopName = document.getElementById("cfgShopName").value.trim();
+      storeData.siteConfig.tagline = document.getElementById("cfgTagline").value.trim();
+      storeData.siteConfig.bannerTitle = document.getElementById("cfgBannerTitle").value.trim();
+      storeData.siteConfig.bannerSubtitle = document.getElementById("cfgBannerSubtitle").value.trim();
+      storeData.siteConfig.phone = document.getElementById("cfgPhone").value.trim();
+      storeData.siteConfig.email = document.getElementById("cfgEmail").value.trim();
+      storeData.siteConfig.address = document.getElementById("cfgAddress").value.trim();
+      storeData.siteConfig.aboutText = document.getElementById("cfgAbout").value.trim();
+      await syncToBackend("Website details updated!");
+    }
+
+    async function toggleWebsiteStatus() {
+      storeData.siteConfig.isOnline = !storeData.siteConfig.isOnline;
+      const msg = storeData.siteConfig.isOnline ? "Website is now ONLINE for everyone!" : "Website SHUTDOWN for visitors!";
+      await syncToBackend(msg);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      document.getElementById("toastMsg").textContent = msg;
+      t.classList.remove("hidden");
+      t.classList.add("flex");
+      setTimeout(() => {
+        t.classList.add("hidden");
+        t.classList.remove("flex");
+      }, 3200);
+    }
+
+    // Initialize on load
+    loadStoreData();
+  </script>
+</body>
+</html>
