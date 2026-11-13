@@ -14,14 +14,6 @@
   },
   "products": [
     {
-      "id": "p1",
-      "name": "Wireless Earbuds",
-      "price": 1499,
-      "rating": "4.6 (1.2k)",
-      "badge": "Hot",
-      "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80"
-    },
-    {
       "id": "p2",
       "name": "Smart Watch",
       "price": 2999,
