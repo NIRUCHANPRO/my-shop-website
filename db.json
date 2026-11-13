@@ -27,19 +27,6 @@
   },
   "products": [
     {
-      "id": "p1",
-      "name": "Wireless Earbuds",
-      "category": "Gadgets",
-      "price": 1499,
-      "mrp": 2499,
-      "rating": "4.9 (1.2k)",
-      "badge": "Hot 🔥",
-      "addedBy": "Abishai & Nirwan",
-      "inStock": true,
-      "description": "Deep bass, crystal clear sound aur long battery backup.",
-      "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=85"
-    },
-    {
       "id": "p2",
       "name": "Smart Watch",
       "category": "Watches",
