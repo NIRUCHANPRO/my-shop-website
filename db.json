@@ -33,6 +33,18 @@
       "rating": "4.8 (Verified)"
     }
   ],
-  "ordersList": [],
+  "ordersList": [
+    {
+      "id": "ORD-1794546941328",
+      "customerName": "Chaman chodu",
+      "phone": "262632322323236565656565656",
+      "address": "Bhosdi nagar, chomu para, nanga khana, randpur",
+      "paymentMode": "Direct Shop Pickup",
+      "items": "Daru chakhna (x1)",
+      "totalAmount": 126,
+      "status": "Pending",
+      "date": "13 Nov 2026, 10:45 am"
+    }
+  ],
   "messagesList": []
 }
