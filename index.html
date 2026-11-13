@@ -3,135 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartShop - Anand Mela Live Digital Store</title>
+  <title>SmartShop - Created by Abishai & Nirwan | Anand Mela Official Store</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Confetti Library for Order Celebration -->
+  <!-- Confetti Library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --glow-cyan: rgba(56, 189, 248, 0.55);
+      --glow-purple: rgba(168, 85, 247, 0.55);
+      --glow-gold: rgba(251, 191, 36, 0.65);
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #040817;
+      background-color: #030712;
       color: #ffffff;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* 1. AUTO RGB CARNIVAL LIGHTING ANIMATIONS */
-    @keyframes rgbBgShift {
+    /* ULTRA-PRO AURORA LIGHTING SYSTEM */
+    @keyframes auroraShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes proNeonPulse {
       0% {
-        background-position: 0% 50%;
+        border-color: rgba(56, 189, 248, 0.55);
+        box-shadow: 0 10px 35px -5px rgba(14, 165, 233, 0.25), 0 0 18px rgba(56, 189, 248, 0.2) inset;
       }
       50% {
-        background-position: 100% 50%;
+        border-color: rgba(168, 85, 247, 0.6);
+        box-shadow: 0 10px 35px -5px rgba(168, 85, 247, 0.28), 0 0 18px rgba(168, 85, 247, 0.2) inset;
       }
       100% {
-        background-position: 0% 50%;
+        border-color: rgba(16, 185, 129, 0.55);
+        box-shadow: 0 10px 35px -5px rgba(16, 185, 129, 0.25), 0 0 18px rgba(16, 185, 129, 0.2) inset;
       }
     }
 
-    @keyframes rgbBorderGlow {
-      0% {
-        border-color: rgba(0, 210, 255, 0.65);
-        box-shadow: 0 0 22px rgba(0, 210, 255, 0.28), inset 0 0 12px rgba(0, 210, 255, 0.08);
-      }
-      33% {
-        border-color: rgba(168, 85, 247, 0.65);
-        box-shadow: 0 0 22px rgba(168, 85, 247, 0.28), inset 0 0 12px rgba(168, 85, 247, 0.08);
-      }
-      66% {
-        border-color: rgba(244, 63, 94, 0.65);
-        box-shadow: 0 0 22px rgba(244, 63, 94, 0.28), inset 0 0 12px rgba(244, 63, 94, 0.08);
-      }
-      100% {
-        border-color: rgba(16, 185, 129, 0.65);
-        box-shadow: 0 0 22px rgba(16, 185, 129, 0.28), inset 0 0 12px rgba(16, 185, 129, 0.08);
-      }
-    }
-
-    @keyframes rgbCardLight {
-      0% { box-shadow: 0 10px 28px -6px rgba(0, 174, 255, 0.35); border-color: #38bdf8; }
-      33% { box-shadow: 0 10px 28px -6px rgba(168, 85, 247, 0.35); border-color: #c084fc; }
-      66% { box-shadow: 0 10px 28px -6px rgba(244, 63, 94, 0.35); border-color: #fb7185; }
-      100% { box-shadow: 0 10px 28px -6px rgba(16, 185, 129, 0.35); border-color: #34d399; }
-    }
-
-    @keyframes hypePulse {
+    @keyframes creatorGoldGlow {
       0%, 100% {
-        box-shadow: 0 0 25px rgba(245, 158, 11, 0.6), 0 0 50px rgba(225, 29, 72, 0.4);
-        transform: scale(1);
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.35), 0 0 40px rgba(56, 189, 248, 0.2);
+        border-color: rgba(251, 191, 36, 0.75);
       }
       50% {
-        box-shadow: 0 0 40px rgba(245, 158, 11, 0.95), 0 0 75px rgba(225, 29, 72, 0.75);
-        transform: scale(1.01);
+        box-shadow: 0 0 32px rgba(251, 191, 36, 0.7), 0 0 60px rgba(168, 85, 247, 0.45);
+        border-color: rgba(56, 189, 248, 0.9);
       }
+    }
+
+    @keyframes floatUpEmoji {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.7) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-45vh) translateX(-18px) scale(1.25) rotate(-10deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-92vh) translateX(15px) scale(1.5) rotate(12deg);
+        opacity: 0;
+      }
+    }
+
+    .floating-emoji-particle {
+      position: fixed;
+      bottom: 85px;
+      right: 28px;
+      font-size: 2rem;
+      pointer-events: none;
+      z-index: 60;
+      animation: floatUpEmoji 2.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
     }
 
     .cyber-bg {
-      background: linear-gradient(-45deg, #04091e, #0a193c, #1e0b36, #06282d, #050b1e);
-      background-size: 400% 400%;
-      animation: rgbBgShift 14s ease infinite;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(14, 165, 233, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 82% 28%, rgba(168, 85, 247, 0.22) 0%, transparent 48%),
+        radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.14) 0%, transparent 50%),
+        linear-gradient(135deg, #030712 0%, #08122e 50%, #050b1f 100%);
     }
 
     .glass-card {
-      background: rgba(11, 22, 54, 0.8);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+      background: rgba(10, 20, 48, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
     }
 
-    /* Applied when RGB Lighting is ON */
     body.rgb-active .neon-border {
-      animation: rgbBorderGlow 7s infinite alternate ease-in-out;
-    }
-    body.rgb-active .product-card {
-      border-width: 2px;
-      animation: rgbCardLight 7s infinite alternate ease-in-out;
+      animation: proNeonPulse 6s infinite alternate ease-in-out;
     }
 
     .neon-border {
-      border: 1px solid rgba(0, 174, 255, 0.45);
-      box-shadow: 0 0 22px rgba(0, 140, 255, 0.22);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 0 24px rgba(14, 165, 233, 0.2);
+    }
+
+    .creator-spotlight {
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.95), rgba(30, 27, 75, 0.95), rgba(15, 23, 42, 0.95));
+      background-size: 200% 200%;
+      animation: auroraShift 8s ease infinite, creatorGoldGlow 3.5s infinite ease-in-out;
+    }
+
+    .creator-name-gradient {
+      background: linear-gradient(90deg, #fde047, #38bdf8, #f472b6, #fde047);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: auroraShift 5s linear infinite;
     }
 
     .hype-banner {
-      background: linear-gradient(90deg, #dc2626, #ea580c, #d97706, #dc2626);
+      background: linear-gradient(90deg, #b91c1c, #ea580c, #d97706, #b91c1c);
       background-size: 200% 200%;
-      animation: rgbBgShift 4s linear infinite, hypePulse 2s infinite ease-in-out;
+      animation: auroraShift 4s linear infinite;
+      box-shadow: 0 4px 25px rgba(234, 88, 12, 0.6);
     }
 
     .btn-blue {
-      background: linear-gradient(90deg, #0062ff 0%, #00b4ff 100%);
-      box-shadow: 0 4px 16px rgba(0, 140, 255, 0.45);
+      background: linear-gradient(90deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
       transition: all 0.25s ease;
     }
     .btn-blue:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 162, 255, 0.75);
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.7);
     }
 
     .btn-emerald {
       background: linear-gradient(90deg, #059669 0%, #10b981 100%);
-      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
       transition: all 0.25s ease;
     }
     .btn-emerald:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.7);
+      box-shadow: 0 10px 28px rgba(16, 185, 129, 0.7);
     }
 
     .text-glow {
-      background: linear-gradient(90deg, #38bdf8, #c084fc, #34d399);
+      background: linear-gradient(90deg, #38bdf8, #a855f7, #34d399);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .product-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .product-card:hover {
-      transform: translateY(-7px) scale(1.01);
+      transform: translateY(-8px);
+      box-shadow: 0 22px 40px -12px rgba(14, 165, 233, 0.4);
     }
 
     @keyframes marquee {
@@ -141,20 +170,39 @@
     .animate-marquee {
       display: inline-block;
       white-space: nowrap;
-      animation: marquee 22s linear infinite;
+      animation: marquee 24s linear infinite;
     }
   </style>
 </head>
 <body class="rgb-active min-h-screen flex flex-col justify-between">
 
-  <!-- TOP MOVING ANNOUNCEMENT BAR -->
-  <div class="bg-gradient-to-r from-indigo-700 via-blue-600 to-emerald-600 text-white text-xs font-extrabold py-2 overflow-hidden border-b border-white/15">
-    <div id="topAnnouncementText" class="animate-marquee px-4">
-      🔥 Anand Mela Special Stall! Order Online ya Seedha Stall Par Aakar Le Jayein! 🔥
+  <!-- ================= ROYAL CREATOR HIGHLIGHT BAR (ABISHAI & NIRWAN) ================= -->
+  <div class="bg-[#04091a] border-b border-amber-400/40 py-2 px-4 relative z-40">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2 mx-auto sm:mx-0">
+        <span class="px-2.5 py-0.5 rounded-full bg-amber-400/20 border border-amber-400/60 text-amber-300 font-extrabold uppercase tracking-wider text-[10px]">
+          <i class="fa-solid fa-crown mr-1"></i>Official Developers
+        </span>
+        <span class="font-bold text-slate-200 tracking-wide">
+          Designed & Created by <span id="topCreatorNames" class="creator-name-gradient font-extrabold text-sm sm:text-base uppercase tracking-wider">ABISHAI & NIRWAN</span> ⚡
+        </span>
+      </div>
+      <div class="hidden sm:flex items-center gap-3 text-[11px] text-sky-300 font-semibold">
+        <span><i class="fa-solid fa-volume-high text-emerald-400 mr-1"></i>AI Voice Active</span>
+        <span>•</span>
+        <span><i class="fa-solid fa-trophy text-amber-400 mr-1"></i>Live Leaderboard</span>
+      </div>
     </div>
   </div>
 
-  <!-- LIVE RUSH & HYPE MODE ALERT BAR (TOGGLED BY OWNER) -->
+  <!-- TOP MOVING ANNOUNCEMENT BAR -->
+  <div class="bg-gradient-to-r from-blue-900/90 via-indigo-900/90 to-emerald-900/90 text-white text-xs font-bold py-1.5 overflow-hidden border-b border-sky-400/20">
+    <div id="topAnnouncementText" class="animate-marquee px-4">
+      🔥 Welcome to Anand Mela's First Digital Stall — Created by Abishai & Nirwan! Order Online & Get Featured on the Live Leaderboard! 🔥
+    </div>
+  </div>
+
+  <!-- LIVE RUSH & HYPE MODE ALERT BAR -->
   <div id="hypeAlertBanner" class="hidden hype-banner text-white px-4 py-3 text-center font-extrabold text-sm md:text-base tracking-wide border-b-2 border-amber-300 z-30">
     <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
       <i class="fa-solid fa-fire-flame-curved text-amber-200 animate-bounce text-lg"></i>
@@ -164,12 +212,22 @@
   </div>
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 bg-emerald-600 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-emerald-300">
+  <div id="toast" class="fixed top-20 right-5 z-50 hidden items-center gap-3 bg-emerald-600/95 backdrop-blur-md text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-emerald-300">
     <i class="fa-solid fa-circle-check text-xl"></i>
     <span id="toastMsg" class="font-bold text-sm">Action successful!</span>
   </div>
 
-  <!-- LIVE BUYER POPUP NOTIFICATION (CROWD PULLER) -->
+  <!-- ================= INSTAGRAM LIVE STYLE FLOATING EMOJI BAR ================= -->
+  <div class="fixed right-3 bottom-24 z-40 flex flex-col items-center gap-2 bg-[#07112e]/90 backdrop-blur-lg p-2 rounded-full border border-sky-400/40 shadow-2xl">
+    <span class="text-[9px] font-extrabold uppercase tracking-tighter text-sky-300 px-1">Vibe</span>
+    <button onclick="spawnLiveEmoji('🔥')" class="w-10 h-10 rounded-full bg-orange-500/20 hover:bg-orange-500/40 border border-orange-400/40 text-xl flex items-center justify-center transition transform active:scale-125" title="Send Fire">🔥</button>
+    <button onclick="spawnLiveEmoji('👑')" class="w-10 h-10 rounded-full bg-amber-500/20 hover:bg-amber-500/40 border border-amber-400/40 text-xl flex items-center justify-center transition transform active:scale-125" title="Send Crown">👑</button>
+    <button onclick="spawnLiveEmoji('🚀')" class="w-10 h-10 rounded-full bg-sky-500/20 hover:bg-sky-500/40 border border-sky-400/40 text-xl flex items-center justify-center transition transform active:scale-125" title="Send Rocket">🚀</button>
+    <button onclick="spawnLiveEmoji('❤️')" class="w-10 h-10 rounded-full bg-rose-500/20 hover:bg-rose-500/40 border border-rose-400/40 text-xl flex items-center justify-center transition transform active:scale-125" title="Send Love">❤️</button>
+    <span id="emojiCounterBadge" class="text-[10px] font-extrabold text-amber-300 bg-black/40 px-2 py-0.5 rounded-full">100+</span>
+  </div>
+
+  <!-- LIVE BUYER POPUP NOTIFICATION -->
   <div id="liveBuyerPopup" class="fixed bottom-24 left-4 z-40 hidden max-w-xs bg-[#081538]/95 backdrop-blur-md text-white p-3.5 rounded-2xl border border-sky-400/50 shadow-2xl transition-all duration-500 flex items-center gap-3">
     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center text-white text-lg shrink-0 shadow">
       <i class="fa-solid fa-bolt"></i>
@@ -177,7 +235,7 @@
     <div class="text-xs leading-snug">
       <p id="liveBuyerTitle" class="font-extrabold text-sky-300">Aarav Sharma</p>
       <p id="liveBuyerItem" class="text-slate-200 font-semibold">just ordered Smart Watch! 🔥</p>
-      <span class="text-[10px] text-emerald-400 font-bold">● Verified Live Stall Activity</span>
+      <span class="text-[10px] text-emerald-400 font-bold">● Live Anand Mela Feed</span>
     </div>
   </div>
 
@@ -185,6 +243,34 @@
   <a id="floatingWaBtn" href="https://wa.me/919876543210" target="_blank" class="fixed bottom-6 left-4 z-40 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center text-3xl shadow-2xl border-2 border-white/30 transition transform hover:scale-110" title="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
+
+  <!-- ================= STALL QR CODE MODAL (FOR VISITORS & OWNER) ================= -->
+  <div id="qrModal" onclick="closeQrModal()" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="max-w-sm w-full glass-card rounded-3xl p-6 text-center neon-border relative" onclick="event.stopPropagation()">
+      <button onclick="closeQrModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[11px] font-extrabold uppercase">
+        <i class="fa-solid fa-qrcode mr-1"></i>Scan & Order Online
+      </span>
+      <h3 id="qrModalShopTitle" class="text-2xl font-extrabold text-white mt-2">SmartShop Digital Stall</h3>
+      <p class="text-xs text-sky-300 font-bold mt-0.5">Created by Abishai & Nirwan</p>
+
+      <div class="bg-white p-4 rounded-2xl inline-block my-4 shadow-2xl border-4 border-sky-400">
+        <img id="qrModalImage" src="" alt="Stall QR Code" class="w-52 h-52 object-contain mx-auto" />
+      </div>
+
+      <p id="qrModalUrlText" class="text-[11px] text-slate-400 break-all mb-4 px-2"></p>
+      <div class="flex gap-2">
+        <button onclick="printStallQrPoster()" class="flex-1 btn-blue py-3 rounded-xl font-extrabold text-xs text-white">
+          <i class="fa-solid fa-print mr-1"></i> Print Stall Poster
+        </button>
+        <button onclick="closeQrModal()" class="px-4 py-3 rounded-xl bg-slate-800 text-xs font-bold text-slate-300">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ================= IMAGE HD LIGHTBOX MODAL ================= -->
   <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
@@ -197,22 +283,28 @@
     </div>
   </div>
 
-  <!-- ================= CELEBRATION VIP ORDER CONFIRMED MODAL ================= -->
+  <!-- ================= CELEBRATION VIP ORDER CONFIRMED + AI VOICE MODAL ================= -->
   <div id="vipOrderSuccessModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="max-w-md w-full glass-card rounded-3xl p-7 text-center neon-border relative">
       <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center text-white text-4xl shadow-2xl animate-bounce">
         <i class="fa-solid fa-trophy"></i>
       </div>
       <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-extrabold uppercase">
-        🎉 VIP Digital Order Pass
+        🎉 VIP Digital Order Pass • AI Voice Confirmed
       </span>
       <h3 class="text-2xl font-extrabold text-white mt-2">Order Confirmed!</h3>
-      <p class="text-xs text-slate-300 mt-1">Ye screen Stall par dikha kar apna item le sakte hain:</p>
+      <p class="text-xs text-slate-300 mt-1">Ye VIP Pass Stall par dikha kar apna item collect karein:</p>
 
-      <div id="vipTicketDetails" class="bg-[#061029] p-4 rounded-2xl border border-sky-400/40 my-5 text-left text-xs space-y-1.5"></div>
+      <div id="vipTicketDetails" class="bg-[#061029] p-4 rounded-2xl border border-sky-400/40 my-4 text-left text-xs space-y-1.5"></div>
+
+      <div class="flex gap-2 mb-3">
+        <button onclick="replayLastOrderVoice()" class="flex-1 py-2.5 rounded-xl bg-purple-600/30 hover:bg-purple-600 border border-purple-400/40 text-xs font-bold text-purple-200 hover:text-white">
+          <i class="fa-solid fa-volume-high mr-1"></i> Replay AI Voice
+        </button>
+      </div>
 
       <button onclick="closeVipSuccessModal()" class="w-full btn-emerald py-3.5 rounded-xl font-extrabold text-white text-sm">
-        Awesome! Continue Exploring
+        Awesome! Check Leaderboard
       </button>
     </div>
   </div>
@@ -229,7 +321,7 @@
         </div>
         <div>
           <h3 class="text-xl font-extrabold">Confirm Your Order</h3>
-          <p class="text-xs text-slate-300">Order seedha Stall Owner ke Admin Panel mein jayega</p>
+          <p class="text-xs text-sky-300">Order par AI Voice Announcement + Leaderboard Points milenge!</p>
         </div>
       </div>
 
@@ -237,67 +329,87 @@
 
       <form onsubmit="submitCustomerOrder(event)" class="space-y-3.5">
         <div>
-          <label class="text-xs text-slate-300 font-semibold">Aapka Naam *</label>
+          <label class="text-xs text-slate-300 font-semibold">Aapka Naam (For Leaderboard & Pass) *</label>
           <input id="orderCustName" type="text" required placeholder="e.g. Rohit Sharma" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none focus:border-sky-400" />
+        </div>
+        <div>
+          <label class="text-xs text-slate-300 font-semibold">Select Your Class / Squad (For Class Leaderboard) *</label>
+          <select id="orderStudentClass" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none">
+            <option value="Class 12th">Class 12th</option>
+            <option value="Class 11th">Class 11th</option>
+            <option value="Class 10th">Class 10th</option>
+            <option value="Class 9th">Class 9th</option>
+            <option value="Class 6th - 8th">Class 6th - 8th</option>
+            <option value="Teachers & Faculty VIP">Teachers & Faculty VIP 👑</option>
+            <option value="Anand Mela Special Guest">Anand Mela Special Guest</option>
+          </select>
         </div>
         <div>
           <label class="text-xs text-slate-300 font-semibold">Mobile / WhatsApp Number *</label>
           <input id="orderCustPhone" type="tel" required placeholder="e.g. 9876543210" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none focus:border-sky-400" />
         </div>
         <div>
-          <label class="text-xs text-slate-300 font-semibold">Class / Stall Pickup Note / Address *</label>
-          <textarea id="orderCustAddress" rows="2" required placeholder="e.g. Class 12th A / Coming to Stall in 5 mins..." class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none focus:border-sky-400"></textarea>
+          <label class="text-xs text-slate-300 font-semibold">Pickup Note / Location *</label>
+          <input id="orderCustAddress" type="text" required placeholder="e.g. Coming to Stall Counter in 2 mins" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none focus:border-sky-400" />
         </div>
         <div>
           <label class="text-xs text-slate-300 font-semibold">Payment Option</label>
           <select id="orderPaymentMode" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#091638] border border-blue-500/40 text-sm text-white focus:outline-none">
             <option value="Pay at Stall (Cash / UPI)">Stall par aakar denge (Cash / UPI)</option>
-            <option value="Cash On Delivery">Cash On Delivery (COD)</option>
             <option value="UPI / Online QR Scan">UPI / QR Scan</option>
+            <option value="Cash On Delivery">Cash On Delivery</option>
           </select>
         </div>
         <button id="placeOrderBtn" type="submit" class="w-full btn-emerald py-3.5 rounded-xl font-extrabold text-white text-sm flex items-center justify-center gap-2">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Place Order (With VIP Celebration)
+          <i class="fa-solid fa-volume-high"></i> Place Order & Announce Live
         </button>
       </form>
     </div>
   </div>
 
   <!-- ================= NAVBAR ================= -->
-  <header class="sticky top-0 z-40 bg-[#060f29]/90 backdrop-blur-md border-b border-blue-500/20">
-    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+  <header class="sticky top-0 z-40 bg-[#050d24]/90 backdrop-blur-xl border-b border-sky-400/25">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div onclick="showCustomerView()" class="flex items-center gap-3 cursor-pointer">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-500 to-sky-400 flex items-center justify-center text-white text-xl shadow-lg">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white text-xl shadow-lg border border-sky-300/40">
           <i class="fa-solid fa-cart-shopping"></i>
         </div>
         <div>
           <h1 id="navShopName" class="text-xl font-extrabold tracking-tight text-white">SmartShop</h1>
-          <p id="navTagline" class="text-[11px] text-sky-400 font-medium -mt-0.5">Shop Smart • Live Better</p>
+          <p id="navTagline" class="text-[11px] text-sky-400 font-semibold -mt-0.5">By Abishai & Nirwan</p>
         </div>
       </div>
 
-      <nav class="hidden md:flex items-center gap-2 bg-[#0b193d] p-1.5 rounded-xl border border-blue-500/20">
-        <button onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-semibold bg-blue-600 text-white">
+      <nav class="hidden lg:flex items-center gap-1.5 bg-[#091536] p-1.5 rounded-xl border border-blue-500/25">
+        <button onclick="showCustomerView()" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white">
           <i class="fa-solid fa-house mr-1"></i> Home
         </button>
-        <a href="#productsSection" onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white">Products</a>
-        <a href="#shoutoutSection" onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-medium text-amber-300 hover:text-white"><i class="fa-solid fa-fire mr-1"></i>Shoutout Wall</a>
-        <a href="#contactSection" onclick="showCustomerView()" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white">Contact</a>
+        <a href="#productsSection" onclick="showCustomerView()" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white">Products</a>
+        <a href="#leaderboardSection" onclick="showCustomerView()" class="px-3.5 py-1.5 rounded-lg text-xs font-bold text-amber-300 hover:text-white"><i class="fa-solid fa-trophy mr-1"></i>Leaderboard</a>
+        <a href="#shoutoutSection" onclick="showCustomerView()" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-purple-300 hover:text-white"><i class="fa-solid fa-fire mr-1"></i>Shoutouts</a>
+        <a href="#contactSection" onclick="showCustomerView()" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white">Contact</a>
       </nav>
 
       <div class="flex items-center gap-2">
-        <!-- Customer RGB Lighting Toggle Button -->
-        <button onclick="toggleClientRgb()" class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-400/40 flex items-center justify-center text-purple-300 hover:text-white" title="Toggle Auto RGB Lighting">
+        <!-- Stall QR Button -->
+        <button onclick="openQrModal()" class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-400/40 flex items-center justify-center text-sky-300 hover:bg-sky-500/30" title="Show Stall QR Code">
+          <i class="fa-solid fa-qrcode"></i>
+        </button>
+        <!-- RGB Lighting Button -->
+        <button onclick="toggleClientRgb()" class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-400/40 flex items-center justify-center text-purple-300 hover:text-white" title="Toggle Aura Lighting">
           <i class="fa-solid fa-wand-magic-sparkles"></i>
         </button>
+        <!-- Search Button -->
         <button onclick="focusSearch()" class="w-10 h-10 rounded-xl bg-[#0c1b40] border border-blue-500/30 flex items-center justify-center text-slate-200 hover:text-sky-400" title="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-        <button onclick="openCartCheckout()" class="relative px-3.5 h-10 rounded-xl bg-emerald-600/20 border border-emerald-400/40 flex items-center gap-2 text-emerald-300 hover:bg-emerald-600/30 font-bold text-xs" title="View Cart & Checkout">
+        <!-- Cart Button -->
+        <button onclick="openCartCheckout()" class="relative px-3.5 h-10 rounded-xl bg-emerald-600/20 border border-emerald-400/40 flex items-center gap-2 text-emerald-300 hover:bg-emerald-600/30 font-bold text-xs">
           <i class="fa-solid fa-bag-shopping text-sm"></i>
           <span class="hidden sm:inline">Cart</span>
           <span id="cartBadge" class="bg-emerald-500 text-white text-[11px] font-extrabold px-1.5 py-0.5 rounded-full">0</span>
         </button>
+        <!-- Owner Access -->
         <button onclick="openOwnerView()" class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/40 flex items-center justify-center text-amber-400 hover:bg-amber-500/25" title="Owner Admin Panel">
           <i class="fa-solid fa-crown"></i>
         </button>
@@ -312,7 +424,7 @@
         <i class="fa-solid fa-store-slash"></i>
       </div>
       <h2 class="text-2xl font-extrabold text-white mb-2">Stall Abhi Band Hai!</h2>
-      <p class="text-slate-300 text-sm mb-6">Owner ne abhi website ko temporarily offline rakha hai. Kripya thodi der baad check karein ya neeche diye number par sampark karein.</p>
+      <p class="text-slate-300 text-sm mb-6">Abishai & Nirwan ne abhi website ko temporarily offline rakha hai. Kripya thodi der baad check karein.</p>
       <div class="bg-[#08122c] p-4 rounded-2xl border border-blue-500/20 text-left text-sm space-y-2 mb-6">
         <p class="text-slate-200"><i class="fa-solid fa-phone text-sky-400 mr-2"></i> <span id="offlinePhone">+91 98765 43210</span></p>
         <p class="text-slate-200"><i class="fa-solid fa-location-dot text-sky-400 mr-2"></i> <span id="offlineAddress">Anand Mela Ground</span></p>
@@ -326,33 +438,62 @@
   <!-- ================= MAIN CUSTOMER VIEW ================= -->
   <main id="customerMainView" class="flex-1">
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION + CREATOR SPOTLIGHT -->
     <section class="cyber-bg border-b border-blue-500/20">
-      <div class="max-w-7xl mx-auto px-4 py-10 md:py-16 grid md:grid-cols-2 gap-8 items-center">
-        <div class="space-y-5">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-500/15 text-sky-300 border border-sky-400/30">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            ✨ Official Digital Stall • RGB Aura Mode Active
+      <div class="max-w-7xl mx-auto px-4 pt-8 pb-12 md:py-14">
+
+        <!-- SPECIAL PROMINENT CREATOR BANNER (ABISHAI & NIRWAN) -->
+        <div class="creator-spotlight rounded-2xl p-4 sm:p-5 mb-8 border-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5 text-center sm:text-left">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 text-2xl font-extrabold shrink-0 shadow-lg">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+              <div class="text-[11px] font-extrabold uppercase tracking-widest text-amber-300">
+                ★ Anand Mela Exclusive Tech Showcase ★
+              </div>
+              <h2 class="text-lg sm:text-2xl font-extrabold text-white">
+                Website Created by <span id="heroCreatorNames" class="creator-name-gradient font-black">Abishai & Nirwan</span>
+              </h2>
+            </div>
           </div>
-          <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold leading-tight text-glow">
-            Welcome to SmartShop
-          </h2>
-          <p id="heroSubtitle" class="text-slate-200 text-base md:text-lg max-w-lg">
-            Discover Premium Products at Unbeatable Prices!
-          </p>
-          <div class="pt-2 flex flex-wrap gap-3.5">
-            <a href="#productsSection" class="btn-blue px-7 py-3.5 rounded-full font-extrabold text-white inline-flex items-center gap-2 text-sm">
-              Order Now <i class="fa-solid fa-bolt"></i>
-            </a>
-            <a href="#shoutoutSection" class="px-6 py-3.5 rounded-full font-bold bg-purple-600/25 hover:bg-purple-600/40 border border-purple-400/40 text-purple-200 text-sm transition">
-              <i class="fa-solid fa-bullhorn mr-1.5 text-amber-400"></i> Live Shoutout Wall
-            </a>
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="speakWelcomeIntro()" class="px-4 py-2 rounded-xl bg-sky-500/20 hover:bg-sky-500/35 border border-sky-400/50 text-xs font-extrabold text-sky-200 flex items-center gap-1.5">
+              <i class="fa-solid fa-robot text-sky-400"></i> Hear AI Intro
+            </button>
+            <button onclick="openQrModal()" class="px-4 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/35 border border-amber-400/50 text-xs font-extrabold text-amber-200 flex items-center gap-1.5">
+              <i class="fa-solid fa-qrcode"></i> Stall QR
+            </button>
           </div>
         </div>
 
-        <div class="relative flex justify-center">
-          <div class="w-72 h-72 rounded-full bg-sky-500/25 blur-3xl absolute"></div>
-          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=85" alt="SmartShop Banner" class="relative z-10 w-full max-w-md rounded-3xl neon-border object-cover h-72 md:h-80 shadow-2xl" />
+        <!-- MAIN HERO GRID -->
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-500/15 text-sky-300 border border-sky-400/30">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              Next-Gen Digital Stall • Live AI & Leaderboard
+            </div>
+            <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold leading-tight text-glow">
+              Welcome to SmartShop
+            </h2>
+            <p id="heroSubtitle" class="text-slate-200 text-base md:text-lg max-w-lg">
+              Experience Next-Gen Shopping at Our Anand Mela Stall!
+            </p>
+            <div class="pt-2 flex flex-wrap gap-3.5">
+              <a href="#productsSection" class="btn-blue px-7 py-3.5 rounded-full font-extrabold text-white inline-flex items-center gap-2 text-sm">
+                Explore Products <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="#leaderboardSection" class="px-6 py-3.5 rounded-full font-bold bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/50 text-amber-200 text-sm transition">
+                <i class="fa-solid fa-trophy mr-1.5 text-amber-400"></i> View VIP Leaderboard
+              </a>
+            </div>
+          </div>
+
+          <div class="relative flex justify-center">
+            <div class="w-72 h-72 rounded-full bg-sky-500/25 blur-3xl absolute"></div>
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=85" alt="SmartShop Banner" class="relative z-10 w-full max-w-md rounded-3xl neon-border object-cover h-72 md:h-80 shadow-2xl" />
+          </div>
         </div>
       </div>
 
@@ -360,20 +501,20 @@
       <div class="max-w-7xl mx-auto px-4 pb-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 glass-card rounded-2xl p-4 neon-border">
           <div class="flex items-center gap-3 p-2">
-            <div class="w-11 h-11 rounded-xl bg-sky-500/15 flex items-center justify-center text-sky-400 text-xl"><i class="fa-solid fa-medal"></i></div>
-            <div><h4 class="font-bold text-sm">Best Quality</h4><p class="text-xs text-slate-400">100% Top Grade</p></div>
+            <div class="w-11 h-11 rounded-xl bg-sky-500/15 flex items-center justify-center text-sky-400 text-xl"><i class="fa-solid fa-microchip"></i></div>
+            <div><h4 class="font-bold text-sm">Smart Ordering</h4><p class="text-xs text-slate-400">Instant Digital Pass</p></div>
           </div>
           <div class="flex items-center gap-3 p-2">
-            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 text-xl"><i class="fa-solid fa-bolt"></i></div>
-            <div><h4 class="font-bold text-sm">Fast Service</h4><p class="text-xs text-slate-400">Zero Waiting Line</p></div>
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 text-xl"><i class="fa-solid fa-volume-high"></i></div>
+            <div><h4 class="font-bold text-sm">AI Voice Alert</h4><p class="text-xs text-slate-400">Live Order Speech</p></div>
           </div>
           <div class="flex items-center gap-3 p-2">
-            <div class="w-11 h-11 rounded-xl bg-amber-500/15 flex items-center justify-center text-amber-400 text-xl"><i class="fa-solid fa-tags"></i></div>
-            <div><h4 class="font-bold text-sm">Mela Special</h4><p class="text-xs text-slate-400">Pocket Friendly</p></div>
+            <div class="w-11 h-11 rounded-xl bg-amber-500/15 flex items-center justify-center text-amber-400 text-xl"><i class="fa-solid fa-trophy"></i></div>
+            <div><h4 class="font-bold text-sm">Class Ranking</h4><p class="text-xs text-slate-400">Live VIP Leaderboard</p></div>
           </div>
           <div class="flex items-center gap-3 p-2">
-            <div class="w-11 h-11 rounded-xl bg-purple-500/15 flex items-center justify-center text-purple-400 text-xl"><i class="fa-solid fa-headset"></i></div>
-            <div><h4 class="font-bold text-sm">Direct Support</h4><p class="text-xs text-slate-400">Instant Help</p></div>
+            <div class="w-11 h-11 rounded-xl bg-purple-500/15 flex items-center justify-center text-purple-400 text-xl"><i class="fa-solid fa-code"></i></div>
+            <div><h4 class="font-bold text-sm">Built By</h4><p class="text-xs text-amber-300 font-bold">Abishai & Nirwan</p></div>
           </div>
         </div>
       </div>
@@ -391,14 +532,13 @@
     <section id="productsSection" class="max-w-7xl mx-auto px-4 py-8">
       <div class="bg-slate-100 text-slate-900 rounded-3xl p-5 md:p-8 shadow-2xl neon-border">
 
-        <!-- Title + Search Input -->
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
           <div>
             <div class="flex items-center gap-2.5">
               <span class="w-3 h-8 bg-blue-600 rounded-full inline-block"></span>
               <h3 id="productSectionHeading" class="text-2xl md:text-3xl font-extrabold text-slate-900">Our Products</h3>
             </div>
-            <p class="text-xs text-slate-500 mt-1 ml-5">Photo par click karke Full HD Zoom dekhein • Order par VIP Confetti Celebration!</p>
+            <p class="text-xs text-slate-500 mt-1 ml-5">Click photo for Full HD Zoom • Order to rank up on the VIP Leaderboard!</p>
           </div>
 
           <div class="flex w-full lg:w-96 bg-white rounded-full p-1.5 border-2 border-slate-300 shadow-sm focus-within:border-blue-600">
@@ -438,18 +578,43 @@
       </div>
     </section>
 
+    <!-- ================= VIP CUSTOMER & CLASS LEADERBOARD SECTION ================= -->
+    <section id="leaderboardSection" class="max-w-7xl mx-auto px-4 pb-10">
+      <div class="glass-card rounded-3xl p-6 md:p-8 neon-border relative overflow-hidden">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-300 text-xs font-extrabold uppercase">
+              <i class="fa-solid fa-trophy mr-1"></i>Anand Mela Hall of Fame
+            </span>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-white mt-2">
+              VIP Customer & Class Leaderboard 👑
+            </h3>
+            <p class="text-xs text-slate-300 mt-1">Har online order par aapka aur aapki class ka naam automatic upar aata hai!</p>
+          </div>
+          <a href="#productsSection" class="btn-emerald px-5 py-3 rounded-xl text-xs font-extrabold text-white self-start md:self-auto">
+            <i class="fa-solid fa-bolt mr-1"></i> Order Now to Rank #1
+          </a>
+        </div>
+
+        <!-- TOP 3 PODIUM CARDS -->
+        <div id="leaderboardPodium" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"></div>
+
+        <!-- OTHER TOP RANKERS LIST -->
+        <div id="leaderboardTableList" class="space-y-2.5"></div>
+      </div>
+    </section>
+
     <!-- ================= LIVE ANAND MELA SHOUTOUT WALL ================= -->
     <section id="shoutoutSection" class="max-w-7xl mx-auto px-4 pb-10">
       <div class="glass-card rounded-3xl p-6 md:p-8 neon-border">
         <div class="grid lg:grid-cols-3 gap-8 items-start">
 
-          <!-- Left Column: Post a Shoutout Form -->
           <div class="bg-[#07112b] p-6 rounded-2xl border border-purple-500/30 space-y-4">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-extrabold">
               <i class="fa-solid fa-bullhorn"></i> LIVE SHOUTOUT WALL
             </div>
             <h3 class="text-2xl font-extrabold text-white">Drop Your Shoutout! 🔥</h3>
-            <p class="text-xs text-slate-300">Hamare stall ke baare mein apna message ya shoutout likho—turant live screen par dikhega!</p>
+            <p class="text-xs text-slate-300">Abishai & Nirwan ke stall ke baare mein apna message likho—turant live screen par aayega!</p>
 
             <form onsubmit="submitCustomerShoutout(event)" class="space-y-3">
               <div>
@@ -468,7 +633,7 @@
               </div>
               <div>
                 <label class="text-xs text-slate-300 font-bold">Your 1-Line Shoutout *</label>
-                <input id="shoutText" type="text" required maxlength="110" placeholder="e.g. Best stall in the whole school!" class="w-full mt-1 px-4 py-2.5 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
+                <input id="shoutText" type="text" required maxlength="110" placeholder="e.g. Best digital stall by Abishai & Nirwan!" class="w-full mt-1 px-4 py-2.5 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
               </div>
               <button id="shoutSubmitBtn" type="submit" class="w-full btn-blue py-3 rounded-xl font-extrabold text-white text-xs flex items-center justify-center gap-2">
                 <i class="fa-solid fa-bolt"></i> Post Live on Wall
@@ -476,14 +641,13 @@
             </form>
           </div>
 
-          <!-- Right 2 Columns: Live Shoutout Cards Feed -->
           <div class="lg:col-span-2 space-y-4">
             <div class="flex items-center justify-between">
               <h4 class="text-lg font-extrabold flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
                 Live Student Shoutouts & Reviews
               </h4>
-              <span id="shoutoutCountBadge" class="text-xs bg-purple-500/20 border border-purple-400/40 text-purple-200 px-3 py-1 rounded-full font-bold">3 Posts</span>
+              <span id="shoutoutCountBadge" class="text-xs bg-purple-500/20 border border-purple-400/40 text-purple-200 px-3 py-1 rounded-full font-bold">0 Posts</span>
             </div>
             <div id="publicShoutoutsGrid" class="grid sm:grid-cols-2 gap-3.5 max-h-[360px] overflow-y-auto pr-1"></div>
           </div>
@@ -515,17 +679,17 @@
 
         <div class="glass-card rounded-3xl p-6 flex items-center justify-between gap-4 neon-border">
           <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
-              <i class="fa-brands fa-whatsapp"></i>
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 text-2xl shrink-0">
+              <i class="fa-solid fa-qrcode"></i>
             </div>
             <div>
-              <h4 class="text-lg font-extrabold">Instant WhatsApp Order</h4>
-              <p class="text-slate-300 text-sm mt-1">Owner se seedha WhatsApp par baat karein ya booking karein.</p>
+              <h4 class="text-lg font-extrabold">Share Stall QR Code</h4>
+              <p class="text-slate-300 text-sm mt-1">Apne dosto ke phone mein scan karwa ke seedha website kholein!</p>
             </div>
           </div>
-          <a id="aboutWaLink" href="https://wa.me/919876543210" target="_blank" class="btn-emerald px-5 py-3 rounded-xl text-xs font-extrabold shrink-0">
-            Chat Now
-          </a>
+          <button onclick="openQrModal()" class="btn-blue px-5 py-3 rounded-xl text-xs font-extrabold shrink-0">
+            Open QR
+          </button>
         </div>
       </div>
 
@@ -536,7 +700,7 @@
             <i class="fa-solid fa-paper-plane"></i> Direct Stall Helpline
           </div>
           <h3 class="text-3xl font-extrabold">Contact Us</h3>
-          <p class="text-slate-300 text-sm">Aapka bheja hua message seedha Stall Owner ke Admin Panel Inbox mein jata hai!</p>
+          <p class="text-slate-300 text-sm">Aapka bheja hua message seedha **Abishai & Nirwan** ke Admin Panel Inbox mein jata hai!</p>
 
           <div class="space-y-4 pt-2">
             <div class="flex items-center gap-4">
@@ -555,12 +719,12 @@
         </div>
 
         <form onsubmit="submitContactForm(event)" class="bg-[#07112b] p-6 rounded-2xl border border-blue-500/30 space-y-4">
-          <h4 class="font-bold text-base text-sky-400"><i class="fa-solid fa-comment-dots mr-1.5"></i>Send Message to Stall Owner</h4>
+          <h4 class="font-bold text-base text-sky-400"><i class="fa-solid fa-comment-dots mr-1.5"></i>Send Message to Stall Owners</h4>
           <input id="custName" type="text" required placeholder="Your Name *" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
           <input id="custContact" type="text" required placeholder="Your Phone Number / Class *" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400" />
           <textarea id="custMsg" rows="3" required placeholder="Write your message or inquiry here... *" class="w-full px-4 py-3 rounded-xl bg-[#0d1c42] border border-blue-500/30 text-white text-sm focus:outline-none focus:border-sky-400"></textarea>
           <button id="sendMsgBtn" type="submit" class="w-full btn-blue py-3.5 rounded-xl font-extrabold text-white text-sm flex items-center justify-center gap-2">
-            <i class="fa-solid fa-paper-plane"></i> Send Message to Owner
+            <i class="fa-solid fa-paper-plane"></i> Send Message
           </button>
         </form>
       </div>
@@ -574,7 +738,7 @@
         <i class="fa-solid fa-user-shield"></i>
       </div>
       <h2 class="text-2xl font-extrabold">Owner Access</h2>
-      <p class="text-slate-400 text-sm mt-1 mb-6">Enter password to unlock Admin Panel</p>
+      <p class="text-slate-400 text-sm mt-1 mb-6">Abishai & Nirwan's Master Control Panel</p>
 
       <form onsubmit="handleOwnerLogin(event)" class="space-y-4">
         <div class="relative">
@@ -606,7 +770,7 @@
             <i class="fa-solid fa-crown text-amber-400 text-2xl"></i>
             <div>
               <h3 class="font-extrabold text-base">Owner Panel</h3>
-              <span class="text-[11px] text-emerald-400 font-bold">● Live Connected</span>
+              <span class="text-[11px] text-emerald-400 font-bold">● Abishai & Nirwan</span>
             </div>
           </div>
           <button onclick="loadStoreData()" class="w-8 h-8 rounded-lg bg-blue-500/20 text-sky-400 hover:bg-blue-500 hover:text-white flex items-center justify-center" title="Refresh All Data">
@@ -614,37 +778,45 @@
           </button>
         </div>
 
-        <button onclick="switchOwnerTab('tabOrders')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold bg-emerald-600/25 hover:bg-emerald-600 text-white transition">
+        <button onclick="switchOwnerTab('tabOrders')" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-bold bg-emerald-600/25 hover:bg-emerald-600 text-white transition">
           <span><i class="fa-solid fa-bag-shopping w-6"></i> Live Orders</span>
           <span id="sidebarOrdersBadge" class="bg-emerald-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
         </button>
 
-        <button onclick="switchOwnerTab('tabMessages')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold bg-sky-600/20 hover:bg-sky-600 text-white transition">
-          <span><i class="fa-solid fa-envelope-open-text w-6"></i> Messages & Wall</span>
+        <button onclick="switchOwnerTab('tabLeaderboardAdmin')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-slate-950 transition text-left">
+          <i class="fa-solid fa-trophy w-6"></i> VIP Leaderboard
+        </button>
+
+        <button onclick="switchOwnerTab('tabQrGenerator')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-sky-500/20 hover:bg-sky-500 text-sky-300 hover:text-white transition text-left">
+          <i class="fa-solid fa-qrcode w-6"></i> Stall QR Generator
+        </button>
+
+        <button onclick="switchOwnerTab('tabMessages')" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-blue-600/30 text-slate-200 transition">
+          <span><i class="fa-solid fa-envelope-open-text w-6 text-sky-400"></i> Messages & Wall</span>
           <span id="sidebarMessagesBadge" class="bg-sky-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
         </button>
 
-        <button onclick="switchOwnerTab('tabHype')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-bold bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-slate-950 transition text-left">
-          <i class="fa-solid fa-fire-flame-curved w-6"></i> Rush & RGB Vibes
+        <button onclick="switchOwnerTab('tabHype')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+          <i class="fa-solid fa-fire-flame-curved w-6 text-orange-400"></i> Hype, RGB & AI Voice
         </button>
 
-        <button onclick="switchOwnerTab('tabUpload')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+        <button onclick="switchOwnerTab('tabUpload')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
           <i class="fa-solid fa-cloud-arrow-up w-6 text-sky-400"></i> Upload HD Product
         </button>
 
-        <button onclick="switchOwnerTab('tabManage')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+        <button onclick="switchOwnerTab('tabManage')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
           <i class="fa-solid fa-boxes-stacked w-6 text-purple-400"></i> Manage Products
         </button>
 
-        <button onclick="switchOwnerTab('tabAds')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-amber-500/25 text-amber-300 transition text-left">
+        <button onclick="switchOwnerTab('tabAds')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-amber-500/25 text-amber-300 transition text-left">
           <i class="fa-solid fa-rectangle-ad w-6 text-amber-400"></i> Adsterra Ads Setup
         </button>
 
-        <button onclick="switchOwnerTab('tabEditSite')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
+        <button onclick="switchOwnerTab('tabEditSite')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-600/30 text-slate-200 transition text-left">
           <i class="fa-solid fa-pen-to-square w-6 text-teal-400"></i> Edit Website Info
         </button>
 
-        <button onclick="switchOwnerTab('tabShutdown')" class="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold hover:bg-rose-600/30 text-rose-300 transition text-left">
+        <button onclick="switchOwnerTab('tabShutdown')" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-rose-600/30 text-rose-300 transition text-left">
           <i class="fa-solid fa-power-off w-6 text-rose-400"></i> Shutdown Website
         </button>
 
@@ -671,12 +843,12 @@
             <p class="text-xs text-slate-400">Customer Orders</p>
             <h4 id="statOrders" class="text-2xl font-extrabold text-emerald-400 mt-1">0</h4>
           </div>
-          <div onclick="switchOwnerTab('tabMessages')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-amber-400">
-            <p class="text-xs text-slate-400">Messages / Shoutouts</p>
-            <h4 id="statMessages" class="text-2xl font-extrabold text-amber-400 mt-1">0</h4>
+          <div onclick="switchOwnerTab('tabLeaderboardAdmin')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-amber-400">
+            <p class="text-xs text-slate-400">Leaderboard Entries</p>
+            <h4 id="statLeaderboard" class="text-2xl font-extrabold text-amber-400 mt-1">0</h4>
           </div>
           <div onclick="switchOwnerTab('tabHype')" class="glass-card p-4 rounded-2xl cursor-pointer">
-            <p class="text-xs text-slate-400">Hype / Store Status</p>
+            <p class="text-xs text-slate-400">Stall Status</p>
             <h4 id="statStatusBadge" class="text-base font-extrabold text-emerald-400 mt-1">ONLINE</h4>
           </div>
         </div>
@@ -692,6 +864,54 @@
             </button>
           </div>
           <div id="adminOrdersContainer" class="space-y-4"></div>
+        </div>
+
+        <!-- TAB: VIP LEADERBOARD MANAGER -->
+        <div id="tabLeaderboardAdmin" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border space-y-5">
+          <h3 class="text-xl font-extrabold flex items-center gap-2 text-amber-300">
+            <i class="fa-solid fa-trophy"></i> Manage VIP Customer & Class Leaderboard
+          </h3>
+          <p class="text-xs text-slate-300">Online orders se leaderboard apne aap update hota hai, aur aap yahan se manually bhi kisi student ya class ko points de sakte hain:</p>
+
+          <form onsubmit="addManualLeaderboardEntry(event)" class="grid sm:grid-cols-4 gap-3 bg-[#081330] p-4 rounded-2xl border border-amber-400/30">
+            <input id="lbNameInput" type="text" required placeholder="Student / Squad Name" class="px-3.5 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs text-white" />
+            <input id="lbGroupInput" type="text" required placeholder="Class (e.g. Class 12th)" class="px-3.5 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs text-white" />
+            <input id="lbPointsInput" type="number" required placeholder="Score / Amount (₹)" class="px-3.5 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs text-white" />
+            <button type="submit" class="btn-blue rounded-xl font-extrabold text-xs py-2.5 text-white">
+              <i class="fa-solid fa-plus mr-1"></i> Add / Boost Rank
+            </button>
+          </form>
+
+          <div id="adminLeaderboardList" class="space-y-2.5"></div>
+        </div>
+
+        <!-- TAB: INSTANT STALL QR CODE GENERATOR -->
+        <div id="tabQrGenerator" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border space-y-5">
+          <h3 class="text-xl font-extrabold flex items-center gap-2 text-sky-400">
+            <i class="fa-solid fa-qrcode"></i> Instant Stall QR Code & Poster Generator
+          </h3>
+          <p class="text-xs text-slate-300">Apne Anand Mela stall ke desk par lagane ke liye QR code yahan se print ya download karein:</p>
+
+          <div class="grid md:grid-cols-2 gap-6 items-center bg-[#081330] p-6 rounded-2xl border border-sky-400/30">
+            <div class="text-center space-y-3">
+              <div class="bg-white p-4 rounded-2xl inline-block shadow-2xl border-4 border-amber-400">
+                <img id="adminQrImg" src="" alt="Stall QR" class="w-48 h-48 object-contain" />
+              </div>
+              <p class="text-xs font-extrabold text-amber-300">Created by Abishai & Nirwan</p>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label class="text-xs text-slate-300 font-bold">Stall Website Link (Auto-Detected)</label>
+                <input id="customQrUrlInput" type="text" oninput="updateQrImages()" class="w-full mt-1 px-4 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs text-sky-300" />
+              </div>
+              <button onclick="printStallQrPoster()" class="w-full btn-emerald py-3.5 rounded-xl font-extrabold text-xs text-white flex items-center justify-center gap-2">
+                <i class="fa-solid fa-print text-base"></i> Print Full-Page Stall QR Poster
+              </button>
+              <button onclick="openQrModal()" class="w-full btn-blue py-3 rounded-xl font-bold text-xs text-white">
+                <i class="fa-solid fa-expand mr-1"></i> Open Fullscreen QR on Phone
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- TAB: CUSTOMER MESSAGES & SHOUTOUT WALL MODERATION -->
@@ -716,16 +936,16 @@
           </div>
         </div>
 
-        <!-- TAB: RUSH & HYPE MODE + RGB LIGHTING CONTROL -->
+        <!-- TAB: RUSH & HYPE MODE + RGB LIGHTING + AI VOICE -->
         <div id="tabHype" class="owner-tab hidden glass-card rounded-3xl p-6 neon-border space-y-5">
           <h3 class="text-xl font-extrabold flex items-center gap-2 text-amber-400">
-            <i class="fa-solid fa-fire-flame-curved"></i> Live Rush & Hype Mode + RGB Carnival Lighting
+            <i class="fa-solid fa-fire-flame-curved"></i> Hype Mode, Aurora Lighting & AI Voice Control
           </h3>
 
           <div class="p-4 rounded-2xl bg-[#081330] border border-amber-400/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <h4 class="font-extrabold text-base text-white">🔥 Live Rush & Hype Mode Banner</h4>
-              <p class="text-xs text-slate-300">On karne par website ke top par Glowing Red-Gold Alert Bar chalu ho jayega!</p>
+              <p class="text-xs text-slate-300">Website ke top par Glowing Red-Gold Alert Bar chalu karein.</p>
             </div>
             <button id="hypeToggleBtn" onclick="toggleHypeMode()" class="px-6 py-3 rounded-xl font-extrabold text-xs bg-amber-500 hover:bg-amber-400 text-slate-950 shrink-0">
               Activate Hype Mode
@@ -742,12 +962,27 @@
 
           <div class="p-4 rounded-2xl bg-[#081330] border border-purple-400/40 flex items-center justify-between">
             <div>
-              <h4 class="font-extrabold text-base text-purple-300">✨ Automatic RGB Carnival Glow</h4>
-              <p class="text-xs text-slate-300">Website ke cards aur borders mein automatic color-shifting neon lighting.</p>
+              <h4 class="font-extrabold text-base text-purple-300">✨ Pro Aurora RGB Lighting</h4>
+              <p class="text-xs text-slate-300">Website ke cards aur borders mein smooth neon lighting.</p>
             </div>
             <button id="rgbToggleBtn" onclick="toggleRgbSetting()" class="px-5 py-2.5 rounded-xl font-extrabold text-xs bg-purple-600 text-white">
               RGB ON
             </button>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#081330] border border-emerald-400/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h4 class="font-extrabold text-base text-emerald-300">🔊 AI Voice Order Announcer</h4>
+              <p class="text-xs text-slate-300">Order place hote hi AI Voice customer ka naam aur Abishai & Nirwan ka naam announce karegi.</p>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="speakCustomAnnouncement('Attention everyone! Welcome to Abishai and Nirwan digital stall at Anand Mela!')" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-xs font-bold text-white">
+                <i class="fa-solid fa-volume-high mr-1"></i> Test Voice
+              </button>
+              <button id="aiVoiceToggleBtn" onclick="toggleAiVoiceSetting()" class="px-4 py-2.5 rounded-xl font-extrabold text-xs bg-emerald-600 text-white">
+                AI Voice: ON
+              </button>
+            </div>
           </div>
         </div>
 
@@ -790,7 +1025,6 @@
               <input id="prodDesc" type="text" placeholder="e.g. Freshly prepared, served hot with extra toppings!" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
 
-            <!-- HD Photo Upload Box -->
             <div class="md:col-span-2 bg-[#081330] p-4 rounded-2xl border-2 border-dashed border-sky-400/50">
               <label class="text-xs text-sky-400 font-extrabold block mb-2">
                 <i class="fa-solid fa-camera mr-1"></i> Select HD Product Photo from Gallery OR Paste Image URL
@@ -799,7 +1033,7 @@
               <input id="prodImageUrl" type="text" placeholder="Or paste direct HD Image link here..." class="w-full px-4 py-2.5 rounded-xl bg-[#050c21] border border-blue-500/30 text-xs" />
               <div class="mt-3 flex items-center gap-4">
                 <img id="imagePreview" class="hidden w-32 h-32 object-contain bg-white p-1 rounded-xl border border-sky-400" />
-                <span id="imageQualityHint" class="hidden text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i>HD Photo Ready (Full Uncropped View)</span>
+                <span id="imageQualityHint" class="hidden text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i>HD Photo Ready</span>
               </div>
             </div>
 
@@ -854,11 +1088,15 @@
               <input id="cfgShopName" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
             <div>
+              <label class="text-xs text-slate-300">Creators Highlight Name</label>
+              <input id="cfgCreators" type="text" required value="Abishai & Nirwan" class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-amber-400/50 text-sm font-bold text-amber-300" />
+            </div>
+            <div>
               <label class="text-xs text-slate-300">Tagline</label>
               <input id="cfgTagline" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
-            <div class="md:col-span-2">
-              <label class="text-xs text-slate-300">Top Moving Offer Text (Announcement Bar)</label>
+            <div>
+              <label class="text-xs text-slate-300">Top Moving Offer Text</label>
               <input id="cfgAnnouncement" type="text" required class="w-full mt-1 px-4 py-3 rounded-xl bg-[#081330] border border-blue-500/30 text-sm" />
             </div>
             <div>
@@ -921,19 +1159,30 @@
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-[#030714] border-t border-blue-500/20 py-6 mt-12">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-      <div class="flex items-center gap-2">
-        <i class="fa-solid fa-cart-shopping text-sky-400"></i>
-        <span id="footerShopName" class="font-bold text-white">SmartShop</span>
-        <span>— Anand Mela Official Digital Store</span>
+  <!-- ================= FOOTER WITH CREATOR SPOTLIGHT ================= -->
+  <footer class="bg-[#02050e] border-t border-sky-500/25 py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-blue-600/20 border border-sky-400/40 flex items-center justify-center text-sky-400">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div>
+          <span id="footerShopName" class="font-extrabold text-white text-sm">SmartShop</span>
+          <p class="text-[11px] text-slate-400">Anand Mela Digital Stall</p>
+        </div>
       </div>
-      <div class="flex gap-6">
+
+      <!-- Highlighted Creator Credit Pill -->
+      <div class="px-5 py-2.5 rounded-2xl bg-[#081330] border border-amber-400/50 shadow-lg text-center">
+        <span class="text-slate-300">Built & Engineered with ⚡ by </span>
+        <span id="footerCreatorNames" class="creator-name-gradient font-extrabold text-sm uppercase tracking-wider ml-1">Abishai & Nirwan</span>
+      </div>
+
+      <div class="flex gap-5 font-semibold">
         <a href="#" onclick="showCustomerView()" class="hover:text-white">Home</a>
         <a href="#productsSection" onclick="showCustomerView()" class="hover:text-white">Products</a>
-        <a href="#shoutoutSection" onclick="showCustomerView()" class="hover:text-white">Shoutouts</a>
-        <button onclick="openOwnerView()" class="text-amber-400 hover:underline font-bold">Owner Admin</button>
+        <a href="#leaderboardSection" onclick="showCustomerView()" class="text-amber-300 hover:text-white">Leaderboard</a>
+        <button onclick="openOwnerView()" class="text-sky-400 hover:underline font-bold">Owner Admin</button>
       </div>
     </div>
   </footer>
@@ -943,21 +1192,23 @@
     let storeData = {
       siteConfig: {
         shopName: "SmartShop",
-        tagline: "Anand Mela Special • Live Official Store",
-        announcement: "🔥 Anand Mela Special Stall! Order Online ya Seedha Stall Par Aakar Le Jayein! 🔥",
+        tagline: "Anand Mela Official Digital Stall",
+        creators: "Abishai & Nirwan",
+        announcement: "🔥 Welcome to Anand Mela's First Digital Stall — Created by Abishai & Nirwan! Order Online & Get Featured on the Live Leaderboard! 🔥",
         bannerTitle: "Welcome to SmartShop",
-        bannerSubtitle: "Discover Amazing Items & Combos at Unbeatable Prices!",
+        bannerSubtitle: "Experience Next-Gen Shopping at Our Anand Mela Stall!",
         phone: "+91 98765 43210",
         whatsapp: "919876543210",
         email: "support@smartshop.in",
-        address: "Stall No. 1, School Anand Mela Ground",
-        aboutText: "Hamare Anand Mela stall mein aapko best items, combos aur instant service milegi.",
+        address: "VIP Stall No. 1, School Anand Mela Ground",
+        aboutText: "Hamare Anand Mela Digital Stall (Created by Abishai & Nirwan) mein aapko best items, combos aur zero-waiting VIP service milegi.",
         isOnline: true,
         rgbLighting: true,
+        aiVoiceEnabled: true,
         hypeMode: false,
         hypeText: "🚨 FRESH GARMA-GARAM BATCH READY AT STALL! HURRY UP - HIGH DEMAND! 🔥",
-        visitors: 1850,
-        orders: 2
+        visitors: 2150,
+        orders: 1
       },
       adsConfig: {
         adsEnabled: true,
@@ -965,11 +1216,16 @@
         nativeBannerHtml: ""
       },
       products: [],
+      leaderboardList: [
+        { id: "LB-1", name: "Class 12 PCM Squad", group: "Class 12th", points: 2999, ordersCount: 3 },
+        { id: "LB-2", name: "Aarav & Friends", group: "Class 11th", points: 1850, ordersCount: 2 },
+        { id: "LB-3", name: "Riya Verma", group: "Class 10th", points: 1499, ordersCount: 1 }
+      ],
       ordersList: [],
       messagesList: [],
       shoutoutsList: [
-        { id: "SH-1", name: "Rohit (Class 12)", emoji: "🔥", text: "Bhai poore Anand Mela mein sabse khatarnak digital stall hai tum logo ka!", time: "Just now" },
-        { id: "SH-2", name: "Priya & Group", emoji: "😍", text: "Website se order kiya aur turant mil gaya, next level aura!", time: "5 mins ago" }
+        { id: "SH-1", name: "Rohit (Class 12)", emoji: "🔥", text: "Abishai aur Nirwan bhai ne poore school mein sabse khatarnak digital stall banaya hai!", time: "Just now" },
+        { id: "SH-2", name: "Priya & Group", emoji: "👑", text: "Order karte hi AI Voice boli aur patakhe phute, full VIP aura!", time: "5 mins ago" }
       ]
     };
 
@@ -978,19 +1234,138 @@
     let cartItems = [];
     let renderedAdHash = "";
     let buyerPopupIndex = 0;
+    let emojiTapCount = 128;
+    let lastSpokenOrderText = "Thank you for ordering from Abishai and Nirwan's SmartShop Stall!";
 
-    // 1. VIP Celebration Sound (Web Audio API Chime) & Confetti
+    // 1. AI VOICE ANNOUNCER (Web Speech API)
+    function speakCustomAnnouncement(textToSpeak) {
+      if (storeData.siteConfig.aiVoiceEnabled === false) return;
+      if (!("speechSynthesis" in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.rate = 1.0;
+        utterance.pitch = 1.05;
+        utterance.volume = 1.0;
+        const voices = window.speechSynthesis.getVoices();
+        const preferred = voices.find(v => v.lang.includes("en-IN") || v.lang.includes("hi-IN") || v.name.includes("Google"));
+        if (preferred) utterance.voice = preferred;
+        window.speechSynthesis.speak(utterance);
+      } catch (e) {}
+    }
+
+    function speakWelcomeIntro() {
+      const creators = storeData.siteConfig.creators || "Abishai and Nirwan";
+      speakCustomAnnouncement(`Welcome to ${storeData.siteConfig.shopName}! Created and engineered by ${creators}. Place your order online and top the Anand Mela VIP Leaderboard!`);
+      showToast(`🔊 AI Voice: Welcome to ${creators}'s Stall!`);
+    }
+
+    function replayLastOrderVoice() {
+      speakCustomAnnouncement(lastSpokenOrderText);
+    }
+
+    // 2. INSTAGRAM LIVE STYLE FLOATING EMOJIS
+    function spawnLiveEmoji(emojiChar) {
+      emojiTapCount++;
+      document.getElementById("emojiCounterBadge").textContent = emojiTapCount;
+
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => {
+          const el = document.createElement("div");
+          el.className = "floating-emoji-particle";
+          el.textContent = emojiChar;
+          const randomRight = 18 + Math.floor(Math.random() * 55);
+          el.style.right = `${randomRight}px`;
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 2800);
+        }, i * 110);
+      }
+    }
+
+    // 3. INSTANT STALL QR CODE GENERATOR & PRINTABLE POSTER
+    function updateQrImages() {
+      const inputEl = document.getElementById("customQrUrlInput");
+      const targetUrl = (inputEl && inputEl.value.trim()) ? inputEl.value.trim() : window.location.href;
+      const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=${encodeURIComponent(targetUrl)}`;
+
+      const modalImg = document.getElementById("qrModalImage");
+      const adminImg = document.getElementById("adminQrImg");
+      const urlTxt = document.getElementById("qrModalUrlText");
+      if (modalImg) modalImg.src = qrApi;
+      if (adminImg) adminImg.src = qrApi;
+      if (urlTxt) urlTxt.textContent = targetUrl;
+    }
+
+    function openQrModal() {
+      const inputEl = document.getElementById("customQrUrlInput");
+      if (inputEl && !inputEl.value) inputEl.value = window.location.href;
+      updateQrImages();
+      document.getElementById("qrModalShopTitle").textContent = storeData.siteConfig.shopName || "SmartShop";
+      document.getElementById("qrModal").classList.remove("hidden");
+    }
+
+    function closeQrModal() {
+      document.getElementById("qrModal").classList.add("hidden");
+    }
+
+    function printStallQrPoster() {
+      const targetUrl = (document.getElementById("customQrUrlInput")?.value || window.location.href).trim();
+      const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&margin=12&data=${encodeURIComponent(targetUrl)}`;
+      const shop = storeData.siteConfig.shopName || "SmartShop";
+      const creators = storeData.siteConfig.creators || "Abishai & Nirwan";
+
+      const win = window.open("", "_blank");
+      if (!win) {
+        alert("Please allow popups to print the Stall QR Poster.");
+        return;
+      }
+      win.document.write(`
+        <html>
+        <head>
+          <title>${shop} - Stall QR Poster</title>
+          <style>
+            body { font-family: sans-serif; text-align: center; padding: 30px; background: #050b1e; color: #fff; }
+            .poster { max-width: 520px; margin: 0 auto; border: 4px solid #fbbf24; border-radius: 28px; padding: 32px; background: #0a1636; }
+            .badge { background: #fbbf24; color: #000; font-weight: 900; padding: 6px 16px; border-radius: 99px; display: inline-block; font-size: 13px; text-transform: uppercase; }
+            h1 { font-size: 38px; margin: 14px 0 6px; color: #38bdf8; }
+            h2 { font-size: 20px; margin: 0 0 20px; color: #fde047; }
+            .qr-box { background: #fff; padding: 18px; border-radius: 24px; display: inline-block; margin: 10px 0 20px; }
+            .steps { text-align: left; background: #061029; padding: 16px 24px; border-radius: 16px; font-size: 15px; line-height: 1.7; }
+          </style>
+        </head>
+        <body>
+          <div class="poster">
+            <div class="badge">🔥 Anand Mela Official Digital Stall 🔥</div>
+            <h1>${shop}</h1>
+            <h2>Created by ${creators}</h2>
+            <div class="qr-box">
+              <img src="${qrApi}" width="300" height="300" onload="window.print()" />
+            </div>
+            <div class="steps">
+              <b>📱 How to Order Online:</b><br/>
+              1. Scan this QR Code with your phone camera.<br/>
+              2. Browse HD items & place your order.<br/>
+              3. Hear Live AI Voice Confirmation & Rank #1 on the Class Leaderboard!
+            </div>
+          </div>
+        </body>
+        </html>
+      `);
+      win.document.close();
+    }
+
+    // 4. VIP Celebration Sound & Confetti
     function playVipVictorySound() {
       try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         const ctx = new AudioCtx();
-        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 victory chord
+        const notes = [523.25, 659.25, 783.99, 1046.50];
         notes.forEach((freq, idx) => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = "triangle";
           osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.11);
-          gain.gain.setValueAtTime(0.22, ctx.currentTime + idx * 0.11);
+          gain.gain.setValueAtTime(0.2, ctx.currentTime + idx * 0.11);
           gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.11 + 0.55);
           osc.connect(gain);
           gain.connect(ctx.destination);
@@ -1002,16 +1377,16 @@
 
     function triggerMegaConfetti() {
       if (typeof confetti !== "function") return;
-      confetti({ particleCount: 90, spread: 75, origin: { y: 0.6 } });
+      confetti({ particleCount: 95, spread: 80, origin: { y: 0.6 } });
       setTimeout(() => {
         confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 } });
         confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 } });
       }, 250);
     }
 
-    // 2. Live Buyer Notification Loop (Every 12 seconds)
+    // 5. Live Buyer Popup Loop
     function startLiveBuyerPopups() {
-      const sampleNames = ["Aarav (Class 12)", "Riya & Friends", "Kabir (Class 11)", "Neha Verma", "Aditya", "Simran", "Vikram"];
+      const sampleNames = ["Aarav (Class 12)", "Riya & Friends", "Kabir (Class 11)", "Neha Verma", "Aditya", "Simran"];
       setInterval(() => {
         const isOwnerOpen = !document.getElementById("ownerDashboardView").classList.contains("hidden") ||
                             !document.getElementById("ownerLoginView").classList.contains("hidden");
@@ -1023,7 +1398,7 @@
 
         if (storeData.ordersList && storeData.ordersList.length > 0 && buyerPopupIndex % 2 === 0) {
           const ord = storeData.ordersList[buyerPopupIndex % storeData.ordersList.length];
-          titleEl.textContent = ord.customerName;
+          titleEl.textContent = `${ord.customerName} (${ord.studentClass || 'VIP'})`;
           itemEl.textContent = `just booked ${ord.items}! 🔥`;
         } else if (storeData.products && storeData.products.length > 0) {
           const prod = storeData.products[buyerPopupIndex % storeData.products.length];
@@ -1036,13 +1411,11 @@
 
         buyerPopupIndex++;
         popup.classList.remove("hidden");
-        setTimeout(() => {
-          popup.classList.add("hidden");
-        }, 4800);
+        setTimeout(() => popup.classList.add("hidden"), 4800);
       }, 12000);
     }
 
-    // 3. Load Store Data from Netlify/GitHub Backend
+    // 6. Load Store Data from Netlify/GitHub
     async function loadStoreData() {
       try {
         const res = await fetch("/.netlify/functions/api");
@@ -1055,17 +1428,18 @@
               siteConfig: { ...storeData.siteConfig, ...(data.siteConfig || {}) },
               ordersList: data.ordersList || [],
               messagesList: data.messagesList || [],
+              leaderboardList: data.leaderboardList || storeData.leaderboardList,
               shoutoutsList: data.shoutoutsList || storeData.shoutoutsList,
               adsConfig: data.adsConfig || { adsEnabled: true, topBannerHtml: "", nativeBannerHtml: "" }
             };
-            localStorage.setItem("smartshop_mela_backup", JSON.stringify(storeData));
+            localStorage.setItem("smartshop_abishai_nirwan", JSON.stringify(storeData));
             renderAll();
             return;
           }
         }
       } catch (e) {}
 
-      const savedLocal = localStorage.getItem("smartshop_mela_backup");
+      const savedLocal = localStorage.getItem("smartshop_abishai_nirwan");
       if (savedLocal) {
         storeData = JSON.parse(savedLocal);
       } else {
@@ -1077,9 +1451,9 @@
       renderAll();
     }
 
-    // 4. Owner Save Full Data to GitHub
+    // 7. Save Full Data to GitHub
     async function syncToBackend(toastText = "Changes saved live!") {
-      localStorage.setItem("smartshop_mela_backup", JSON.stringify(storeData));
+      localStorage.setItem("smartshop_abishai_nirwan", JSON.stringify(storeData));
       renderAll();
       showToast("Syncing with GitHub Cloud...");
 
@@ -1104,7 +1478,7 @@
       }
     }
 
-    // 5. Render Adsterra Slots
+    // 8. Render Adsterra Slots
     function renderAdsterraSlots() {
       const ads = storeData.adsConfig || { adsEnabled: true, topBannerHtml: "", nativeBannerHtml: "" };
       const topWrap = document.getElementById("topAdWrapper");
@@ -1124,50 +1498,49 @@
       if (ads.topBannerHtml && ads.topBannerHtml.trim() !== "") {
         topWrap.classList.remove("hidden");
         topSlot.innerHTML = "";
-        const frag = document.createRange().createContextualFragment(ads.topBannerHtml);
-        topSlot.appendChild(frag);
+        topSlot.appendChild(document.createRange().createContextualFragment(ads.topBannerHtml));
       } else {
-        topSlot.innerHTML = `<div class="py-3 px-6 rounded-xl bg-blue-950/60 border border-dashed border-sky-400/40 text-xs text-slate-300">Adsterra Top Banner Slot Ready (Paste Ad Script in Owner Panel &rarr; Adsterra Ads Setup)</div>`;
+        topSlot.innerHTML = `<div class="py-3 px-6 rounded-xl bg-blue-950/60 border border-dashed border-sky-400/40 text-xs text-slate-300">Adsterra Top Banner Slot Ready</div>`;
       }
 
       const nativeSlot = document.getElementById("adsterraNativeBannerSlot");
       if (ads.nativeBannerHtml && ads.nativeBannerHtml.trim() !== "") {
         nativeWrap.classList.remove("hidden");
         nativeSlot.innerHTML = "";
-        const frag2 = document.createRange().createContextualFragment(ads.nativeBannerHtml);
-        nativeSlot.appendChild(frag2);
+        nativeSlot.appendChild(document.createRange().createContextualFragment(ads.nativeBannerHtml));
       } else {
-        nativeSlot.innerHTML = `<div class="py-6 px-6 w-full rounded-2xl bg-blue-950/60 border border-dashed border-sky-400/40 text-xs text-slate-300">Adsterra Native Banner Slot Ready (Paste Native Banner Code in Owner Panel &rarr; Adsterra Ads Setup)</div>`;
+        nativeSlot.innerHTML = `<div class="py-6 px-6 w-full rounded-2xl bg-blue-950/60 border border-dashed border-sky-400/40 text-xs text-slate-300">Adsterra Native Banner Slot Ready</div>`;
       }
     }
 
-    // 6. Render Full Website & Admin Panel
+    // 9. Render Full UI, Leaderboard & Admin Panel
     function renderAll(filteredProducts = null) {
       const cfg = storeData.siteConfig;
       storeData.ordersList = storeData.ordersList || [];
       storeData.messagesList = storeData.messagesList || [];
       storeData.shoutoutsList = storeData.shoutoutsList || [];
+      storeData.leaderboardList = (storeData.leaderboardList || []).sort((a, b) => b.points - a.points);
 
-      // Apply RGB Lighting Mode
+      // Creator Names Highlight
+      const creatorText = cfg.creators || "Abishai & Nirwan";
+      document.getElementById("topCreatorNames").textContent = creatorText;
+      document.getElementById("heroCreatorNames").textContent = creatorText;
+      document.getElementById("footerCreatorNames").textContent = creatorText;
+
       if (cfg.rgbLighting !== false) {
         document.body.classList.add("rgb-active");
       } else {
         document.body.classList.remove("rgb-active");
       }
 
-      // Apply Hype Mode Banner
       const hypeBanner = document.getElementById("hypeAlertBanner");
       document.getElementById("hypeAlertText").textContent = cfg.hypeText || "🚨 FRESH BATCH READY AT STALL! HURRY UP! 🔥";
-      if (cfg.hypeMode) {
-        hypeBanner.classList.remove("hidden");
-      } else {
-        hypeBanner.classList.add("hidden");
-      }
+      hypeBanner.classList.toggle("hidden", !cfg.hypeMode);
 
       document.getElementById("navShopName").textContent = cfg.shopName;
       document.getElementById("footerShopName").textContent = cfg.shopName;
       document.getElementById("navTagline").textContent = cfg.tagline;
-      document.getElementById("topAnnouncementText").textContent = cfg.announcement || "🔥 Welcome to our Online Stall! 🔥";
+      document.getElementById("topAnnouncementText").textContent = cfg.announcement;
       document.getElementById("heroTitle").textContent = cfg.bannerTitle;
       document.getElementById("heroSubtitle").textContent = cfg.bannerSubtitle;
       document.getElementById("contactPhoneDisplay").textContent = cfg.phone;
@@ -1179,22 +1552,15 @@
 
       const waNum = (cfg.whatsapp || cfg.phone || "").replace(/\D/g, "");
       document.getElementById("floatingWaBtn").href = `https://wa.me/${waNum}`;
-      document.getElementById("aboutWaLink").href = `https://wa.me/${waNum}`;
 
-      // Online / Offline Check
       const isOwnerOpen = !document.getElementById("ownerDashboardView").classList.contains("hidden") ||
                           !document.getElementById("ownerLoginView").classList.contains("hidden");
       if (!isOwnerOpen) {
-        if (cfg.isOnline) {
-          document.getElementById("offlineScreen").classList.add("hidden");
-          document.getElementById("customerMainView").classList.remove("hidden");
-        } else {
-          document.getElementById("offlineScreen").classList.remove("hidden");
-          document.getElementById("customerMainView").classList.add("hidden");
-        }
+        document.getElementById("offlineScreen").classList.toggle("hidden", !!cfg.isOnline);
+        document.getElementById("customerMainView").classList.toggle("hidden", !cfg.isOnline);
       }
 
-      // Render Categories Bar
+      // Render Categories
       const categories = ["All", ...new Set(storeData.products.map(p => p.category || "General"))];
       document.getElementById("categoryFilterBar").innerHTML = categories.map(cat => `
         <button onclick="filterByCategory('${cat}')" class="px-4 py-1.5 rounded-full text-xs font-extrabold shrink-0 transition ${activeCategory === cat ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-200'}">
@@ -1202,7 +1568,7 @@
         </button>
       `).join("");
 
-      // Render Products Grid
+      // Render Products
       let list = filteredProducts !== null ? filteredProducts : storeData.products;
       if (filteredProducts === null && activeCategory !== "All") {
         list = list.filter(p => (p.category || "General") === activeCategory);
@@ -1232,7 +1598,6 @@
                 alt="${p.name}"
                 onclick="openLightbox('${p.image.replace(/'/g, "\\'")}', '${p.name.replace(/'/g, "\\'")}')"
                 class="max-h-52 w-auto object-contain cursor-zoom-in transition duration-300 group-hover:scale-105"
-                title="Click to view Full HD Photo"
               />
               <button onclick="openLightbox('${p.image.replace(/'/g, "\\'")}', '${p.name.replace(/'/g, "\\'")}')" class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-lg opacity-80 hover:opacity-100">
                 <i class="fa-solid fa-expand mr-1"></i>HD Zoom
@@ -1271,7 +1636,45 @@
         `}).join("");
       }
 
-      // Render Public Shoutout Wall
+      // Render VIP Customer & Class Leaderboard (Podium + List)
+      const top3 = storeData.leaderboardList.slice(0, 3);
+      const medals = [
+        { icon: "🥇 #1 GOLD VIP", border: "border-amber-400", bg: "from-amber-500/25 to-yellow-600/10", text: "text-amber-300" },
+        { icon: "🥈 #2 SILVER VIP", border: "border-slate-300", bg: "from-slate-400/20 to-slate-600/10", text: "text-slate-200" },
+        { icon: "🥉 #3 BRONZE VIP", border: "border-orange-400", bg: "from-orange-500/20 to-amber-700/10", text: "text-orange-300" }
+      ];
+      document.getElementById("leaderboardPodium").innerHTML = top3.map((item, idx) => {
+        const m = medals[idx];
+        return `
+          <div class="bg-gradient-to-br ${m.bg} p-5 rounded-2xl border-2 ${m.border} flex items-center justify-between shadow-xl">
+            <div>
+              <span class="text-xs font-black ${m.text} uppercase tracking-wider">${m.icon}</span>
+              <h4 class="text-lg font-extrabold text-white mt-1">${item.name}</h4>
+              <p class="text-xs text-sky-300 font-bold">${item.group || "Anand Mela VIP"}</p>
+            </div>
+            <div class="text-right">
+              <span class="text-xl font-black text-emerald-400">₹${Number(item.points).toLocaleString("en-IN")}</span>
+              <p class="text-[10px] text-slate-300 font-semibold">${item.ordersCount || 1} Orders</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      const restLeaderboard = storeData.leaderboardList.slice(3, 10);
+      document.getElementById("leaderboardTableList").innerHTML = restLeaderboard.map((item, idx) => `
+        <div class="bg-[#07122e] px-4 py-3 rounded-xl border border-blue-500/25 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-lg bg-blue-600/30 text-sky-300 font-extrabold flex items-center justify-center">#${idx + 4}</span>
+            <div>
+              <span class="font-extrabold text-white text-sm">${item.name}</span>
+              <span class="ml-2 px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-[10px] font-bold">${item.group || "VIP"}</span>
+            </div>
+          </div>
+          <span class="font-extrabold text-emerald-400 text-sm">₹${Number(item.points).toLocaleString("en-IN")}</span>
+        </div>
+      `).join("");
+
+      // Render Shoutouts
       document.getElementById("shoutoutCountBadge").textContent = `${storeData.shoutoutsList.length} Shoutouts`;
       document.getElementById("publicShoutoutsGrid").innerHTML = storeData.shoutoutsList.map(s => `
         <div class="bg-[#081538] p-4 rounded-2xl border border-sky-400/30 flex items-start gap-3 shadow-lg">
@@ -1288,17 +1691,16 @@
         </div>
       `).join("");
 
-      // Render Adsterra Slots
       renderAdsterraSlots();
 
       // Update Owner Dashboard Stats
       document.getElementById("statProducts").textContent = storeData.products.length;
       document.getElementById("statOrders").textContent = storeData.ordersList.length;
-      document.getElementById("statMessages").textContent = storeData.messagesList.length + storeData.shoutoutsList.length;
+      document.getElementById("statLeaderboard").textContent = storeData.leaderboardList.length;
       document.getElementById("sidebarOrdersBadge").textContent = storeData.ordersList.length;
       document.getElementById("sidebarMessagesBadge").textContent = storeData.messagesList.length;
 
-      // Render Admin Live Orders
+      // Admin Live Orders
       const ordersContainer = document.getElementById("adminOrdersContainer");
       if (storeData.ordersList.length === 0) {
         ordersContainer.innerHTML = `<p class="text-sm text-slate-400 py-6 text-center">Abhi tak koi order nahi aaya hai.</p>`;
@@ -1308,16 +1710,18 @@
             <div class="space-y-1">
               <div class="flex items-center gap-2">
                 <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${o.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-300'}">${o.status || 'New Order'}</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-[11px] font-bold">${o.studentClass || 'VIP'}</span>
                 <span class="text-xs text-slate-400">${o.date || ''}</span>
               </div>
               <h4 class="font-extrabold text-base text-white">${o.customerName} <span class="text-sky-400 text-sm">(${o.phone})</span></h4>
               <p class="text-xs text-emerald-300 font-bold"><i class="fa-solid fa-box mr-1"></i> Items: ${o.items} — Total: ₹${Number(o.totalAmount).toLocaleString("en-IN")}</p>
-              <p class="text-xs text-slate-300"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Note/Location: ${o.address}</p>
-              <p class="text-[11px] text-slate-400"><i class="fa-solid fa-wallet mr-1"></i> Payment: ${o.paymentMode}</p>
+              <p class="text-xs text-slate-300"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Note: ${o.address}</p>
             </div>
             <div class="flex flex-wrap gap-2 shrink-0">
-              <a href="tel:${o.phone}" class="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold"><i class="fa-solid fa-phone mr-1"></i>Call</a>
-              <a href="https://wa.me/91${o.phone.replace(/\D/g, '').slice(-10)}?text=Hello%20${encodeURIComponent(o.customerName)},%20aapka%20Anand%20Mela%20order%20(${encodeURIComponent(o.items)})%20ready%20hai!" target="_blank" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold"><i class="fa-brands fa-whatsapp mr-1"></i>WhatsApp</a>
+              <button onclick="speakCustomAnnouncement('Order ready for ${o.customerName.replace(/'/g, '')} from ${o.studentClass || 'Anand Mela'}. Please collect your ${o.items.replace(/'/g, '')} from Abishai and Nirwan stall!')" class="px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white" title="Announce Customer Name on Speaker">
+                <i class="fa-solid fa-volume-high mr-1"></i>Call Out
+              </button>
+              <a href="tel:${o.phone}" class="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold"><i class="fa-solid fa-phone"></i></a>
               <button onclick="markOrderDone('${o.id}')" class="px-3 py-2 rounded-xl bg-teal-600/30 hover:bg-teal-600 text-xs font-bold"><i class="fa-solid fa-check"></i> Done</button>
               <button onclick="deleteOrder('${o.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200"><i class="fa-solid fa-trash"></i></button>
             </div>
@@ -1325,12 +1729,25 @@
         `).join("");
       }
 
-      // Render Admin Messages
+      // Admin Leaderboard Management List
+      document.getElementById("adminLeaderboardList").innerHTML = storeData.leaderboardList.map((l, i) => `
+        <div class="bg-[#081330] px-4 py-2.5 rounded-xl border border-amber-500/25 flex items-center justify-between">
+          <div class="text-xs">
+            <span class="font-extrabold text-amber-300">#${i + 1} ${l.name}</span>
+            <span class="text-slate-400 ml-2">(${l.group})</span>
+            <span class="text-emerald-400 font-bold ml-2">₹${l.points}</span>
+          </div>
+          <button onclick="deleteLeaderboardItem('${l.id}')" class="px-2.5 py-1 rounded-lg bg-rose-600/30 hover:bg-rose-600 text-xs text-rose-200">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      `).join("");
+
+      // Admin Messages
       const msgContainer = document.getElementById("adminMessagesContainer");
-      if (storeData.messagesList.length === 0) {
-        msgContainer.innerHTML = `<p class="text-sm text-slate-400 py-4 text-center">Inbox khali hai.</p>`;
-      } else {
-        msgContainer.innerHTML = storeData.messagesList.map(m => `
+      msgContainer.innerHTML = storeData.messagesList.length === 0
+        ? `<p class="text-sm text-slate-400 py-4 text-center">Inbox khali hai.</p>`
+        : storeData.messagesList.map(m => `
           <div class="bg-[#081330] p-4 rounded-2xl border border-blue-500/25 flex items-start justify-between gap-4">
             <div class="space-y-1">
               <div class="flex items-center gap-2">
@@ -1340,15 +1757,11 @@
               </div>
               <p class="text-sm text-white bg-[#050c21] p-3 rounded-xl border border-blue-500/20 mt-1">${m.message}</p>
             </div>
-            <div class="flex gap-2 shrink-0">
-              <a href="tel:${m.contact}" class="px-3 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600 text-xs font-bold"><i class="fa-solid fa-phone"></i></a>
-              <button onclick="deleteMessage('${m.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200"><i class="fa-solid fa-trash"></i></button>
-            </div>
+            <button onclick="deleteMessage('${m.id}')" class="px-3 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-xs font-bold text-rose-200"><i class="fa-solid fa-trash"></i></button>
           </div>
         `).join("");
-      }
 
-      // Render Admin Shoutouts Moderation List
+      // Admin Shoutouts
       document.getElementById("adminShoutoutsContainer").innerHTML = storeData.shoutoutsList.map(s => `
         <div class="bg-[#081330] px-4 py-2.5 rounded-xl border border-purple-500/25 flex items-center justify-between gap-3">
           <div class="text-xs">
@@ -1361,7 +1774,7 @@
         </div>
       `).join("");
 
-      // Populate Owner Manage Products
+      // Owner Manage Products
       document.getElementById("ownerProductsList").innerHTML = storeData.products.map(p => `
         <div class="flex items-center justify-between bg-[#081330] p-3 rounded-2xl border border-blue-500/20">
           <div class="flex items-center gap-3">
@@ -1378,28 +1791,19 @@
         </div>
       `).join("");
 
-      // Populate Hype & RGB Controls
+      // Populate Controls
       document.getElementById("cfgHypeText").value = cfg.hypeText || "";
       const hypeBtn = document.getElementById("hypeToggleBtn");
-      if (cfg.hypeMode) {
-        hypeBtn.textContent = "🔥 Hype Mode is ON (Click to Turn Off)";
-        hypeBtn.className = "px-6 py-3 rounded-xl font-extrabold text-xs bg-rose-600 text-white shrink-0";
-      } else {
-        hypeBtn.textContent = "Activate Rush & Hype Mode";
-        hypeBtn.className = "px-6 py-3 rounded-xl font-extrabold text-xs bg-amber-500 text-slate-950 shrink-0";
-      }
+      hypeBtn.textContent = cfg.hypeMode ? "🔥 Hype Mode is ON (Turn Off)" : "Activate Rush & Hype Mode";
 
       const rgbBtn = document.getElementById("rgbToggleBtn");
-      if (cfg.rgbLighting !== false) {
-        rgbBtn.textContent = "✨ RGB Lighting: ON";
-        rgbBtn.className = "px-5 py-2.5 rounded-xl font-extrabold text-xs bg-purple-600 text-white";
-      } else {
-        rgbBtn.textContent = "RGB Lighting: OFF";
-        rgbBtn.className = "px-5 py-2.5 rounded-xl font-extrabold text-xs bg-slate-700 text-slate-300";
-      }
+      rgbBtn.textContent = cfg.rgbLighting !== false ? "✨ RGB Lighting: ON" : "RGB Lighting: OFF";
 
-      // Populate Website Edit Form
+      const voiceBtn = document.getElementById("aiVoiceToggleBtn");
+      voiceBtn.textContent = cfg.aiVoiceEnabled !== false ? "AI Voice: ON" : "AI Voice: OFF";
+
       document.getElementById("cfgShopName").value = cfg.shopName || "";
+      document.getElementById("cfgCreators").value = cfg.creators || "Abishai & Nirwan";
       document.getElementById("cfgTagline").value = cfg.tagline || "";
       document.getElementById("cfgAnnouncement").value = cfg.announcement || "";
       document.getElementById("cfgBannerTitle").value = cfg.bannerTitle || "";
@@ -1410,12 +1814,14 @@
       document.getElementById("cfgAddress").value = cfg.address || "";
       document.getElementById("cfgAbout").value = cfg.aboutText || "";
 
-      // Populate Ads Form
       document.getElementById("cfgAdsEnabled").checked = storeData.adsConfig.adsEnabled !== false;
       document.getElementById("cfgTopBannerHtml").value = storeData.adsConfig.topBannerHtml || "";
       document.getElementById("cfgNativeBannerHtml").value = storeData.adsConfig.nativeBannerHtml || "";
 
-      // Status Badge
+      const qrInput = document.getElementById("customQrUrlInput");
+      if (qrInput && !qrInput.value) qrInput.value = window.location.href;
+      updateQrImages();
+
       const statusBadge = document.getElementById("statStatusBadge");
       const shutdownText = document.getElementById("shutdownStatusText");
       const toggleBtn = document.getElementById("toggleSiteBtn");
@@ -1423,24 +1829,19 @@
         statusBadge.textContent = cfg.hypeMode ? "🔥 HYPE LIVE" : "ONLINE";
         statusBadge.className = "text-base font-extrabold text-emerald-400 mt-1";
         shutdownText.textContent = "Website is ONLINE";
-        shutdownText.className = "text-lg font-extrabold text-emerald-400";
         toggleBtn.textContent = "Close Website (Turn Off)";
-        toggleBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-rose-600 hover:bg-rose-500 text-white shadow-lg";
       } else {
         statusBadge.textContent = "OFFLINE";
         statusBadge.className = "text-base font-extrabold text-rose-400 mt-1";
         shutdownText.textContent = "Website is OFFLINE!";
-        shutdownText.className = "text-lg font-extrabold text-rose-400";
         toggleBtn.textContent = "Turn ON Website";
-        toggleBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg";
       }
     }
 
-    // 7. RGB & Hype Functions
+    // 10. Hype, RGB & AI Voice Settings
     function toggleClientRgb() {
       document.body.classList.toggle("rgb-active");
-      const isOn = document.body.classList.contains("rgb-active");
-      showToast(isOn ? "✨ Auto RGB Carnival Lighting Activated!" : "Standard Theme Activated");
+      showToast(document.body.classList.contains("rgb-active") ? "✨ Pro Aurora Lighting Activated!" : "Standard Theme Activated");
     }
 
     async function toggleHypeMode() {
@@ -1459,7 +1860,12 @@
       await syncToBackend("RGB Lighting preference saved!");
     }
 
-    // 8. Lightbox Zoom
+    async function toggleAiVoiceSetting() {
+      storeData.siteConfig.aiVoiceEnabled = !(storeData.siteConfig.aiVoiceEnabled !== false);
+      await syncToBackend("AI Voice setting updated!");
+    }
+
+    // 11. Lightbox, Search & Filter
     function openLightbox(imgUrl, title) {
       document.getElementById("lightboxImg").src = imgUrl;
       document.getElementById("lightboxTitle").textContent = title;
@@ -1469,7 +1875,6 @@
       document.getElementById("lightboxModal").classList.add("hidden");
     }
 
-    // 9. Category & Search
     function filterByCategory(cat) {
       activeCategory = cat;
       document.getElementById("searchInput").value = "";
@@ -1508,16 +1913,13 @@
       setTimeout(() => input.focus(), 400);
     }
 
-    // 10. Cart & Order Booking (Triggers Patakhe Confetti + VIP Sound + VIP Ticket)
+    // 12. Cart & Order Checkout (With AI Voice Announcer + Leaderboard Update + Confetti)
     function addToCart(productId) {
       const prod = storeData.products.find(p => p.id === productId);
       if (!prod) return;
       const existing = cartItems.find(item => item.id === productId);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cartItems.push({ id: prod.id, name: prod.name, price: Number(prod.price), qty: 1 });
-      }
+      if (existing) existing.qty += 1;
+      else cartItems.push({ id: prod.id, name: prod.name, price: Number(prod.price), qty: 1 });
       updateCartBadge();
       showToast(`${prod.name} added to Cart!`);
     }
@@ -1559,20 +1961,24 @@
 
     function closeVipSuccessModal() {
       document.getElementById("vipOrderSuccessModal").classList.add("hidden");
+      document.getElementById("leaderboardSection").scrollIntoView({ behavior: "smooth" });
     }
 
     async function submitCustomerOrder(e) {
       e.preventDefault();
       const btn = document.getElementById("placeOrderBtn");
-      btn.textContent = "Booking Your Order...";
+      btn.textContent = "Confirming & Announcing...";
       btn.disabled = true;
 
       const totalAmount = cartItems.reduce((sum, i) => sum + i.price * i.qty, 0);
       const itemsText = cartItems.map(i => `${i.name} (x${i.qty})`).join(", ");
+      const customerName = document.getElementById("orderCustName").value.trim();
+      const studentClass = document.getElementById("orderStudentClass").value;
 
       const newOrder = {
         id: "ORD-" + Date.now().toString().slice(-5),
-        customerName: document.getElementById("orderCustName").value.trim(),
+        customerName,
+        studentClass,
         phone: document.getElementById("orderCustPhone").value.trim(),
         address: document.getElementById("orderCustAddress").value.trim(),
         paymentMode: document.getElementById("orderPaymentMode").value,
@@ -1582,8 +1988,23 @@
         date: new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })
       };
 
+      // Update Local Orders & Leaderboard Immediately
       storeData.ordersList.unshift(newOrder);
-      localStorage.setItem("smartshop_mela_backup", JSON.stringify(storeData));
+      const existingLb = storeData.leaderboardList.find(l => l.name.toLowerCase() === customerName.toLowerCase());
+      if (existingLb) {
+        existingLb.points += totalAmount;
+        existingLb.ordersCount = (existingLb.ordersCount || 1) + 1;
+      } else {
+        storeData.leaderboardList.push({
+          id: "LB-" + Date.now(),
+          name: customerName,
+          group: studentClass,
+          points: totalAmount,
+          ordersCount: 1
+        });
+      }
+      storeData.leaderboardList.sort((a, b) => b.points - a.points);
+      localStorage.setItem("smartshop_abishai_nirwan", JSON.stringify(storeData));
 
       try {
         await fetch("/.netlify/functions/api", {
@@ -1597,25 +2018,60 @@
       updateCartBadge();
       closeCheckoutModal();
       e.target.reset();
-      btn.textContent = "Place Order (With VIP Celebration)";
+      btn.innerHTML = `<i class="fa-solid fa-volume-high"></i> Place Order & Announce Live`;
       btn.disabled = false;
       renderAll();
 
-      // Trigger Patakhe (Confetti) + VIP Sound + VIP Digital Pass Modal!
+      // Trigger Celebration Confetti, Chime & AI Voice Order Announcer!
       playVipVictorySound();
       triggerMegaConfetti();
+      spawnLiveEmoji("🎉");
+
+      const creators = storeData.siteConfig.creators || "Abishai and Nirwan";
+      lastSpokenOrderText = `VIP Order Confirmed for ${customerName} from ${studentClass}! Items booked: ${itemsText}. Total amount Rupees ${totalAmount}. Thank you for visiting ${creators}'s Digital Stall!`;
+      setTimeout(() => speakCustomAnnouncement(lastSpokenOrderText), 450);
 
       document.getElementById("vipTicketDetails").innerHTML = `
         <p class="text-sky-300 font-extrabold text-sm">Pass ID: #${newOrder.id}</p>
-        <p class="text-white"><b>Customer:</b> ${newOrder.customerName}</p>
+        <p class="text-white"><b>Customer:</b> ${newOrder.customerName} (${newOrder.studentClass})</p>
         <p class="text-emerald-400 font-bold"><b>Items:</b> ${newOrder.items}</p>
-        <p class="text-amber-300 font-extrabold"><b>Total Payable:</b> ₹${newOrder.totalAmount}</p>
-        <p class="text-slate-400"><b>Payment:</b> ${newOrder.paymentMode}</p>
+        <p class="text-amber-300 font-extrabold"><b>Total Payable:</b> ₹${newOrder.totalAmount} (+${newOrder.totalAmount} Leaderboard Pts)</p>
+        <p class="text-slate-400"><b>Stall Creators:</b> ${creators}</p>
       `;
       document.getElementById("vipOrderSuccessModal").classList.remove("hidden");
     }
 
-    // 11. Submit Live Anand Mela Shoutout
+    // 13. Manual Leaderboard Boost in Admin
+    async function addManualLeaderboardEntry(e) {
+      e.preventDefault();
+      const name = document.getElementById("lbNameInput").value.trim();
+      const group = document.getElementById("lbGroupInput").value.trim();
+      const pts = Number(document.getElementById("lbPointsInput").value) || 0;
+
+      const existing = storeData.leaderboardList.find(l => l.name.toLowerCase() === name.toLowerCase());
+      if (existing) {
+        existing.points += pts;
+        existing.ordersCount = (existing.ordersCount || 1) + 1;
+      } else {
+        storeData.leaderboardList.push({
+          id: "LB-" + Date.now(),
+          name,
+          group,
+          points: pts,
+          ordersCount: 1
+        });
+      }
+      storeData.leaderboardList.sort((a, b) => b.points - a.points);
+      e.target.reset();
+      await syncToBackend("Leaderboard updated live!");
+    }
+
+    async function deleteLeaderboardItem(id) {
+      storeData.leaderboardList = storeData.leaderboardList.filter(l => l.id !== id);
+      await syncToBackend("Leaderboard entry removed!");
+    }
+
+    // 14. Shoutout & Contact Form
     async function submitCustomerShoutout(e) {
       e.preventDefault();
       const btn = document.getElementById("shoutSubmitBtn");
@@ -1631,7 +2087,7 @@
       };
 
       storeData.shoutoutsList.unshift(shoutout);
-      localStorage.setItem("smartshop_mela_backup", JSON.stringify(storeData));
+      localStorage.setItem("smartshop_abishai_nirwan", JSON.stringify(storeData));
 
       try {
         await fetch("/.netlify/functions/api", {
@@ -1646,10 +2102,10 @@
       btn.disabled = false;
       renderAll();
       triggerMegaConfetti();
+      spawnLiveEmoji(shoutout.emoji);
       showToast("🔥 Aapka Shoutout Live Wall par aa gaya hai!");
     }
 
-    // 12. Customer Contact Message
     async function submitContactForm(e) {
       e.preventDefault();
       const btn = document.getElementById("sendMsgBtn");
@@ -1665,7 +2121,7 @@
       };
 
       storeData.messagesList.unshift(messageData);
-      localStorage.setItem("smartshop_mela_backup", JSON.stringify(storeData));
+      localStorage.setItem("smartshop_abishai_nirwan", JSON.stringify(storeData));
 
       try {
         await fetch("/.netlify/functions/api", {
@@ -1676,17 +2132,16 @@
       } catch (err) {}
 
       e.target.reset();
-      btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message to Owner`;
+      btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message`;
       btn.disabled = false;
       renderAll();
-      showToast("Aapka message Stall Owner ke Admin Panel mein pahunch gaya hai!");
+      showToast("Message sent to Abishai & Nirwan's Admin Panel!");
     }
 
-    // 13. HD Photo Upload (1000px @ 0.92 Quality)
+    // 15. HD Photo Upload
     function handleImageFile(event) {
       const file = event.target.files[0];
       if (!file) return;
-
       const reader = new FileReader();
       reader.onload = function(e) {
         const img = new Image();
@@ -1695,20 +2150,14 @@
           const MAX_SIZE = 1000;
           let w = img.width;
           let h = img.height;
-          if (w > h && w > MAX_SIZE) {
-            h *= MAX_SIZE / w;
-            w = MAX_SIZE;
-          } else if (h > MAX_SIZE) {
-            w *= MAX_SIZE / h;
-            h = MAX_SIZE;
-          }
+          if (w > h && w > MAX_SIZE) { h *= MAX_SIZE / w; w = MAX_SIZE; }
+          else if (h > MAX_SIZE) { w *= MAX_SIZE / h; h = MAX_SIZE; }
           canvas.width = w;
           canvas.height = h;
           const ctx = canvas.getContext("2d");
           ctx.imageSmoothingEnabled = true;
           ctx.imageSmoothingQuality = "high";
           ctx.drawImage(img, 0, 0, w, h);
-
           const hdDataUrl = canvas.toDataURL("image/jpeg", 0.92);
           document.getElementById("prodImageUrl").value = hdDataUrl;
           const preview = document.getElementById("imagePreview");
@@ -1721,7 +2170,7 @@
       reader.readAsDataURL(file);
     }
 
-    // 14. Owner Panel Controls
+    // 16. Owner Panel Controls
     function openOwnerView() {
       document.getElementById("customerMainView").classList.add("hidden");
       document.getElementById("offlineScreen").classList.add("hidden");
@@ -1767,7 +2216,7 @@
           document.getElementById("ownerLoginView").classList.add("hidden");
           document.getElementById("ownerDashboardView").classList.remove("hidden");
           await loadStoreData();
-          showToast("Welcome back, Stall Owner!");
+          showToast("Welcome Abishai & Nirwan!");
           btn.textContent = "Unlock Owner Dashboard";
           return;
         } else if (res.status === 401) {
@@ -1781,7 +2230,7 @@
         ownerPasswordSession = pass;
         document.getElementById("ownerLoginView").classList.add("hidden");
         document.getElementById("ownerDashboardView").classList.remove("hidden");
-        showToast("Welcome Owner! (Local Mode)");
+        showToast("Welcome Abishai & Nirwan! (Local Mode)");
       } else {
         alert("Galat Password!");
       }
@@ -1906,6 +2355,7 @@
       e.preventDefault();
       const cfg = storeData.siteConfig;
       cfg.shopName = document.getElementById("cfgShopName").value.trim();
+      cfg.creators = document.getElementById("cfgCreators").value.trim() || "Abishai & Nirwan";
       cfg.tagline = document.getElementById("cfgTagline").value.trim();
       cfg.announcement = document.getElementById("cfgAnnouncement").value.trim();
       cfg.bannerTitle = document.getElementById("cfgBannerTitle").value.trim();
